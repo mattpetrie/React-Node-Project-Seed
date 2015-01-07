@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "description": "JQuery, Express, React, MongoDB, and Node",
   "main": "server.js",
+  "readme": "README.md",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,12 +15,15 @@
   "author": "Matt Petrie",
   "license": "ISC",
   "devDependencies": {
+    "browser-sync": "^1.8.3",
     "browserify": "^8.0.3",
     "gulp": "^3.8.10",
     "reactify": "^0.17.1",
     "watchify": "^2.2.1"
   },
   "dependencies": {
+    "jquery": "^2.1.3",
+    "react": "^0.12.2",
     "require-dir": "^0.1.0"
   }
 }
