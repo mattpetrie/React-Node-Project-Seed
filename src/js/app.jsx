@@ -9,19 +9,19 @@ var TodoApp = React.createClass({
   },
   loadTodosFromServer: function() {
     $.ajax({
-      url: 'http://localhost:8080/api/todos',
+      url: '/api/todos',
       dataType: 'json',
       success: function(data) {
         this.setState({ data: data });
       }.bind(this),
       error: function(xhr, status, err) {
-        console.error('localhost:8080/api/todos', status, err.toString());
+        console.error('/api/todos', status, err.toString());
       }.bind(this)
     });
   },
   handleTodoUpdate: function(todo) {
     $.ajax({
-      url: 'http://localhost:8080/api/todos/' + todo._id,
+      url: '/api/todos/' + todo._id,
       type: 'PUT',
       dataType: 'json',
       data: todo,
@@ -29,7 +29,7 @@ var TodoApp = React.createClass({
         this.loadTodosFromServer();
       }.bind(this),
       error: function(xhr, status, err) {
-        console.err('http://localhost:8080/api/todos' + todo._id, status, err.toString());
+        console.err('/api/todos' + todo._id, status, err.toString());
       }.bind(this)
     });
   },
