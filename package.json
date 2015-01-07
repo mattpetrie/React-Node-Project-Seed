@@ -1,0 +1,25 @@
+{
+  "name": "JERMN",
+  "version": "0.0.0",
+  "description": "JQuery, Express, React, MongoDB, and Node",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Express",
+    "React",
+    "Node"
+  ],
+  "author": "Matt Petrie",
+  "license": "ISC",
+  "devDependencies": {
+    "browserify": "^8.0.3",
+    "gulp": "^3.8.10",
+    "reactify": "^0.17.1",
+    "watchify": "^2.2.1"
+  },
+  "dependencies": {
+    "require-dir": "^0.1.0"
+  }
+}
