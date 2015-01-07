@@ -5,10 +5,7 @@ var src = './src';
 module.exports = {
   // options for Gulp tasks go here
   browserSync: {
-    server: {
-      baseDir: dest,
-      index: './views/index.html'
-    }
+    proxy: 'localhost:8080'
   },
   markup: {
     src: src + '/views/**',
