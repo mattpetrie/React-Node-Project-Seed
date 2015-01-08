@@ -5,6 +5,7 @@ var browserify = require('browserify');
 var reactify = require('reactify');
 var watchify = require('watchify');
 var gulp = require('gulp');
+var gutil = require('gulp-util');
 var browserSync = require('browser-sync');
 var _ = require('lodash');
 var config = require('../config').browserify;
@@ -18,6 +19,9 @@ function browserifyTask(callback, devMode) {
 
   function bundle() {
     return b.bundle()
+      .on('error', function(err) {
+        gutil.log(gutil.colors.red('Browserify error: '), _.omit(err, 'stream'));
+      })
       .pipe(source(bundleConfig.outputName))
       .pipe(gulp.dest(bundleConfig.dest))
       .pipe(browserSync.reload({stream: true}));
