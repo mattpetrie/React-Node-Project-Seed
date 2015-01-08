@@ -7,7 +7,7 @@ var TodoList = React.createClass({
     var handleTodoUpdate = this.props.handleTodoUpdate;
     var todos = this.props.data.map(function(todo) {
       return (
-        <TodoItem data={todo} handleTodoUpdate={handleTodoUpdate} />
+        <TodoItem key={todo._id} data={todo} handleTodoUpdate={handleTodoUpdate} />
       );
     });
     return (
