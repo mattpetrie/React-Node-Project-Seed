@@ -1,5 +1,6 @@
 var React = require('react');
 var $ = require('jquery');
+var _ = require('lodash');
 
 var TodoList = require('./components/todo-list.jsx');
 
@@ -20,6 +21,8 @@ var TodoApp = React.createClass({
     });
   },
   handleTodoUpdate: function(todo) {
+    this.updateTodo(todo);
+
     $.ajax({
       url: '/api/todos/' + todo._id,
       type: 'PUT',
@@ -30,8 +33,17 @@ var TodoApp = React.createClass({
       }.bind(this),
       error: function(xhr, status, err) {
         console.err('/api/todos' + todo._id, status, err.toString());
+        this.loadTodosFromServer();
       }.bind(this)
     });
+  },
+  updateTodo: function(updatedTodo) {
+    var todos = this.state.data;
+    var todoToUpdateIndex = _.findIndex(todos, function(todo) {
+      return todo._id === updatedTodo._id;
+    });
+    _.merge(todos[todoToUpdateIndex], updatedTodo);
+    this.setState({ data: todos });
   },
   componentDidMount: function() {
     this.loadTodosFromServer();
@@ -39,7 +51,7 @@ var TodoApp = React.createClass({
   render: function() {
     return (
       <div className="todoApp">
-        <TodoList data={this.state.data} handleTodoUpdate={this.handleTodoUpdate}/>
+        <TodoList data={this.state.data} handleTodoUpdate={this.handleTodoUpdate} />
       </div>
     );
   }
