@@ -5,12 +5,13 @@
   "main": "server.js",
   "readme": "README.md",
   "scripts": {
-    "test": "jest"
+    "test": "jest /__tests__"
   },
   "jest": {
     "scriptPreprocessor": "<rootDir>/preprocessor.js",
     "unmockedModulePathPatterns": [
-      "<rootDir>/node_modules/react"
+      "<rootDir>/node_modules/react",
+      "<rootDir>/node_modules/lodash"
     ]
   },
   "keywords": [
