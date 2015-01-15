@@ -2,7 +2,7 @@ body {
   background-color: #EEE;
 }
 
-.todoItem {
+.todoItem, .todoForm {
   background-color: #FFF;
   margin: 0 auto;
   width: 50%;
@@ -10,4 +10,8 @@ body {
   & + & {
     margin-top: 2%;
   }
+}
+
+.todoForm {
+  margin-top: 2%;
 }

@@ -1,6 +1,7 @@
 var React = require('react');
 
 var TodoItem = require('./todo-item.jsx');
+var TodoForm = require('./todo-form.jsx');
 
 var TodoList = React.createClass({
   getDefaultProps: function() {
@@ -19,6 +20,7 @@ var TodoList = React.createClass({
     return (
       <div className="todoList">
         {todos}
+        <TodoForm />
       </div>
     );
   }
