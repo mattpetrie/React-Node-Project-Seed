@@ -1,12 +1,13 @@
 var React = require('react');
+var AppActions = require('../actions/app-actions.js');
 
 var TodoItem = React.createClass({
   handleChange: function() {
-    this.props.data.done = !this.props.data.done;
-    this.props.handleTodoUpdate(this.props.data);
+    var todo = this.props.todo;
+    AppActions.updateTodo(todo._id, { done: !todo.done });
   },
   render: function() {
-    var todo = this.props.data;
+    var todo = this.props.todo;
     return (
       <div className="todoItem">
         <form action="">
