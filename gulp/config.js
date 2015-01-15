@@ -16,7 +16,7 @@ module.exports = {
     proxy: 'localhost:8080'
   },
   markup: {
-    src: src + '/views/**',
+    src: src + '/views/**/*.html',
     dest: dest + '/views'
   },
   sass: {

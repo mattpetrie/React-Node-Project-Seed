@@ -7,6 +7,10 @@ var CHANGE_EVENT = 'change';
 
 var _todos = {};
 
+function create (todo) {
+  _todos[todo._id] = todo;
+}
+
 function createAll (todos) {
   _todos = {};
   todos.forEach(function(todo) {
@@ -51,6 +55,11 @@ AppDispatcher.register(function(payload) {
 
     case AppConstants.GET_TODOS_SUCCESS:
       createAll(action.todos);
+      TodoStore.emitChange();
+      break;
+
+    case AppConstants.ADD_TODO_SUCCESS:
+      create(action.todo);
       TodoStore.emitChange();
       break;
 

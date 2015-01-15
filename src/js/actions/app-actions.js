@@ -8,6 +8,17 @@ var AppActions = {
       actionType: AppConstants.ADD_TODO,
       todo: todo
     });
+
+    TodoApi.create(todo, function() {
+      AppDispatcher.handleServerAction({
+        actionType: AppConstants.ADD_TODO_SUCCESS,
+        todo: todo
+      });
+    }, function() {
+      AppDispatcher.handleServerAction({
+        actionType: AppConstants.ADD_TODO_FAIL
+      });
+    });
   },
 
   getTodo: function(id) {
