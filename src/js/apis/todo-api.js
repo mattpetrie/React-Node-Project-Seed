@@ -4,6 +4,21 @@ var _ = require('lodash');
 var BASE_URL = '/api/todos/';
 
 var TodoApi = {
+  create: function(todo, success, failure) {
+    $.ajax({
+      url: BASE_URL,
+      type: 'POST',
+      dataType: 'json',
+      data: todo,
+      success: function() {
+        success();
+      },
+      error: function() {
+        failure();
+      }
+    });
+  },
+
   destroy: function(_id, success, failure) {
     $.ajax({
       url: BASE_URL + _id,
@@ -17,6 +32,7 @@ var TodoApi = {
       }
     });
   },
+
   getAll: function(success, failure) {
     $.ajax({
       url: BASE_URL,
