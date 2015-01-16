@@ -8,6 +8,7 @@ var CHANGE_EVENT = 'change';
 var _todos = {};
 
 function create (todo) {
+  todo.synced = true;
   _todos[todo._id] = todo;
 }
 
@@ -54,6 +55,11 @@ AppDispatcher.register(function(payload) {
   switch(action.actionType) {
     case AppConstants.UPDATE_TODO:
       update(action.id, action.props, false);
+      TodoStore.emitChange();
+      break;
+
+    case AppConstants.UPDATE_TODO_SUCCESS:
+      update(action.id, action.props, true);
       TodoStore.emitChange();
       break;
 
