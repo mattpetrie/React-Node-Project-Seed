@@ -15,6 +15,7 @@ var TodoForm = React.createClass({
       name: this.state.name,
       done: false,
     })
+    this.setState({ name: "" });
   },
 
   _onChange: function(event) {
