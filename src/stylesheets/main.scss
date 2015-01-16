@@ -1,3 +1,11 @@
+.clearfix {
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
 body {
   background-color: #EEE;
   font-family: sans-serif;
@@ -14,9 +22,13 @@ body {
 }
 
 .todoItem {
+  @extend .clearfix;
   &.done {
     color: #CCC;
     text-decoration: line-through;
+  }
+  button.delete-button {
+    float: right;
   }
 }
 .todoForm {
