@@ -9,14 +9,15 @@ var AppActions = {
       todo: todo
     });
 
-    TodoApi.create(todo, function() {
+    TodoApi.create(todo, function(todo) {
       AppDispatcher.handleServerAction({
         actionType: AppConstants.ADD_TODO_SUCCESS,
         todo: todo
       });
-    }, function() {
+    }, function(error) {
       AppDispatcher.handleServerAction({
-        actionType: AppConstants.ADD_TODO_FAIL
+        actionType: AppConstants.ADD_TODO_FAIL,
+        error: error
       });
     });
   },
@@ -63,6 +64,18 @@ var AppActions = {
       actionType: AppConstants.REMOVE_TODO,
       id: id
     });
+
+    TodoApi.destroy(id, function() {
+      AppDispatcher.handleServerAction({
+        actionType: AppConstants.REMOVE_TODO_SUCCESS,
+        id: id
+      });
+    }, function(error) {
+      AppDispatcher.handleServerAction({
+        actionType: AppConstants.REMOVE_TODO_FAIL,
+        error: error
+      });
+    });
   },
 
   updateTodo: function(id, props) {
@@ -72,9 +85,11 @@ var AppActions = {
       props: props
     });
 
-    TodoApi.update(id, props, function() {
+    TodoApi.update(id, props, function(todo) {
       AppDispatcher.handleServerAction({
-        actionType: AppConstants.UPDATE_TODO_SUCCESS
+        actionType: AppConstants.UPDATE_TODO_SUCCESS,
+        id: todo._id,
+        props: todo
       });
     }, function(error) {
       AppDispatcher.handleServerAction({
