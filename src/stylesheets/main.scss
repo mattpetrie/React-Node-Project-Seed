@@ -1,3 +1,5 @@
+@import 'normalize';
+
 .clearfix {
   &:after {
     content: '';
@@ -9,6 +11,7 @@
 body {
   background-color: #EEE;
   font-family: sans-serif;
+  padding: 2%;
 }
 
 .todoItem, .todoForm {
