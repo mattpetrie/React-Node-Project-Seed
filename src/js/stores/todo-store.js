@@ -19,6 +19,10 @@ function createAll (todos) {
   });
 }
 
+function destroy (id) {
+  delete _todos[id];
+}
+
 function update (id, props, synced) {
   var todo = _todos[id];
   assign(todo, props, synced);
@@ -60,6 +64,11 @@ AppDispatcher.register(function(payload) {
 
     case AppConstants.ADD_TODO_SUCCESS:
       create(action.todo);
+      TodoStore.emitChange();
+      break;
+
+    case AppConstants.REMOVE_TODO:
+      destroy(action.id);
       TodoStore.emitChange();
       break;
 
