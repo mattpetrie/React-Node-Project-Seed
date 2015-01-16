@@ -20,7 +20,7 @@ function browserifyTask(callback, devMode) {
   function bundle() {
     return b.bundle()
       .on('error', function(err) {
-        gutil.log(gutil.colors.red('Browserify error: '), err);
+        gutil.log(gutil.colors.red('Browserify error: '), err.message);
       })
       .pipe(source(bundleConfig.outputName))
       .pipe(gulp.dest(bundleConfig.dest))
