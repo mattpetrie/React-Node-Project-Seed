@@ -1,6 +1,10 @@
 var Todo = require('../../models/todo');
 var express = require('express');
+var morgan = require('morgan');
 var router = express.Router();
+
+// log all requests to the console
+router.use(morgan('dev'));
 
 router.route('/todos')
 
@@ -12,12 +16,12 @@ router.route('/todos')
     todo.done = req.body.done;
 
     // save the Todo and check for errors
-    todo.save(function(err) {
+    todo.save(function(err, todo) {
       if (err) {
-        res.send(err);
+        res.status(500).send(err);
       }
 
-      res.json({ message: 'Todo created!' });
+      res.json(todo);
     });
   })
 
@@ -25,7 +29,7 @@ router.route('/todos')
   .get(function(req, res) {
     Todo.find(function(err, todos) {
       if (err) {
-        res.send(err);
+        res.status(500).send(err);
       }
 
       res.json(todos);
@@ -38,7 +42,7 @@ router.route('/todos/:todo_id')
   .get(function(req, res) {
     Todo.findById(req.params.todo_id, function(err, todo) {
       if (err) {
-        res.send(err);
+        res.status(500).send(err);
       }
 
       res.json(todo);
@@ -49,18 +53,18 @@ router.route('/todos/:todo_id')
   .put(function(req, res) {
     Todo.findById(req.params.todo_id, function(err, todo) {
       if (err) {
-        res.send(err);
+        res.status(500).send(err);
       }
 
       if (req.body.name) { todo.name = req.body.name; }
       if (req.body.done) { todo.done = req.body.done; }
 
-      todo.save(function(err) {
+      todo.save(function(err, todo) {
         if (err) {
           res.send(err);
         }
 
-        res.json({ message: 'Todo updated!' });
+        res.json(todo);
       });
     });
   })
@@ -71,10 +75,10 @@ router.route('/todos/:todo_id')
       _id: req.params.todo_id
     }, function(err, todo) {
       if (err) {
-        res.send(err);
+        res.status(500).send(err);
       }
 
-      res.json({ message: 'Successfully deleted' });
+      res.json(todo);
     });
   });
 

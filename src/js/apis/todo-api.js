@@ -10,8 +10,8 @@ var TodoApi = {
       type: 'POST',
       dataType: 'json',
       data: todo,
-      success: function() {
-        success();
+      success: function(data) {
+        success(data);
       },
       error: function() {
         failure();
@@ -24,8 +24,8 @@ var TodoApi = {
       url: BASE_URL + _id,
       type: 'DELETE',
       dataType: 'json',
-      success: function() {
-        success();
+      success: function(data) {
+        success(data);
       },
       error: function(xhr, status, error) {
         failure(error);
@@ -65,8 +65,8 @@ var TodoApi = {
       type: 'PUT',
       dataType: 'json',
       data: props,
-      success: function() {
-        success();
+      success: function(data) {
+        success(data);
       },
       error: function(xhr, status, error) {
         failure(error);

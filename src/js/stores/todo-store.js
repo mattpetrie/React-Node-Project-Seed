@@ -8,6 +8,7 @@ var CHANGE_EVENT = 'change';
 var _todos = {};
 
 function create (todo) {
+  todo.synced = true;
   _todos[todo._id] = todo;
 }
 
@@ -17,6 +18,10 @@ function createAll (todos) {
     todo.synced = true;
     _todos[todo._id] = todo;
   });
+}
+
+function destroy (id) {
+  delete _todos[id];
 }
 
 function update (id, props, synced) {
@@ -53,6 +58,11 @@ AppDispatcher.register(function(payload) {
       TodoStore.emitChange();
       break;
 
+    case AppConstants.UPDATE_TODO_SUCCESS:
+      update(action.id, action.props, true);
+      TodoStore.emitChange();
+      break;
+
     case AppConstants.GET_TODOS_SUCCESS:
       createAll(action.todos);
       TodoStore.emitChange();
@@ -60,6 +70,11 @@ AppDispatcher.register(function(payload) {
 
     case AppConstants.ADD_TODO_SUCCESS:
       create(action.todo);
+      TodoStore.emitChange();
+      break;
+
+    case AppConstants.REMOVE_TODO:
+      destroy(action.id);
       TodoStore.emitChange();
       break;
 
