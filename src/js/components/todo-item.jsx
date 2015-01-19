@@ -13,13 +13,18 @@ var TodoItem = React.createClass({
 
   render: function() {
     var todo = this.props.todo;
+    var classString = 'todoItem';
+    classString += todo.done ? ' done' : '';
     return (
-      <div className="todoItem">
-        <form action="">
-          <input type="checkbox" name="done" value="done" checked={todo.done} onChange={this.handleChange} />
+      <div className={classString}>
+        <form action=''>
+          <input type='checkbox' name='done' value='done'
+             checked={todo.done} onChange={this.handleChange} />
         </form>
         <h2>{todo.name}</h2>
-        <button onClick={this.handleDelete}>Delete todo</button>
+        <button className='delete-button' onClick={this.handleDelete}>
+          &times;
+        </button>
       </div>
     );
   }
