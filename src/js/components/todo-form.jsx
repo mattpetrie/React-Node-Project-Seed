@@ -31,7 +31,7 @@ var TodoForm = React.createClass({
         <form action="" onSubmit={this.handleSubmit}>
           <input type="text" name="name" value={this.state.name}
             placeholder="Enter todo name here" onChange={this._onChange} />
-          <input type="submit" />
+          <input type="submit" value="+" />
         </form>
       </div>
     )
