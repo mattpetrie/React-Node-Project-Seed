@@ -23,7 +23,7 @@ var TodoItem = React.createClass({
         </form>
         <h2>{todo.name}</h2>
         <button className='delete-button' onClick={this.handleDelete}>
-          Delete todo
+          &times;
         </button>
       </div>
     );
