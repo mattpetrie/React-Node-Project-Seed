@@ -46,7 +46,6 @@ describe('TodoItem', function() {
 
     it('calls the remove todo action with the todo id', function() {
 
-      console.log(removeTodoSpy);
       expect(removeTodoSpy).to.have.been.calledWith(mockTodo._id);
     })
   });
