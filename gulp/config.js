@@ -8,6 +8,7 @@ module.exports = {
     bundleConfig: {
       entries: ['./src/js/app.jsx'],
       outputName: 'bundle.js',
+      extensions: ['js', 'jsx', 'json'],
       dest: dest + '/js',
       verbose: true
     }
@@ -18,6 +19,13 @@ module.exports = {
   markup: {
     src: src + '/views/**/*.html',
     dest: dest + '/views'
+  },
+  nodemon: {
+    script: 'server.js',
+    ext: 'js html',
+    env: { 'NODE_ENV': 'development' },
+    ignore: ['./src/**', './build/**'],
+    nodeArgs: ['--debug'],
   },
   sass: {
     src: src + '/stylesheets/*.{sass,scss}',
