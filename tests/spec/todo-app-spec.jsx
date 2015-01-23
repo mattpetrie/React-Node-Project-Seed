@@ -1,10 +1,10 @@
 var expect = require('chai').expect;
 var React = require('react/addons');
 var TestUtils = React.addons.TestUtils;
-var rewireModule = require('./utils/rewire-module');
+var rewireModule = require('../helpers/rewire-module');
 
 describe('Todo-App', function() {
-  var TodoApp = require('../src/js/components/todo-app.jsx');
+  var TodoApp = require('../../src/js/components/todo-app.jsx');
   var todoApp;
 
   rewireModule(TodoApp, {

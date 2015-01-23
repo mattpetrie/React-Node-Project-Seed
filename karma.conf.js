@@ -10,7 +10,9 @@ module.exports = function(config) {
 
         // list of files / patterns to load in the browser
         files: [
-            'tests/**/*.{js,jsx}'
+            'tests/shims/**/*.js',
+            'tests/helpers/**/*.{js,jsx}',
+            'tests/spec/**/*.{js,jsx}'
         ],
 
         // list of files to exclude
@@ -55,6 +57,6 @@ module.exports = function(config) {
         // start these browsers
         // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
         //browsers: ['Chrome', 'Firefox', 'PhantomJS'],
-        browsers: ['Chrome', 'Firefox'],
+        browsers: ['PhantomJS'],
     });
 };

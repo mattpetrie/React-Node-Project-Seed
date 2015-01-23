@@ -83,7 +83,7 @@ Given the current shortcomings of Jest, it's my opinion that this recipe represe
 bundler for bundling test code and converting JSX. I prefer Mocha and Chai but Jasmine could easily be substituted as well.
 
 Since we don't have the benefit of Jest's automocking with this setup, we'll have to handle mocking on our own. Thankfully Sinon and Rewireify make this easy. Rewire sadly no longer supports Browersify, having cast their lot with Webpack,
-but thankfully there is a Browserify-compatible port Rewireify. A simple [helper module](../test/utils/rewire-module.js) facilitates mocking and testing of calls to external dependencies with Sinon or replacing child React components
+but thankfully there is a Browserify-compatible port Rewireify. A simple [helper module](../test/helpers/rewire-module.js) facilitates mocking and testing of calls to external dependencies with Sinon or replacing child React components
 with dummy ones possible with very little code ([example here](../tests/todo-item-spec.jsx)).
 
 Project Organization
