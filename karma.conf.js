@@ -12,7 +12,7 @@ module.exports = function(config) {
         files: [
             'tests/shims/**/*.js',
             'tests/helpers/**/*.{js,jsx}',
-            'tests/spec/**/*.{js,jsx}'
+            'tests/spec/**/*.{js,jsx}',
         ],
 
         // list of files to exclude
@@ -21,7 +21,12 @@ module.exports = function(config) {
         mochaReporter: {
           output: 'autowatch',
         },
-        
+
+        notifyReporter: {
+          reportEachFailure: true,
+          reportSuccess: true,
+        },
+
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
@@ -37,13 +42,13 @@ module.exports = function(config) {
         browserify: {
             debug: true,
             transform: [ 'reactify','rewireify'],
-            extensions: ['.js', '.jsx']
+            extensions: ['.js', '.jsx'],
         },
 
         // test results reporter to use
         // possible values: 'dots', 'progress'
         // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-        reporters: ['mocha'],
+        reporters: ['mocha', 'notify'],
 
         // web server port
         port: 9876,
