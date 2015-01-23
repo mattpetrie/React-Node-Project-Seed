@@ -1,7 +1,6 @@
 var gulp = require('gulp');
 var karma = require('karma').server;
 var path = require('path');
-var config = require('../config');
 
 gulp.task('test', function(done) {
   karma.start({

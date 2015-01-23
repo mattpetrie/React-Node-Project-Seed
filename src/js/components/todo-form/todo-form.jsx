@@ -1,5 +1,5 @@
 var React = require('react');
-var AppActions = require('../actions/app-actions.js');
+var AppActions = require('../../actions/app-actions');
 
 var TodoForm = React.createClass({
   getInitialState: function() {

@@ -10,9 +10,10 @@ module.exports = function(config) {
 
         // list of files / patterns to load in the browser
         files: [
-            'tests/shims/**/*.js',
-            'tests/helpers/**/*.{js,jsx}',
-            'tests/spec/**/*.{js,jsx}',
+            'test/shims/**/*.js',
+            'test/helpers/**/*.{js,jsx}',
+            'test/spec/**/*.{js,jsx}',
+            'src/**/*-spec.{js,jsx}',
         ],
 
         // list of files to exclude
@@ -30,7 +31,8 @@ module.exports = function(config) {
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
-            'tests/**/*.{js,jsx}': ['browserify']
+            './**/*-spec.{js,jsx}': ['browserify'],
+            'test/**/*.{js,jsx}': ['browserify'],
         },
 
         // karma.conf.js is in root directory, but all server related files are

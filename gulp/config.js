@@ -35,7 +35,4 @@ module.exports = {
       imagePath: '/images'
     }
   },
-  test: {
-    src: './tests/**/*.{js, jsx}'
-  }
 };

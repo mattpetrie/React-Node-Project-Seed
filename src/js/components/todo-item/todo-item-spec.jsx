@@ -3,12 +3,12 @@ var sinon = require('sinon');
 var sinonChai = require('sinon-chai');
 var React = require('react/addons');
 var TestUtils = React.addons.TestUtils;
-var rewireModule = require('../helpers/rewire-module');
+var rewireModule = require('../../../../test/helpers/rewire-module');
 var expect = chai.expect;
 chai.use(sinonChai);
 
 describe('TodoItem', function() {
-  var TodoItem = require('../../src/js/components/todo-item.jsx');
+  var TodoItem = require('./todo-item');
   var todoItem, mockTodo;
   var removeTodoSpy = sinon.spy();
   var updateTodoSpy = sinon.spy();
