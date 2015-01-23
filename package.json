@@ -2,7 +2,7 @@
   "name": "JERMN",
   "version": "0.1.0",
   "description": "JQuery, Express, React, MongoDB, and Node",
-  "main": "server.js",
+  "main": "server/main.js",
   "readme": "README.md",
   "repository": {
     "type": "git",

@@ -23,6 +23,7 @@ Runtime:
 5. Run the default `gulp` task to:
   * Run the tests
   * Build from the source code
+  * start the Node server
   * Launch the app in a browser tab
   * Watch for changes. Tests will re-run on changes to the ./tests directory.
   Changes to source JS/CSS/Markup will trigger a re-build and refresh the
@@ -94,4 +95,5 @@ Todo
 * Server-side rendering of React components
 * Component-based file organization
 * Tests for Server API
+* Gulp task for production build with minifying, etc.
 * Explore using Webpack for bundling of front-end assets

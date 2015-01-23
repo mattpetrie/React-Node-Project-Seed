@@ -1,4 +1,4 @@
-var Todo = require('../../models/todo');
+var Todo = require('./models/todo.js');
 var express = require('express');
 var morgan = require('morgan');
 var router = express.Router();

@@ -7,6 +7,7 @@ var express = require('express'); // call express
 var app = express(); // define our app using express
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var path = require('path');
 
 
 // establish connection with MongoDB
@@ -34,11 +35,11 @@ var port = process.env.PORT || 8080; // set our port
 
 // REGISTER OUR ROUTES
 // public-facing application route
-app.use(express.static(__dirname + '/build'));
-app.use('/', require('./routes/main'));
+app.use(express.static(path.resolve(__dirname, '../build')));
+app.use('/', require('./public/main'));
 
 // all of our API routes will prefixed with /api
-app.use('/api', require('./routes/api/todos'));
+app.use('/api', require('./api/todos'));
 
 // START THE SERVER
 
