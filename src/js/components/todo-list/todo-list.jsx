@@ -1,7 +1,7 @@
 var React = require('react');
 
-var TodoItem = require('../todo-item.jsx');
-var TodoForm = require('../todo-form.jsx');
+var TodoItem = require('../todo-item/todo-item');
+var TodoForm = require('../todo-form/todo-form');
 
 var TodoList = React.createClass({
   getDefaultProps: function() {
