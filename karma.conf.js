@@ -22,6 +22,12 @@ module.exports = function(config) {
             'tests/**/*.{js,jsx}': ['browserify']
         },
 
+        // karma.conf.js is in root directory, but all server related files are
+        // under the server directory, so we have to proxy the correct path
+        proxies: {
+          '/api/': 'server/api/',
+        },
+
         browserify: {
             debug: true,
             transform: [ 'reactify','rewireify'],
