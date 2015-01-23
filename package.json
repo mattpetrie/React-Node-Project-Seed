@@ -1,8 +1,7 @@
 {
-  "name": "JERMN",
+  "name": "react-node-boilerplate",
   "version": "0.1.0",
-  "description": "JQuery, Express, React, MongoDB, and Node",
-  "main": "server/main.js",
+  "description": "React + Node, with Flux, Express, and MongoDB",
   "readme": "README.md",
   "repository": {
     "type": "git",

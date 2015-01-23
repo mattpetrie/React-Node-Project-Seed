@@ -67,6 +67,8 @@ Mongo's document-based storage and flexible schemas offer a fast route to persis
 [Flux](http://facebook.github.io/flux/) is Facebook's recommended approach to managing the flow of data in a React component-based application. I found Flux's unidirectional data flow to be very intuitive, making reasoning about state and the flow of data relatively straightforward. While Flux is more of design pattern than a formal framework, the implementation here is based fairly directly on the implementation described in the official Flux docs. By managing application state in stores and keeping most business logic out of view components, most aspects of the application are able to remain high decoupled.
 
 ## Testing
+Unit tests for React components are included in the same directory as the component source code. This is to facilitate better reusability: a component can be copied and dropped into another project without having to worry about also copying over the tests or rewriting them. It also provides a clear heuristic for finding unit tests within the project and reduces hopping between directories.
+
 The unit testing strategy for this project borrows heavily from
 [this blog post](http://substantial.com/blog/2014/11/11/test-driven-react-how-to-manually-mock-components/).
 
