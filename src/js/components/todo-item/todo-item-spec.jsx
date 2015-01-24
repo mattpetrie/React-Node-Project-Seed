@@ -8,7 +8,7 @@ var expect = chai.expect;
 chai.use(sinonChai);
 
 describe('TodoItem', function() {
-  var TodoItem = require('./todo-item');
+  var TodoItem = require('./todo-item.jsx');
   var todoItem, mockTodo;
   var removeTodoSpy = sinon.spy();
   var updateTodoSpy = sinon.spy();

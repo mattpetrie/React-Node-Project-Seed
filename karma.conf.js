@@ -44,7 +44,7 @@ module.exports = function(config) {
         browserify: {
             debug: true,
             transform: [ 'reactify','rewireify'],
-            extensions: ['.js', '.jsx'],
+            extensions: ['js', 'jsx'],
         },
 
         // test results reporter to use

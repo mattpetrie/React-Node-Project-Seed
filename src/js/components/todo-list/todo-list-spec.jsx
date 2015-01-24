@@ -5,7 +5,7 @@ var rewireModule = require('../../../../test/helpers/rewire-module.js');
 var mockComponent = require('../../../../test/helpers/mock-component.jsx');
 
 describe('TodoList', function() {
-  var TodoList = require('./todo-list');
+  var TodoList = require('./todo-list.jsx');
   var todoList;
 
   rewireModule(TodoList, {

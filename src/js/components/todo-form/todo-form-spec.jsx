@@ -8,7 +8,7 @@ var expect = chai.expect;
 chai.use(sinonChai);
 
 describe('TodoForm', function() {
-  var TodoForm = require('./todo-form');
+  var TodoForm = require('./todo-form.jsx');
   var todoForm;
   var addTodoSpy = sinon.spy();
 

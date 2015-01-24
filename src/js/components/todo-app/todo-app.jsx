@@ -1,7 +1,7 @@
 var React = require('react');
 
 var TodoStore = require('../../stores/todo-store');
-var TodoList = require('../todo-list/todo-list');
+var TodoList = require('../todo-list/todo-list.jsx');
 var AppActions = require('../../actions/app-actions');
 
 var TodoApp = React.createClass({
