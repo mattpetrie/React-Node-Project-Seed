@@ -1,6 +1,6 @@
 .todoItem {
   @extend .clearfix;
-  &.done {
+  &.completed {
     color: $strikethrough-text;
     text-decoration: line-through;
   }

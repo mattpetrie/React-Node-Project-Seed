@@ -55,7 +55,7 @@ describe('TodoForm', function() {
 
     it('calls the update todo action on submit', function() {
 
-      expect(addTodoSpy).to.have.been.calledWith({ name: 'bar', done: false });
+      expect(addTodoSpy).to.have.been.calledWith({ name: 'bar', completed: false });
     });
 
     it('resets the name field to empty on submit', function() {

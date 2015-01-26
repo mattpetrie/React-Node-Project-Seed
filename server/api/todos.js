@@ -13,7 +13,7 @@ router.route('/todos')
 
     var todo = new Todo();
     todo.name = req.body.name;
-    todo.done = req.body.done;
+    todo.completed = req.body.completed;
 
     // save the Todo and check for errors
     todo.save(function(err, todo) {
@@ -57,7 +57,7 @@ router.route('/todos/:todo_id')
       }
 
       if (req.body.name) { todo.name = req.body.name; }
-      if (req.body.done) { todo.done = req.body.done; }
+      if (req.body.completed) { todo.completed = req.body.completed; }
 
       todo.save(function(err, todo) {
         if (err) {

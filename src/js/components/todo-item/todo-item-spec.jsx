@@ -19,7 +19,7 @@ describe('TodoItem', function() {
   });
 
   beforeEach(function() {
-    mockTodo = { _id: 1, name: 'mockTodo', done: false };
+    mockTodo = { _id: 1, name: 'mockTodo', completed: false };
     todoItem = TestUtils.renderIntoDocument(
       <TodoItem todo={mockTodo} />
     );
@@ -50,19 +50,19 @@ describe('TodoItem', function() {
     })
   });
 
-  describe('marking a todo done', function() {
+  describe('marking a todo completed', function() {
 
     beforeEach(function() {
-      var doneButton = TestUtils.findRenderedDOMComponentWithClass(
-        todoItem, 'done-button'
+      var completedButton = TestUtils.findRenderedDOMComponentWithClass(
+        todoItem, 'completed-button'
       );
 
-      TestUtils.Simulate.click(doneButton);
+      TestUtils.Simulate.click(completedButton);
     });
 
-    it('calls the update todo action and updates the done state', function() {
+    it('calls the update todo action and updates the completed state', function() {
       expect(updateTodoSpy).to.have.been.calledWith(
-        mockTodo._id, { done: !mockTodo.done }
+        mockTodo._id, { completed: !mockTodo.completed }
        );
     })
   });

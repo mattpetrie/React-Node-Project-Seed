@@ -13,7 +13,7 @@ var TodoForm = React.createClass({
     console.log('congratulations you submitted a new todo: ' + this.state.name);
     AppActions.addTodo({
       name: this.state.name,
-      done: false,
+      completed: false,
     })
     this.setState({ name: "" });
   },

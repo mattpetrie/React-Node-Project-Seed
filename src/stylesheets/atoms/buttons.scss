@@ -13,8 +13,8 @@ button {
     background: $body-background;
   }
 }
-.done-button {
-  &:hover, &.done {
+.completed-button {
+  &:hover, &.completed {
     color: $primary;
   }
 }
