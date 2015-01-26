@@ -31,7 +31,7 @@ body {
   padding: 2%;
 }
 
-.todoItem, .todoForm {
+.card {
   background-color: $card-background;
   box-shadow: 0 3px 10px $primary-shadow, 0 3px 10px $secondary-shadow;
   margin: 0 auto;
@@ -48,10 +48,34 @@ body {
     color: $strikethrough-text;
     text-decoration: line-through;
   }
-  button.delete-button {
-    position: absolute;
-    right: -15px;
-    top: -15px;
+  .buttons {
+    height: 50px;
+    width: 100%;
+  }
+  button {
+    outline: 0;
+    background-color: transparent;
+    border: none;
+    border-radius: 100%;
+    font-size: 25px;
+    width: 50px;
+    height: 50px;
+    float: right;
+    color: $strikethrough-text;
+    transition: all 0.3s ease-in;
+    &:active {
+      background: $body-background;
+    }
+  }
+  .done-button {
+    &:hover, &.done {
+      color: $primary;
+    }
+  }
+  .delete-button {
+    &:hover {
+      color: $accent;
+    }
   }
 }
 
@@ -65,7 +89,7 @@ body {
     border-radius: 100%;
     bottom: 10%;
     right: 2%;
-    transition: all 0.3s ease-in;
+    k: all 0.3s ease-in;
   }
   input[type=text] {
     padding: 0.2em 0.5em;
@@ -73,10 +97,15 @@ body {
     width: 75%;
     bottom: 10%;
     left: 2%;
+    border: none;
+    border-bottom: 2px solid $strikethrough-text;
+    &:focus {
+      outline: 0;
+    }
   }
 }
 
-button, input[type=submit] {
+input[type=submit] {
   background-color: $accent;
   color: $icon-text;
   text-align: center;

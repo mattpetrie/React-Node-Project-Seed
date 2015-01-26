@@ -53,11 +53,11 @@ describe('TodoItem', function() {
   describe('marking a todo done', function() {
 
     beforeEach(function() {
-      var checkbox = TestUtils.findRenderedDOMComponentWithTag(
-        todoItem, 'input'
+      var doneButton = TestUtils.findRenderedDOMComponentWithClass(
+        todoItem, 'done-button'
       );
 
-      TestUtils.Simulate.change(checkbox);
+      TestUtils.Simulate.click(doneButton);
     });
 
     it('calls the update todo action and updates the done state', function() {

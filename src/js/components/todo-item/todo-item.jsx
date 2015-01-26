@@ -2,7 +2,7 @@ var React = require('react');
 var AppActions = require('../../actions/app-actions');
 
 var TodoItem = React.createClass({
-  handleChange: function() {
+  handleDone: function() {
     var todo = this.props.todo;
     AppActions.updateTodo(todo._id, { done: !todo.done });
   },
@@ -13,18 +13,22 @@ var TodoItem = React.createClass({
 
   render: function() {
     var todo = this.props.todo;
-    var classString = 'todoItem';
-    classString += todo.done ? ' done' : '';
+    var mainClassString = 'todoItem card';
+    var buttonClassString = 'done-button';
+    var doneClass = todo.done ? ' done' : '';
+    mainClassString += doneClass;
+    buttonClassString += doneClass;
     return (
-      <div className={classString}>
-        <form action=''>
-          <input type='checkbox' name='done' value='done'
-             checked={todo.done} onChange={this.handleChange} />
-        </form>
+      <div className={mainClassString}>
+        <div className='buttons'>
+          <button className={buttonClassString} onClick={this.handleDone}>
+            &#10003;
+          </button>
+          <button className='delete-button' onClick={this.handleDelete}>
+            &times;
+          </button>
+        </div>
         <h2>{todo.name}</h2>
-        <button className='delete-button' onClick={this.handleDelete}>
-          &times;
-        </button>
       </div>
     );
   }
