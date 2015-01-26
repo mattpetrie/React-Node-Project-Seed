@@ -1,7 +1,6 @@
 # React + Node Boilerplate
 
-This repo serves as a demo app for my current favorite stack for building
-client-side Single Page Applications backed by a JSON API. It also provides a boilerplate for starting other React + Node projects. The technologies used represent my current views on the ideal stack for developing single page applications, but are subject to future change as I discover new tools that fulfill roles even better.
+This repo serves as a demo app for my current favorite stack for rapidly building client-side Single Page Applications backed by a JSON API. It also provides a boilerplate for starting other React + Node projects. The technologies used represent my current views on the ideal stack for developing single page applications, but are subject to future change as I discover new tools that fulfill roles even better.
 
 ## Installation Guide
 
@@ -90,3 +89,4 @@ Todo
 * Tests for Server API
 * Gulp task for production build with minifying, etc.
 * Explore using Webpack for bundling of front-end assets
+* Yeoman generator for new projects with boilerplate
