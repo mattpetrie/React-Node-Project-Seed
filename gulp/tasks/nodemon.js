@@ -3,8 +3,8 @@ var nodemon = require('gulp-nodemon');
 var config = require('../config.js').nodemon;
 
 gulp.task('nodemon', function() {
-  nodemon(config)
-    .on('restart', function() {
-      console.log('Nodemon server restarted.');
+  return nodemon(config)
+    .on('restart', function(e) {
+      console.log('Nodemon server restarted.', e);
     });
 });

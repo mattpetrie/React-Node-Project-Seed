@@ -1,8 +1,7 @@
 {
-  "name": "JERMN",
+  "name": "react-node-boilerplate",
   "version": "0.1.0",
-  "description": "JQuery, Express, React, MongoDB, and Node",
-  "main": "server.js",
+  "description": "React + Node, with Flux, Express, and MongoDB",
   "readme": "README.md",
   "repository": {
     "type": "git",
@@ -35,6 +34,9 @@
     "karma-chrome-launcher": "^0.1.7",
     "karma-firefox-launcher": "^0.1.4",
     "karma-mocha": "^0.1.10",
+    "karma-mocha-reporter": "^0.3.1",
+    "karma-notify-reporter": "^0.1.1",
+    "karma-phantomjs-launcher": "^0.1.4",
     "mocha": "^2.1.0",
     "morgan": "^1.5.1",
     "react-tools": "^0.12.2",

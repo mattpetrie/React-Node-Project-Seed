@@ -1,11 +1,15 @@
 var expect = require('chai').expect;
 var React = require('react/addons');
 var TestUtils = React.addons.TestUtils;
-var rewireModule = require('./utils/rewire-module');
+var sinon = require('sinon');
+var rewireModule = require('../../../../test/helpers/rewire-module.js');
 
 describe('Todo-App', function() {
-  var TodoApp = require('../src/js/components/todo-app.jsx');
+  var TodoApp = require('./todo-app.jsx');
   var todoApp;
+
+  var getTodosSpy = sinon.spy();
+  var addChangeListenerSpy = sinon.spy();
 
   rewireModule(TodoApp, {
     TodoList: React.createClass({
@@ -14,7 +18,10 @@ describe('Todo-App', function() {
           <div className='todo-list' />
         );
       }
-    })
+    }),
+    'TodoStore.getAll': sinon.stub().returns(['todo']),
+    'TodoStore.addChangeListener': addChangeListenerSpy,
+    'AppActions.getTodos': getTodosSpy,
   });
 
   beforeEach(function() {
@@ -29,6 +36,14 @@ describe('Todo-App', function() {
     );
 
     expect(component).to.exist();
+  });
+
+  it('registers a change listener with the TodoStore', function() {
+    expect(addChangeListenerSpy).to.have.been.called;
+  });
+
+  it('Calls the getTodos action on mount', function() {
+    expect(getTodosSpy).to.have.been.called;
   });
 
   it('renders the todo TodoList', function() {

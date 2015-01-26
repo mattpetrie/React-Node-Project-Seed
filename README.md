@@ -1,11 +1,7 @@
 # React + Node Boilerplate
 
 This repo serves as a demo app for my current favorite stack for building
-client-side Single Page Applications backed by a JSON API. It also provides a
-boilerplate for starting other React + Node projects. The technologies used
-represent my current views on the ideal stack for developing single page
-applications, but are subject to future change as I discover new tools that
-fulfill roles even better.
+client-side Single Page Applications backed by a JSON API. It also provides a boilerplate for starting other React + Node projects. The technologies used represent my current views on the ideal stack for developing single page applications, but are subject to future change as I discover new tools that fulfill roles even better.
 
 ## Installation Guide
 
@@ -23,10 +19,9 @@ Runtime:
 5. Run the default `gulp` task to:
   * Run the tests
   * Build from the source code
+  * start the Node server
   * Launch the app in a browser tab
-  * Watch for changes. Tests will re-run on changes to the ./tests directory.
-  Changes to source JS/CSS/Markup will trigger a re-build and refresh the
-  browser.
+  * Watch for changes. All changes will to JS will re-run the tests. Changes to source JS/CSS/Markup will trigger a re-build and refresh the browser.
 
 # Tech & Rationale
 The tech choices here are oriented not just toward performance of the final application, but also ease and speed of configuration and development. The goal is to have a toolchain that facilitates both rapid prototyping of new project and simple onboarding for collaborators.
@@ -66,6 +61,7 @@ Mongo's document-based storage and flexible schemas offer a fast route to persis
 [Flux](http://facebook.github.io/flux/) is Facebook's recommended approach to managing the flow of data in a React component-based application. I found Flux's unidirectional data flow to be very intuitive, making reasoning about state and the flow of data relatively straightforward. While Flux is more of design pattern than a formal framework, the implementation here is based fairly directly on the implementation described in the official Flux docs. By managing application state in stores and keeping most business logic out of view components, most aspects of the application are able to remain high decoupled.
 
 ## Testing
+
 The unit testing strategy for this project borrows heavily from
 [this blog post](http://substantial.com/blog/2014/11/11/test-driven-react-how-to-manually-mock-components/).
 
@@ -78,20 +74,19 @@ Jest still looks like a very promising addition to JavaScript testing tools, and
 primary tool for unit testing.
 
 #### Karma + Mocha + Chai + Sinon + Rewireify
-Given the current shortcomings of Jest, it's my opinion that this recipe represents the best option for testing React apps. The Karma test runner is blazing fast, allows for running tests in both a headless environment via PhantomJS and in the browser, and couples well with the Browserify module
-bundler for bundling test code and converting JSX. I prefer Mocha and Chai but Jasmine could easily be substituted as well.
+Given the current shortcomings of Jest, it's my opinion that this recipe represents the best option for testing React apps. The Karma test runner is blazing fast, allows for running tests in both a headless environment via PhantomJS and in the browser, and couples well with the Browserify module bundler for bundling test code and converting JSX. I prefer Mocha and Chai but Jasmine could easily be substituted as well.
 
-Since we don't have the benefit of Jest's automocking with this setup, we'll have to handle mocking on our own. Thankfully Sinon and Rewireify make this easy. Rewire sadly no longer supports Browersify, having cast their lot with Webpack,
-but thankfully there is a Browserify-compatible port Rewireify. A simple [helper module](../test/utils/rewire-module.js) facilitates mocking and testing of calls to external dependencies with Sinon or replacing child React components
-with dummy ones possible with very little code ([example here](../tests/todo-item-spec.jsx)).
+Since we don't have the benefit of Jest's automocking with this setup, we'll have to handle mocking on our own. Thankfully Sinon and Rewireify make this easy. Rewire sadly no longer supports Browersify, having cast their lot with Webpack, but thankfully there is a Browserify-compatible port Rewireify. A simple [helper module](../test/helpers/rewire-module.js) facilitates mocking and testing of calls to external dependencies with Sinon or replacing child React components with dummy ones possible with very little code ([example here](../tests/todo-item-spec.jsx)).
 
 Project Organization
 ---------------------
-Coming soon.
+JavaScript files are organized by component. The unit tests for each component are also included in the same directory as the source code. This is to facilitate better reusability: a component can be copied and dropped into another project without having to worry about also copying over the tests or rewriting them. It also provides a clear heuristic for finding unit tests within the project and reduces hopping between directories.
+
+Css files are organized using the [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/) methodology. Ideally I'd like to find or come up with a system for including css styles with components as well, but currently I find that approach too confusing and/or repetitive, since many components often share styled elements (e.g., several different components may reuse a 'submit' button).
 
 Todo
 -----
 * Server-side rendering of React components
-* Component-based file organization
 * Tests for Server API
+* Gulp task for production build with minifying, etc.
 * Explore using Webpack for bundling of front-end assets

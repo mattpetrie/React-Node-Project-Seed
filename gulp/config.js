@@ -21,21 +21,18 @@ module.exports = {
     dest: dest + '/views'
   },
   nodemon: {
-    script: 'server.js',
+    script: 'server/main.js',
     ext: 'js html',
     env: { 'NODE_ENV': 'development' },
-    ignore: ['./src/**', './build/**'],
+    watch: 'server/**',
     nodeArgs: ['--debug'],
   },
   sass: {
-    src: src + '/stylesheets/*.{sass,scss}',
+    src: src + '/stylesheets/**/*.{sass,scss}',
     dest: dest + '/stylesheets',
     options: {
       sourceComments: 'map',
       imagePath: '/images'
     }
   },
-  test: {
-    src: './tests/**/*.{js, jsx}'
-  }
 };

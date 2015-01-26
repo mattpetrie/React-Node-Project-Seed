@@ -3,12 +3,12 @@ var sinon = require('sinon');
 var sinonChai = require('sinon-chai');
 var React = require('react/addons');
 var TestUtils = React.addons.TestUtils;
-var rewireModule = require('./utils/rewire-module');
+var rewireModule = require('../../../../test/helpers/rewire-module');
 var expect = chai.expect;
 chai.use(sinonChai);
 
 describe('TodoItem', function() {
-  var TodoItem = require('../src/js/components/todo-item.jsx');
+  var TodoItem = require('./todo-item.jsx');
   var todoItem, mockTodo;
   var removeTodoSpy = sinon.spy();
   var updateTodoSpy = sinon.spy();
@@ -19,7 +19,7 @@ describe('TodoItem', function() {
   });
 
   beforeEach(function() {
-    mockTodo = { _id: 1, name: 'mockTodo', done: false };
+    mockTodo = { _id: 1, name: 'mockTodo', completed: false };
     todoItem = TestUtils.renderIntoDocument(
       <TodoItem todo={mockTodo} />
     );
@@ -50,19 +50,19 @@ describe('TodoItem', function() {
     })
   });
 
-  describe('marking a todo done', function() {
+  describe('marking a todo completed', function() {
 
     beforeEach(function() {
-      var checkbox = TestUtils.findRenderedDOMComponentWithTag(
-        todoItem, 'input'
+      var completedButton = TestUtils.findRenderedDOMComponentWithClass(
+        todoItem, 'completed-button'
       );
 
-      TestUtils.Simulate.change(checkbox);
+      TestUtils.Simulate.click(completedButton);
     });
 
-    it('calls the update todo action and updates the done state', function() {
+    it('calls the update todo action and updates the completed state', function() {
       expect(updateTodoSpy).to.have.been.calledWith(
-        mockTodo._id, { done: !mockTodo.done }
+        mockTodo._id, { completed: !mockTodo.completed }
        );
     })
   });

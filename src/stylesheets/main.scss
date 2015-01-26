@@ -1,13 +1,8 @@
 @import 'normalize';
 @import 'colors';
-
-.clearfix {
-  &:after {
-    content: '';
-    display: table;
-    clear: both;
-  }
-}
+@import 'mixins';
+@import 'atoms/atoms';
+@import 'molecules/molecules';
 
 body {
   background-color: $body-background;
@@ -16,92 +11,6 @@ body {
   z-index: 1;
 }
 
-.header {
-  width: 100%;
-  background-color: $primary;
-  padding: 2% 4%;
-  color: $icon-text;
-  h1 {
-    font-weight: normal;
-    line-height: 1em;
-  }
-}
-
 #content {
   padding: 2%;
-}
-
-.todoItem, .todoForm {
-  background-color: $card-background;
-  box-shadow: 0 3px 10px $primary-shadow, 0 3px 10px $secondary-shadow;
-  margin: 0 auto;
-  width: 60%;
-  padding: 2%;
-  z-index: 100;
-  position: relative;
-  margin-top: 4%;
-}
-
-.todoItem {
-  @extend .clearfix;
-  &.done {
-    color: $strikethrough-text;
-    text-decoration: line-through;
-  }
-  button.delete-button {
-    position: absolute;
-    right: -15px;
-    top: -15px;
-  }
-}
-
-.todoForm {
-  min-height: 100px;
-
-  input {
-    position: absolute;
-  }
-  input[type=submit] {
-    border-radius: 100%;
-    bottom: 10%;
-    right: 2%;
-    transition: all 0.3s ease-in;
-  }
-  input[type=text] {
-    padding: 0.2em 0.5em;
-    line-height: 2em;
-    width: 75%;
-    bottom: 10%;
-    left: 2%;
-  }
-}
-
-button, input[type=submit] {
-  background-color: $accent;
-  color: $icon-text;
-  text-align: center;
-  font-size: 25px;
-  border-radius: 100%;
-  height: 50px;
-  width: 50px;
-  z-index: 200;
-  border: none;
-  box-shadow: 0 3px 10px $primary-shadow, 0 3px 10px $secondary-shadow;
-  transition: all 0.3s ease-in;
-  &:hover {
-    transition: all 0.3s ease-in;
-    height: 60px;
-    width: 60px;
-    font-size: 35px;
-    transform: rotate(90deg);
-  }
-  &:active {
-    background-color: darken($accent, 10%);
-    transition: all 0.1s ease-in;
-    height: 50px;
-    width: 50px;
-    padding: 0 0 3px;
-    font-size: 25px;
-    box-shadow: none;
-  }
 }

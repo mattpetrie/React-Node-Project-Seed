@@ -1,0 +1,10 @@
+.card {
+  background-color: $card-background;
+  box-shadow: 0 3px 10px $primary-shadow, 0 3px 10px $secondary-shadow;
+  margin: 0 auto;
+  width: 60%;
+  padding: 2%;
+  z-index: 100;
+  position: relative;
+  margin-top: 4%;
+}

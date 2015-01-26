@@ -1,11 +1,11 @@
 var expect = require('chai').expect;
 var React = require('react/addons');
 var TestUtils = React.addons.TestUtils;
-var rewireModule = require('./utils/rewire-module');
-var mockComponent = require('./utils/mock-component.jsx');
+var rewireModule = require('../../../../test/helpers/rewire-module.js');
+var mockComponent = require('../../../../test/helpers/mock-component.jsx');
 
 describe('TodoList', function() {
-  var TodoList = require('../src/js/components/todo-list.jsx');
+  var TodoList = require('./todo-list.jsx');
   var todoList;
 
   rewireModule(TodoList, {

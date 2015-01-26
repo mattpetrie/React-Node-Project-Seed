@@ -3,12 +3,12 @@ var sinon = require('sinon');
 var sinonChai = require('sinon-chai');
 var React = require('react/addons');
 var TestUtils = React.addons.TestUtils;
-var rewireModule = require('./utils/rewire-module');
+var rewireModule = require('../../../../test/helpers/rewire-module');
 var expect = chai.expect;
 chai.use(sinonChai);
 
 describe('TodoForm', function() {
-  var TodoForm = require('../src/js/components/todo-form.jsx');
+  var TodoForm = require('./todo-form.jsx');
   var todoForm;
   var addTodoSpy = sinon.spy();
 
@@ -55,7 +55,7 @@ describe('TodoForm', function() {
 
     it('calls the update todo action on submit', function() {
 
-      expect(addTodoSpy).to.have.been.calledWith({ name: 'bar', done: false });
+      expect(addTodoSpy).to.have.been.calledWith({ name: 'bar', completed: false });
     });
 
     it('resets the name field to empty on submit', function() {

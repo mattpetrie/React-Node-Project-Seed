@@ -1,5 +1,5 @@
 var React = require('react');
-var AppActions = require('../actions/app-actions.js');
+var AppActions = require('../../actions/app-actions');
 
 var TodoForm = React.createClass({
   getInitialState: function() {
@@ -13,7 +13,7 @@ var TodoForm = React.createClass({
     console.log('congratulations you submitted a new todo: ' + this.state.name);
     AppActions.addTodo({
       name: this.state.name,
-      done: false,
+      completed: false,
     })
     this.setState({ name: "" });
   },
@@ -26,7 +26,7 @@ var TodoForm = React.createClass({
 
   render: function() {
     return (
-      <div className="todoForm">
+      <div className="todoForm card">
         <h3>Add a new todo:</h3>
         <form action="" onSubmit={this.handleSubmit}>
           <input type="text" name="name" value={this.state.name}
