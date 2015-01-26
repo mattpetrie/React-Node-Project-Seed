@@ -1,6 +1,6 @@
 .card {
+  @extend .drop-shadow;
   background-color: $card-background;
-  box-shadow: 0 3px 10px $primary-shadow, 0 3px 10px $secondary-shadow;
   margin: 0 auto;
   width: 60%;
   padding: 2%;

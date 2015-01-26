@@ -1,4 +1,5 @@
 .header {
+  @extend .drop-shadow;
   width: 100%;
   background-color: $primary;
   padding: 2% 4%;
