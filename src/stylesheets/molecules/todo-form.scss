@@ -1,0 +1,15 @@
+.todoForm {
+  @extend .clearfix;
+  min-height: 100px;
+  input {
+    position: absolute;
+  }
+  input[type=submit] {
+    bottom: 10%;
+    right: 2%;
+  }
+  input[type=text] {
+    bottom: 10%;
+    left: 2%;
+  }
+}

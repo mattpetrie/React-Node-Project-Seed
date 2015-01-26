@@ -28,7 +28,7 @@ module.exports = {
     nodeArgs: ['--debug'],
   },
   sass: {
-    src: src + '/stylesheets/*.{sass,scss}',
+    src: src + '/stylesheets/**/*.{sass,scss}',
     dest: dest + '/stylesheets',
     options: {
       sourceComments: 'map',
