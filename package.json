@@ -19,6 +19,9 @@
   ],
   "author": "Matt Petrie",
   "license": "MIT",
+  "jshintConfig": {
+    "assumestrict": "true"
+  },
   "devDependencies": {
     "browser-sync": "^1.8.3",
     "browserify": "^8.0.3",

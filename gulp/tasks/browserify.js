@@ -1,5 +1,3 @@
-'use strict';
-
 var source = require('vinyl-source-stream');
 var browserify = require('browserify');
 var reactify = require('reactify');
