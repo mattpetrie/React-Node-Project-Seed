@@ -10,10 +10,8 @@ module.exports = function(config) {
 
         // list of files / patterns to load in the browser
         files: [
-            'test/shims/**/*.js',
-            'test/helpers/**/*.{js,jsx}',
-            'test/spec/**/*.{js,jsx}',
-            'src/**/*-spec.{js,jsx}',
+          'test/shims/**/*.js',
+          'src/**/*-spec.{js,jsx}',
         ],
 
         // list of files to exclude
@@ -23,6 +21,7 @@ module.exports = function(config) {
           output: 'autowatch',
         },
 
+        // set what notifications the OSX notifications reporter should send
         notifyReporter: {
           reportEachFailure: true,
           reportSuccess: true,
@@ -31,8 +30,7 @@ module.exports = function(config) {
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
-            './**/*-spec.{js,jsx}': ['browserify'],
-            'test/**/*.{js,jsx}': ['browserify'],
+          './**/*-spec.{js,jsx}': ['browserify'],
         },
 
         // karma.conf.js is in root directory, but all server related files are
@@ -43,12 +41,11 @@ module.exports = function(config) {
 
         browserify: {
             debug: true,
-            transform: [ 'reactify','rewireify'],
-            extensions: ['js', 'jsx'],
+            transform: [ 'reactify', 'rewireify'],
+            extensions: ['.js', '.jsx'],
         },
 
         // test results reporter to use
-        // possible values: 'dots', 'progress'
         // available reporters: https://npmjs.org/browse/keyword/karma-reporter
         reporters: ['mocha', 'notify'],
 
@@ -68,6 +65,6 @@ module.exports = function(config) {
         // start these browsers
         // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
         //browsers: ['Chrome', 'Firefox', 'PhantomJS'],
-        browsers: ['PhantomJS'],
+        browsers: ['PhantomJS', 'Chrome'],
     });
 };
