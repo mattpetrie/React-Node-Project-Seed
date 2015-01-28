@@ -1,4 +1,4 @@
-var React = require('react');
+var React = require('react/addons');
 
 var TodoApp = require('./components/todo-app/todo-app.jsx');
 

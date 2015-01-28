@@ -1,4 +1,4 @@
-var React = require('react');
+var React = require('react/addons');
 var AppActions = require('../../actions/app-actions');
 
 var TodoItem = React.createClass({
@@ -13,15 +13,20 @@ var TodoItem = React.createClass({
 
   render: function() {
     var todo = this.props.todo;
-    var mainClassString = 'todoItem card';
-    var buttonClassString = 'completed-button';
-    var completedClass = todo.completed ? ' completed' : '';
-    mainClassString += completedClass;
-    buttonClassString += completedClass;
+    var cx = React.addons.classSet;
+    var componentClasses = cx({
+      'todoItem': true,
+      'card': true,
+      'completed': todo.completed,
+    });
+    var completedButtonClasses = cx({
+      'completed-button': true,
+      'complted': todo.completed,
+      });
     return (
-      <div className={mainClassString}>
+      <div className={componentClasses}>
         <div className='buttons'>
-          <button className={buttonClassString} onClick={this.handleCompleted}>
+          <button className={completedButtonClasses} onClick={this.handleCompleted}>
             &#10003;
           </button>
           <button className='delete-button' onClick={this.handleDelete}>

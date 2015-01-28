@@ -1,4 +1,4 @@
-var React = require('react');
+var React = require('react/addons');
 
 var TodoItem = require('../todo-item/todo-item.jsx');
 var TodoForm = require('../todo-form/todo-form.jsx');
@@ -7,7 +7,7 @@ var TodoList = React.createClass({
   getDefaultProps: function() {
     return {
       todos: {}
-    }
+    };
   },
 
   render: function() {

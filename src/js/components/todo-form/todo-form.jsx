@@ -1,4 +1,4 @@
-var React = require('react');
+var React = require('react/addons');
 var AppActions = require('../../actions/app-actions');
 
 var TodoForm = React.createClass({
@@ -10,7 +10,6 @@ var TodoForm = React.createClass({
 
   handleSubmit: function(event) {
     event.preventDefault();
-    console.log('congratulations you submitted a new todo: ' + this.state.name);
     AppActions.addTodo({
       name: this.state.name,
       completed: false,
