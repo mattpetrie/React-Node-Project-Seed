@@ -1,14 +1,10 @@
-var chai = require('chai');
-var sinon = require('sinon');
-var sinonChai = require('sinon-chai');
 var React = require('react/addons');
 var TestUtils = React.addons.TestUtils;
+var rewire = require('rewire');
 var rewireModule = require('../../../../test/helpers/rewire-module');
-var expect = chai.expect;
-chai.use(sinonChai);
 
 describe('TodoItem', function() {
-  var TodoItem = require('./todo-item.jsx');
+  var TodoItem = rewire('./todo-item.jsx');
   var todoItem, mockTodo;
   var removeTodoSpy = sinon.spy();
   var updateTodoSpy = sinon.spy();

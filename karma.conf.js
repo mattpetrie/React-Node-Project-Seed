@@ -1,3 +1,5 @@
+var RewirePlugin = require('rewire-webpack');
+
 module.exports = function(config) {
     config.set({
 
@@ -6,7 +8,7 @@ module.exports = function(config) {
 
         // frameworks to use
         // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-        frameworks: ['mocha', 'browserify'],
+        frameworks: ['mocha', 'sinon-chai'],
 
         // list of files / patterns to load in the browser
         files: [
@@ -27,22 +29,20 @@ module.exports = function(config) {
           reportSuccess: true,
         },
 
+        // plugins: [
+        //   'karma-webpack'
+        // ],
+
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
-          './**/*-spec.{js,jsx}': ['browserify'],
+          './**/*-spec.{js,jsx}': ['webpack'],
         },
 
         // karma.conf.js is in root directory, but all server related files are
         // under the server directory, so we have to proxy the correct path
         proxies: {
           '/api/': 'server/api/',
-        },
-
-        browserify: {
-            debug: true,
-            transform: [ 'reactify', 'rewireify'],
-            extensions: ['.js', '.jsx'],
         },
 
         // test results reporter to use
@@ -66,5 +66,25 @@ module.exports = function(config) {
         // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
         //browsers: ['Chrome', 'Firefox', 'PhantomJS'],
         browsers: ['PhantomJS', 'Chrome'],
+
+        webpack: {
+          target: 'web',
+          debug: true,
+          plugins: [
+            new RewirePlugin()
+          ],
+          module: {
+            loaders: [
+              // { test: /sinon.js$/, loader: 'imports?define=false' },
+              { test: /\.jsx$/, loader: 'jsx-loader?harmony?insertPragma=React.DOM' },
+              { test: /\.css$/, loader: 'style-loader!css-loader' },
+              { test: /\.scss$/, loader: 'style-loader!css-loader!sass-loader' },
+            ],
+          },
+        },
+
+        webpackMiddleware: {
+          noInfo: true,
+        },
     });
 };

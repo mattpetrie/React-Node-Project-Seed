@@ -1,14 +1,10 @@
-var chai = require('chai');
-var sinon = require('sinon');
-var sinonChai = require('sinon-chai');
 var React = require('react/addons');
 var TestUtils = React.addons.TestUtils;
+var rewire = require('rewire');
 var rewireModule = require('../../../../test/helpers/rewire-module');
-var expect = chai.expect;
-chai.use(sinonChai);
 
 describe('TodoForm', function() {
-  var TodoForm = require('./todo-form.jsx');
+  var TodoForm = rewire('./todo-form.jsx');
   var todoForm;
   var addTodoSpy = sinon.spy();
 
