@@ -4,15 +4,6 @@ var src = './src';
 
 module.exports = {
   // options for Gulp tasks go here
-  browserify: {
-    bundleConfig: {
-      entries: ['./src/js/app.jsx'],
-      outputName: 'bundle.js',
-      extensions: ['js', 'jsx', 'json'],
-      dest: dest + '/js',
-      verbose: true
-    }
-  },
   browserSync: {
     proxy: 'localhost:8080'
   },
