@@ -1,9 +1,16 @@
+var path = require('path');
+
 module.exports = {
   target: 'web',
   debug: true,
-  entry: './src/js/app.jsx',
+  entry: {
+    main: './src/js/app.jsx',
+  },
   output: {
-    filename: './build/js/bundle.js',
+    path: path.join(__dirname, 'build'),
+    publicPath: 'build/',
+    filename: '[name].js',
+    chunkFilename: '[chunkhash].js',
   },
   module: {
     loaders: [

@@ -4,8 +4,8 @@ var src = './src';
 
 module.exports = {
   // options for Gulp tasks go here
-  browserSync: {
-    proxy: 'localhost:8080'
+  webpack: {
+    src: src + '/**/*.*',
   },
   markup: {
     src: src + '/views/**/*.html',
