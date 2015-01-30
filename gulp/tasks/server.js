@@ -1,6 +1,6 @@
 var gulp = require('gulp');
 var nodemon = require('gulp-nodemon');
-var config = require('../config.js').nodemon;
+var config = require('../config.js').server;
 
 gulp.task('server', function() {
   return nodemon(config)
