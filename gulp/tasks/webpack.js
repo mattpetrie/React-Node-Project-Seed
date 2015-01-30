@@ -24,7 +24,6 @@ gulp.task('webpack:dev-server', function(callback) {
     plugins: [
       new webpack.HotModuleReplacementPlugin()
     ],
-    publicPath: 'http://localhost:9090/build/',
   });
 
   var compiler = webpack(devServerConfig);
