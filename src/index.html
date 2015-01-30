@@ -11,6 +11,12 @@
       <h1>React + Flux Todos</h1>
     </div>
     <div id="content"></div>
+    <!-- @if NODE_ENV!='production' -->
+    <!-- Unless in production, serve main.js from dev-server to allow for Hot Module Replacement and build caching -->
     <script type="text/javascript" src="http://localhost:9090/main.js"></script>
+    <!-- @endif -->
+    <!-- @if NODE_ENV='production' -->
+    <script type="text/javascript" src="main.js"></script>
+    <!-- @endif -->
   </body>
 </html>

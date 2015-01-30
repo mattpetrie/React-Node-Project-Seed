@@ -8,8 +8,10 @@ module.exports = {
     src: src + '/**/*.*',
   },
   markup: {
-    src: src + '/views/**/*.html',
-    dest: dest + '/views'
+    /* there most likely won't be a need for any markup other than a main
+    index.html but you can add more configuration here if necessary */
+    src: src + 'index.html',
+    dest: dest
   },
   nodemon: {
     script: 'server/main.js',
