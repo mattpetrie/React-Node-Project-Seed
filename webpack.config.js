@@ -20,7 +20,7 @@ module.exports = {
     chunkFilename: '[chunkhash].js',
   },
   resolve: {
-    extensions: ['', '.js', '.jsx', '.json'],
+    extensions: ['', '.js', '.jsx', '.json', '.css', '.scss'],
   },
   target: 'web',
 };

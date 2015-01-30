@@ -1,3 +1,5 @@
+require('./todo-form.scss');
+
 var React = require('react/addons');
 var AppActions = require('../../actions/app-actions');
 

@@ -1,4 +1,4 @@
-require('../stylesheets/main.scss')
+require('../stylesheets/main.scss');
 
 var React = require('react/addons');
 

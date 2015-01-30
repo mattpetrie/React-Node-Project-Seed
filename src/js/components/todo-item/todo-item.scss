@@ -1,7 +1,6 @@
 .todoItem {
-  @extend .clearfix;
   &.completed {
-    color: $strikethrough-text;
+    color: #CCCCCC;
     text-decoration: line-through;
   }
   .buttons {

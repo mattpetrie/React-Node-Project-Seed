@@ -1,3 +1,5 @@
+require('./todo-item.scss');
+
 var React = require('react/addons');
 var AppActions = require('../../actions/app-actions');
 
