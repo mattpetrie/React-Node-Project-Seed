@@ -1,3 +1,3 @@
 var gulp = require('gulp');
 
-gulp.task('default', ['build', 'nodemon', 'watch']);
+gulp.task('default', ['build', 'server', 'watch']);
