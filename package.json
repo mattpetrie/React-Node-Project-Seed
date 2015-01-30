@@ -23,6 +23,7 @@
     "assumestrict": "true"
   },
   "devDependencies": {
+    "autoprefixer-loader": "^1.1.0",
     "browser-sync": "^1.8.3",
     "chai": "^1.10.0",
     "css-loader": "^0.9.1",

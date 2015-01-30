@@ -8,8 +8,8 @@ module.exports = {
   module: {
     loaders: [
       { test: /\.jsx$/, loaders: ['react-hot', 'jsx-loader?harmony?insertPragma=React.DOM'] },
-      { test: /\.css$/, loader: 'style-loader!css-loader' },
-      { test: /\.scss$/, loader: 'style-loader!css-loader!sass-loader' },
+      { test: /\.css$/, loader: 'style-loader!css-loader!autoprefixer-loader?last 2 version' },
+      { test: /\.scss$/, loader: 'style-loader!css-loader!sass-loader!autoprefixer-loader?browsers=last 2 version' },
     ],
   },
   noInfo: true,
