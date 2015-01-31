@@ -1,3 +1,5 @@
+require('./todo-form.scss');
+
 var React = require('react/addons');
 var AppActions = require('../../actions/app-actions');
 
@@ -5,7 +7,7 @@ var TodoForm = React.createClass({
   getInitialState: function() {
     return {
       name: this.props.name || '',
-    }
+    };
   },
 
   handleSubmit: function(event) {
@@ -13,7 +15,7 @@ var TodoForm = React.createClass({
     AppActions.addTodo({
       name: this.state.name,
       completed: false,
-    })
+    });
     this.setState({ name: "" });
   },
 
@@ -33,7 +35,7 @@ var TodoForm = React.createClass({
           <input type="submit" value="+" />
         </form>
       </div>
-    )
+    );
   }
 });
 

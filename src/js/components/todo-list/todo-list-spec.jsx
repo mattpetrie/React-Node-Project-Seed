@@ -1,11 +1,11 @@
-var expect = require('chai').expect;
 var React = require('react/addons');
 var TestUtils = React.addons.TestUtils;
+var rewire = require('rewire');
 var rewireModule = require('../../../../test/helpers/rewire-module.js');
 var mockComponent = require('../../../../test/helpers/mock-component.jsx');
 
 describe('TodoList', function() {
-  var TodoList = require('./todo-list.jsx');
+  var TodoList = rewire('./todo-list.jsx');
   var todoList;
 
   rewireModule(TodoList, {
@@ -15,7 +15,7 @@ describe('TodoList', function() {
   });
 
   beforeEach(function() {
-    var mockTodos = {1: 'todo1', 2: 'todo2'};
+    var mockTodos = {1: {_id: 'todo1'}, 2: {_id: 'todo2'}};
     todoList = TestUtils.renderIntoDocument(
       <TodoList todos={mockTodos}/>
     );

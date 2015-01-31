@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      React + Node Boilerplate
+    </title>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+    <div id="content"></div>
+    <!-- @if NODE_ENV!='production' -->
+    <!-- Unless in production, serve main.js from dev-server to allow for Hot Module Replacement and build caching -->
+    <script type="text/javascript" src="http://localhost:3000/main.js"></script>
+    <!-- @endif -->
+    <!-- @if NODE_ENV='production' -->
+    <script type="text/javascript" src="main.js"></script>
+    <!-- @endif -->
+  </body>
+</html>

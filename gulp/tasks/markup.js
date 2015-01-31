@@ -1,9 +1,9 @@
 var gulp = require('gulp');
-var browserSync = require('browser-sync');
+var preprocess = require('gulp-preprocess');
 var config = require('../config').markup;
 
 gulp.task('markup', function() {
   gulp.src(config.src)
-    .pipe(gulp.dest(config.dest))
-    .pipe(browserSync.reload({stream: true}));
+    .pipe(preprocess())
+    .pipe(gulp.dest(config.dest));
 });

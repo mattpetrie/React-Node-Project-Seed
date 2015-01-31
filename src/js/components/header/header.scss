@@ -1,0 +1,23 @@
+@import 'common';
+
+@mixin layout {
+  width: 100%;
+  padding: 2% 4%;
+  h1{
+    line-height: 1em;
+  }
+}
+
+@mixin presentation {
+  @include drop-shadow;
+  background-color: $primary;
+  color: $icon-text;
+  h1 {
+    font-weight: normal;
+  }
+}
+
+.header {
+  @include layout;
+  @include presentation;
+}

@@ -1,5 +1,7 @@
-.card {
-  @extend .drop-shadow;
+@import './drop-shadow';
+
+@mixin card {
+  @include drop-shadow;
   background-color: $card-background;
   margin: 0 auto;
   width: 60%;

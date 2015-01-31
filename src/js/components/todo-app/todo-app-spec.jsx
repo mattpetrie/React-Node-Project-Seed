@@ -1,11 +1,10 @@
-var expect = require('chai').expect;
 var React = require('react/addons');
 var TestUtils = React.addons.TestUtils;
-var sinon = require('sinon');
+var rewire = require('rewire');
 var rewireModule = require('../../../../test/helpers/rewire-module.js');
 
 describe('Todo-App', function() {
-  var TodoApp = require('./todo-app.jsx');
+  var TodoApp = rewire('./todo-app.jsx');
   var todoApp;
 
   var getTodosSpy = sinon.spy();

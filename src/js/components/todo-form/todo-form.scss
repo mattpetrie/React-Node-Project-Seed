@@ -1,0 +1,27 @@
+@import 'common';
+
+@mixin layout {
+  min-height: 100px;
+  input {
+    position: absolute;
+  }
+  input[type=submit] {
+    bottom: 10%;
+    right: 2%;
+  }
+  input[type=text] {
+    bottom: 10%;
+    left: 2%;
+  }
+}
+
+@mixin presentation {
+  @include card;
+  @include input-text;
+  @include input-submit;
+}
+
+.todoForm {
+  @include layout;
+  @include presentation;
+}

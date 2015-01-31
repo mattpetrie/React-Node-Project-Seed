@@ -1,16 +1,9 @@
 @import 'normalize';
 @import 'colors';
-@import 'mixins';
-@import 'atoms/atoms';
-@import 'molecules/molecules';
 
 body {
   background-color: $body-background;
   font-family: 'Roboto', sans-serif;
   color: $primary-text;
   z-index: 1;
-}
-
-#content {
-  padding: 2%;
 }
