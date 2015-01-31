@@ -1,8 +1,12 @@
+require('./todo-app.scss');
+
 var React = require('react/addons');
 
-var TodoStore = require('../../stores/todo-store');
-var TodoList = require('../todo-list/todo-list.jsx');
 var AppActions = require('../../actions/app-actions');
+var TodoStore = require('../../stores/todo-store');
+
+var Header = require('../header/header.jsx');
+var TodoList = require('../todo-list/todo-list.jsx');
 
 var TodoApp = React.createClass({
   getInitialState: function() {
@@ -23,7 +27,10 @@ var TodoApp = React.createClass({
   render: function() {
     return (
       <div className="todoApp">
-        <TodoList todos={this.state.todos} />
+        <Header />
+        <div className="main">
+          <TodoList todos={this.state.todos} />
+        </div>
       </div>
     );
   }
