@@ -1,0 +1,5 @@
+/* This stylesheet should be imported by each component's stylesheet to give
+them access to any shared CSS styles. This file should not contain any actual
+CSS itself to prevent duplicate CSS code from polluting the app. */
+@import 'colors';
+@import 'mixins';

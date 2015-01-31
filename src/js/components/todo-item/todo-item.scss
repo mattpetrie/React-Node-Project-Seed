@@ -1,10 +1,42 @@
-.todoItem {
-  &.completed {
-    color: #CCCCCC;
-    text-decoration: line-through;
-  }
+@import 'common';
+
+/* Styles in layout of the component should be entirely independent and relate
+to size and positioning within the component only. */
+@mixin layout {
   .buttons {
     height: 50px;
     width: 100%;
+  }
+}
+
+/* Styles in presentation relate to decoration of the component and can include
+global variables and mixins. If the component is copied into another project,
+these are the only styles that should need to be removed to prevent any Sass
+compilation errors due to missing dependencies */
+@mixin presentation {
+  /* Providing a fallback value will prevent Sass from erroring and preserve the
+  basic presentation of the compent if the variable is missing, e.g., due to the
+  component being moved into a different project */
+  $strikethrough-text: red !default;
+  /* shared styles can be applied by including a mixin made available through
+  common.scss */
+  @include card;
+  @include buttons;
+  &.completed {
+    color: $strikethrough-text;
+    text-decoration: line-through;
+  }
+}
+
+.todoItem {
+  /* Include the two mixins in the top level class for the component to apply
+  the styles. If for some reason you do want to add some styles to the component
+  at the global level, you can do so in a mixin so as not to cause any duplicate
+  css from common.scss being imported by multiple files */
+
+  @include layout;
+  @include presentation;
+  @if mixin-exists(todoItem) {
+    @include todoItem;
   }
 }

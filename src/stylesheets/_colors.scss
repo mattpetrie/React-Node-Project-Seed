@@ -1,3 +1,5 @@
+/* IMPORTANT: _colors.scss should only include variables and no actual CSS or
+else the app will become polluted with duplicated CSS code.*/
 $body-background: #EEEEEE;
 $card-background: #FFFFFF;
 $primary: #2196F3;
