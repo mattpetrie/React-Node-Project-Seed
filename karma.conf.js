@@ -1,4 +1,5 @@
 var RewirePlugin = require('rewire-webpack');
+var webpackConfig = require('./webpack.config');
 
 module.exports = function(config) {
     config.set({
@@ -73,13 +74,7 @@ module.exports = function(config) {
           plugins: [
             new RewirePlugin()
           ],
-          module: {
-            loaders: [
-              { test: /\.jsx$/, loaders: ['react-hot', 'jsx-loader?harmony?insertPragma=React.DOM'] },
-              { test: /\.css$/, loader: 'style-loader!css-loader!autoprefixer-loader?last 2 version' },
-              { test: /\.scss$/, loader: 'style-loader!css-loader!sass-loader!autoprefixer-loader?browsers=last 2 version' },
-            ],
-          },
+          module: webpackConfig.module,
         },
 
         webpackMiddleware: {

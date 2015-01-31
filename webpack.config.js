@@ -9,7 +9,9 @@ module.exports = {
     loaders: [
       { test: /\.jsx$/, loaders: ['react-hot', 'jsx-loader?harmony?insertPragma=React.DOM'] },
       { test: /\.css$/, loader: 'style-loader!css-loader!autoprefixer-loader?last 2 version' },
-      { test: /\.scss$/, loader: 'style-loader!css-loader!sass-loader!autoprefixer-loader?browsers=last 2 version' },
+      { test: /\.scss$/, loader: 'style-loader!css-loader!sass-loader?includePaths[]=' +
+          path.resolve(__dirname, './src/stylesheets') +
+          '!autoprefixer-loader?browsers=last 2 version' },
     ],
   },
   noInfo: true,
