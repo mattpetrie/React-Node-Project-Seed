@@ -4,19 +4,19 @@ This repo serves as a demo app for my current favorite stack for rapidly buildin
 
 ## Installation Guide
 
-Requirements:
+#### Requirements:
   * [Node](http://nodejs.org/) 0.10.35
   * [MongoDB](www.mongodb.org/)
   * [Gulp](http://gulpjs.com/) installed globally: `$ npm install -g gulp`
 
-Installation:
+#### Installation:
 1. Clone the repo
 2. `$ npm install`
 3. Source files for the front end are located in the ./src directory.
 4. Run the `$ gulp build` task to build the client-side app into the ./build
    directory.
 
-Runtime:
+#### Runtime:
 Run the default `$ gulp` task to:
   * Run the tests
   * Build from `./src` into the `./build` via webpack
@@ -30,7 +30,7 @@ For viewing in the browser, you can navigate to `http://localhost:3000/webpack-d
 The tech choices here are oriented not just toward performance of the final application, but also ease and speed of configuration and development. The goal is to have a toolchain that facilitates both rapid prototyping of new project and simple onboarding for collaborators.
 
 ## Components For The Win!
-The architecture of this app is centered around components (specifically, React components). Each component under the `./src/js/components` directory includes the **stylesheets and tests for the component along with the JavasScript/JSX in the same directory**.
+The architecture of this app is centered around components - specifically, React components. Each component under the `./src/js/components` directory includes the **stylesheets and tests for the component along with the JavasScript/JSX in the same directory**.
 
 This seperation of concerns centered around functionality rather than type allows components to be added, modified, or removed with out impacting any other aspect of the app. Removing a component should, for example, not leave you with a bunch of broken tests that are still expecting the component to exist. A component directory should in theory be able to be copied into a completely separate and still retain its functionality and core styling.
 
@@ -62,6 +62,26 @@ Mongo's document-based storage and flexible schemas offer a fast route to persis
 
 ### Flux
 [Flux](http://facebook.github.io/flux/) is Facebook's recommended approach to managing the flow of data in a React component-based application. I found Flux's unidirectional data flow to be very intuitive, making reasoning about state and the flow of data relatively straightforward. While Flux is more of design pattern than a formal framework, the implementation here is based fairly directly on the implementation described in the official Flux docs. By managing application state in stores and keeping most business logic out of view components, most aspects of the application are able to remain high decoupled.
+
+### CSS
+[Sass](http://sass-lang.com/) is used for CSS pre-compilation. In order to support the component-based architecture, the approach to CSS had to be seriously rethought. This is the largest departure from convention here, but one that I believe still facilitates intutitive and rapid development.
+
+Key Goals:
+* Component CSS files are contained in the same directory as the component's source code.
+* The component's CSS file should be the principle source of its styles. It should be clear from reading the components stylesheet what all of its styles are and what sources they are drawn from.
+* All styles affecting a component should be declared within the component's stylesheet. No global styles should affect a component directly.
+* A component's stylesheet should have as few dependencies as possible, and it should be easy to remove any dependencies to better facilitate reuse of components in other projects.
+* CSS rules should not be unnecessarily or accidentally duplicated during the build process (e.g., from multiple `include`s of the same file).
+
+The Solution:
+* Each component SCSS file imports just one dependency, `common.scss`, which exposes shared mixins and variables to the component.
+* Each component SCSS file contains two local Sass mixins, `layout` and `presentation`:
+  * Styles in the layout mixin should never depend on any external variables or mixins. They should relate entirely size and positioning of the the component and its child elements.
+  * Presentation styles might include colors, borders, fonts, and other styles that pertain to the appearance of the app rather than being intrinsic to the component. External dependencies may be required here, since similar appearance styles are often shared among element in an application. When reusing a component in a new application, a developer should expect to be able to delete the contents the presentation mixin without affecting the usability of the component.
+* All external styles must be included in the form of a Sass mixin or variable - there should be no plain CSS in `common.scss` or any of its imports. This is to prevent code duplication. Sass will insert a file's CSS each time it is imported by another file, but will inject mixins and variables only when they are used.
+* An example component stylesheet file with comments can be viewed [here](./src/js/components/todo-item/todo-item.scss).
+
+For shared CSS styles, files containing mixins and variables can be imported into `common.scss`. Mixins are organized in their own directory into whatever categories make the most sense. A `main.scss` file provides basic overarching styles for the entire app.
 
 ## Testing
 Tests can be run with `$ gulp test`. All files ending in `-spec.js` or `-spec.jsx` in the `./src` directory will be detected, bundled, and run automatically by the test runner.
