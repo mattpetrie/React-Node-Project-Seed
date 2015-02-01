@@ -1,6 +1,6 @@
 # React + Node Boilerplate
 
-A React and Node demo project that serves a showcase for a great toolchain for building single page applications backed by a JSON API. It is meant to showcase a set of technologies that can not only result in robust web applications, but also facilitate rapid development and ease of developer onboarding. It can also serve as seed for starting new projects.
+A React and Node demo project that serves as a showcase for a great toolchain for building single page applications backed by a JSON API. It is meant to showcase a set of technologies that can not only result in robust web applications, but also facilitate rapid development and ease of developer onboarding. It can also serve as seed for starting new projects.
 
 ## Installation Guide
 
