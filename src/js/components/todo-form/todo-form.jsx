@@ -27,7 +27,7 @@ var TodoForm = React.createClass({
 
   render: function() {
     return (
-      <div className="todoForm card">
+      <div className="todoForm">
         <h3>Add a new todo:</h3>
         <form action="" onSubmit={this.handleSubmit}>
           <input type="text" name="name" value={this.state.name}

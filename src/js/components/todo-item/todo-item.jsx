@@ -23,7 +23,6 @@ var TodoItem = React.createClass({
     var cx = React.addons.classSet;
     var componentClasses = cx({
       'todoItem': true,
-      'card': true,
       'completed': todo.completed,
     });
     var completedButtonClasses = cx({
