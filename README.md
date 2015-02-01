@@ -1,6 +1,6 @@
 # React + Node Boilerplate
 
-This repo serves as a demo app for my current favorite stack for rapidly building client-side Single Page Applications backed by a JSON API. It also provides a boilerplate for starting other React + Node projects. The technologies used represent my current views on the ideal stack for developing single page applications, but are subject to future change as I discover new tools that fulfill roles even better.
+A React and Node demo project that serves a showcase for a great toolchain for building single page applications backed by a JSON API. It is meant to showcase a set of technologies that can not only result in robust web applications, but also facilitate rapid development and ease of developer onboarding. It can also serve as seed for starting new projects.
 
 ## Installation Guide
 
@@ -27,16 +27,15 @@ Run the default `$ gulp` task to:
 For viewing in the browser, you can navigate to `http://localhost:3000/webpack-dev-server/` to view the app in live-reload mode, or `http://localhost:8080/` for standard (refresh to see changes) mode.
 
 # Tech & Rationale
-The tech choices here are oriented not just toward performance of the final application, but also ease and speed of configuration and development. The goal is to have a toolchain that facilitates both rapid prototyping of new project and simple onboarding for collaborators.
 
 ## Components For The Win!
 The architecture of this app is centered around components - specifically, React components. Each component under the `./src/js/components` directory includes the **stylesheets and tests for the component along with the JavasScript/JSX in the same directory**.
 
-This seperation of concerns centered around functionality rather than type allows components to be added, modified, or removed with out impacting any other aspect of the app. Removing a component should, for example, not leave you with a bunch of broken tests that are still expecting the component to exist. A component directory should in theory be able to be copied into a completely separate and still retain its functionality and core styling.
+This separation of concerns centered around functionality rather than type allows components to be added, modified, or removed with out impacting other aspects of the app. Removing a component should, for example, not leave you with a bunch of broken tests that are still expecting the component to exist. A component directory should in theory be able to be copied into a completely separate and still retain its functionality and core styling.
 
 This also provides a very clear heuristic for finding source code, styles, and tests related to any component without having to bounce between directories or mentally map how, for example, a group of stylesheet partials relate to a specific component in a view.
 
-The `./src/stylesheets` and `./src/test` directories should be used sparingly, and primarily for application-wide code that does not target a specific component, such as a base stylesheet and css normalizer, or integration tests.
+The `./src/stylesheets` and `./src/test` directories should be used sparingly, and primarily for application-wide code that does not target a specific component, such as a base stylesheet, or integration tests.
 
 ## Build Tools
 ### Webpack
@@ -61,24 +60,23 @@ Mongo's document-based storage and flexible schemas offer a fast route to persis
 [React](http://facebook.github.io/react/index.html) allows us to ditch the age-old MVC architecture for a more component-based approached. Component-based development allows for a front end that is highly reusable and extendable, with both data flows and interaction flows that are easy to follow and reason about. React offers the best tool for building view-layer components currently available. It uses JavaScript constructs that will already be familiar to most developers, and its virtual DOM-based rendering is super fast. It also opens up the possibility of server-side rendering of view as well.
 
 ### Flux
-[Flux](http://facebook.github.io/flux/) is Facebook's recommended approach to managing the flow of data in a React component-based application. I found Flux's unidirectional data flow to be very intuitive, making reasoning about state and the flow of data relatively straightforward. While Flux is more of design pattern than a formal framework, the implementation here is based fairly directly on the implementation described in the official Flux docs. By managing application state in stores and keeping most business logic out of view components, most aspects of the application are able to remain high decoupled.
+[Flux](http://facebook.github.io/flux/) is Facebook's recommended approach to managing the flow of data in a React component-based application. I found Flux's unidirectional data flow to be very intuitive, making reasoning about state and the flow of data relatively straightforward. While Flux is more of design pattern than a formal framework, the implementation here is based fairly directly on the implementation described in the official Flux docs. By managing application state in stores and keeping most business logic out of view components, most aspects of the application are able to remain highly decoupled.
 
 ### CSS
-[Sass](http://sass-lang.com/) is used for CSS pre-compilation. In order to support the component-based architecture, the approach to CSS had to be seriously rethought. This is the largest departure from convention here, but one that I believe still facilitates intutitive and rapid development.
+This project uses [Sass](http://sass-lang.com/) for stylesheets. In order to keep the styles methodology aligned with the component-based approach, the organization CSS stylesheets had to be seriously rethought. This is the largest departure from convention in this project, but one that I believe still facilitates intuitive and rapid development.
 
-Key Goals:
+#### Key Goals:
 * Component CSS files are contained in the same directory as the component's source code.
-* The component's CSS file should be the principle source of its styles. It should be clear from reading the components stylesheet what all of its styles are and what sources they are drawn from.
-* All styles affecting a component should be declared within the component's stylesheet. No global styles should affect a component directly.
-* A component's stylesheet should have as few dependencies as possible, and it should be easy to remove any dependencies to better facilitate reuse of components in other projects.
-* CSS rules should not be unnecessarily or accidentally duplicated during the build process (e.g., from multiple `include`s of the same file).
+* All styles affecting a component should be declared within the component's stylesheet. No global styles should affect a component directly. It should be clear from reading the components stylesheet what all of its styles are and what sources they are drawn from.
+* A component's stylesheet should have as few dependencies as possible, and it should be easy to remove any dependencies to better facilitate reuse of components in other projects without causing Sass compilation errors or unexpected UI changes.
+* CSS code should not be unnecessarily or accidentally duplicated during the build process (e.g., from multiple `imports`s of the same file).
 
-The Solution:
-* Each component SCSS file imports just one dependency, `common.scss`, which exposes shared mixins and variables to the component.
-* Each component SCSS file contains two local Sass mixins, `layout` and `presentation`:
+#### The Solution:
+* Each component SCSS file imports just one dependency, `common.scss`, which exposes shared mixins and variables to the component. Every component stylesheet should import this file.
+* Each component SCSS file contains two local Sass mixins, `layout` and `presentation`, which exist entirely for organization:
   * Styles in the layout mixin should never depend on any external variables or mixins. They should relate entirely size and positioning of the the component and its child elements.
   * Presentation styles might include colors, borders, fonts, and other styles that pertain to the appearance of the app rather than being intrinsic to the component. External dependencies may be required here, since similar appearance styles are often shared among element in an application. When reusing a component in a new application, a developer should expect to be able to delete the contents the presentation mixin without affecting the usability of the component.
-* All external styles must be included in the form of a Sass mixin or variable - there should be no plain CSS in `common.scss` or any of its imports. This is to prevent code duplication. Sass will insert a file's CSS each time it is imported by another file, but will inject mixins and variables only when they are used.
+* All external styles must be included in the form of a Sass mixin or variable - there should be no plain CSS in `common.scss` or any of its imports. This is to prevent code duplication. Sass will insert a file's CSS each time it is imported by another file, but will inject mixins and variables only when they are actually used.
 * An example component stylesheet file with comments can be viewed [here](./src/js/components/todo-item/todo-item.scss).
 
 For shared CSS styles, files containing mixins and variables can be imported into `common.scss`. Mixins are organized in their own directory into whatever categories make the most sense. A `main.scss` file provides basic overarching styles for the entire app.
@@ -91,13 +89,12 @@ The unit testing strategy for React components in this project borrows heavily f
 
 ### Why not Jest?
 Facebook is strongly promoting the use of their [Jest](http://facebook.github.io/jest/) testing framework for React apps. Jest's automatic mocking of dependencies is a great idea for easy JavaScript unit testing, however after experimenting with the framework with this project I've
-reached the conclusion that Jest is not yet ready for primetime. My chief complaint with Jest at this point is speed - even a very basic set of unit tests took several seconds to run. It also outputs extremely cryptic error messages
-that make debugging test code difficult. It also requires a separate preprocessor for converting JSX files, which adds additional time to running the tests.
+reached the conclusion that Jest is not yet ready for primetime. My chief complaint with Jest at this point is speed - even a very basic set of unit tests took several seconds to run. It outputs extremely cryptic error messages that make debugging test code difficult. It also requires a separate preprocessor for converting JSX files, which adds additional time to running the tests.
 
-Jest still looks like a very promising addition to JavaScript testing tools, and I look forward to seeing how it develops in the future. If my complaints above can be addressed I would strongly consider making the switch back to Jest as the
+Jest still looks like a very promising addition to JavaScript testing tools, and I look forward to seeing how it develops in the future. If the complaints above can be addressed I would strongly consider making the switch back to Jest as the
 primary tool for unit testing.
 
-#### Karma + Mocha + Chai + Sinon + Rewireify
+#### Karma + Mocha + Chai + Sinon + Rewire
 Given the current shortcomings of Jest, it's my opinion that this recipe represents the best option for testing React apps. The Karma test runner is blazing fast, allows for running tests in both a headless environment via PhantomJS and in the browser, and couples well with the webpack module bundler for bundling test code and converting JSX. I prefer Mocha and Chai, but Jasmine could easily be substituted as well.
 
 Since we don't have the benefit of Jest's automocking with this setup, we'll have to handle mocking on our own. Thankfully Sinon and Rewire make this easy. A simple [helper module](../test/helpers/rewire-module.js) facilitates mocking and testing of calls to external dependencies with Sinon or replacing child React components with dummy ones possible with very little code ([example here](../tests/todo-item-spec.jsx)).
