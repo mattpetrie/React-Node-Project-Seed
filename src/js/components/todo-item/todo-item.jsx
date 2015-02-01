@@ -4,6 +4,11 @@ var React = require('react/addons');
 var AppActions = require('../../actions/app-actions');
 
 var TodoItem = React.createClass({
+
+  propTypes: {
+    todo: React.PropTypes.object,
+  },
+
   handleCompleted: function() {
     var todo = this.props.todo;
     AppActions.updateTodo(todo._id, { completed: !todo.completed });
