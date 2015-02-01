@@ -6,11 +6,11 @@ gulp.task('test', function(done) {
   karma.start({
     configFile: path.resolve(__dirname, '../../karma.conf.js'),
     singleRun: true
-  }, function() { done() });
+  }, done);
 });
 
-gulp.task('test-watch', function(done) {
+gulp.task('test:watch', function(done) {
   karma.start({
     configFile: path.resolve(__dirname, '../../karma.conf.js'),
-  }, function() { done() });
+  }, done);
 });

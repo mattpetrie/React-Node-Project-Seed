@@ -13,7 +13,6 @@ module.exports = {
   server: {
     script: 'server/main.js',
     ext: 'js html',
-    env: { 'NODE_ENV': 'development' },
     watch: 'server/**',
     nodeArgs: ['--debug'],
   },
