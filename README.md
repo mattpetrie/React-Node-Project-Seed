@@ -26,6 +26,9 @@ Run the default `$ gulp` task to:
 
 For viewing in the browser, you can navigate to `http://localhost:3000/webpack-dev-server/` to view the app in live-reload mode, or `http://localhost:8080/` for standard (refresh to see changes) mode.
 
+#### Deployment:
+A production-ready, minified build can be created in the `./build` directory by running `$ gulp build:production`. The task will only run the build if all tests are passing.
+
 # Tech & Rationale
 
 ## Components For The Win!
@@ -103,5 +106,4 @@ Since we don't have the benefit of Jest's automocking with this setup, we'll hav
 * Server-side rendering of React components
 * Tests for Server API
 * ES6 support using 6to5
-* Gulp/Webpack task for production build with minifying, etc.
 * Yeoman generator for new projects with boilerplate
