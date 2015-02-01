@@ -6,7 +6,7 @@ var TodoForm = require('../todo-form/todo-form.jsx');
 var TodoList = React.createClass({
 
   propTypes: {
-    todos: React.PropTypes.array,
+    todos: React.PropTypes.object,
   },
 
   getDefaultProps: function() {
