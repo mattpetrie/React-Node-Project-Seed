@@ -10,6 +10,7 @@
     color: $strikethrough-text;
     transition: all 0.3s ease-in;
     &:active {
+      transition: all 0.1s ease-in;
       background: $body-background;
     }
   }
