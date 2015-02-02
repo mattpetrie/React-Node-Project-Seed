@@ -66,7 +66,7 @@ Mongo's document-based storage and flexible schemas offer a fast route to persis
 [Flux](http://facebook.github.io/flux/) is Facebook's recommended approach to managing the flow of data in a React component-based application. I found Flux's unidirectional data flow to be very intuitive, making reasoning about state and the flow of data relatively straightforward. While Flux is more of design pattern than a formal framework, the implementation here is based fairly directly on the implementation described in the official Flux docs. By managing application state in stores and keeping most business logic out of view components, most aspects of the application are able to remain highly decoupled.
 
 ### CSS
-This project uses [Sass](http://sass-lang.com/) for stylesheets. In order to keep the styles methodology aligned with the component-based approach, the organization CSS stylesheets had to be seriously rethought. This is the largest departure from convention in this project, but one that I believe still facilitates intuitive and rapid development.
+This project uses [Sass](http://sass-lang.com/) for stylesheets with [Flexbox](http://css-tricks.com/snippets/css/a-guide-to-flexbox/) for layout. In order to keep the styles methodology aligned with the component-based approach, the organization CSS stylesheets had to be seriously rethought. This is the largest departure from convention in this project, but one that I believe still facilitates intuitive and rapid development.
 
 #### Key Goals:
 * Component CSS files are contained in the same directory as the component's source code.

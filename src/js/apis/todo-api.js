@@ -1,5 +1,4 @@
 var $ = require('jquery');
-var _ = require('lodash');
 
 var BASE_URL = '/api/todos/';
 

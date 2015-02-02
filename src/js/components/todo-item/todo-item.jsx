@@ -32,14 +32,14 @@ var TodoItem = React.createClass({
     return (
       <div className={componentClasses}>
         <div className='buttons'>
-          <button className={completedButtonClasses} onClick={this.handleCompleted}>
-            &#10003;
-          </button>
           <button className='delete-button' onClick={this.handleDelete}>
             &times;
           </button>
+          <button className={completedButtonClasses} onClick={this.handleCompleted}>
+            &#10003;
+          </button>
         </div>
-        <h2>{todo.name}</h2>
+        <h2 className='todo-name'>{todo.name}</h2>
       </div>
     );
   }

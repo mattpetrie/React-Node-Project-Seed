@@ -3,7 +3,15 @@
 /* Styles in layout of the component should be entirely independent and relate
 to size and positioning within the component only. */
 @mixin layout {
+  flex-direction: column;
+  .todo-name {
+    width: 100%;
+  }
   .buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
     height: 50px;
     width: 100%;
   }
@@ -22,7 +30,7 @@ compilation errors due to missing dependencies */
   common.scss */
   @include card;
   @include buttons;
-  &.completed {
+  &.completed .todo-name {
     color: $strikethrough-text;
     text-decoration: line-through;
   }

@@ -1,6 +1,7 @@
 @mixin layout {
   .main {
     padding: 2%;
+    display: flex;
   }
 }
 

@@ -1,3 +1,5 @@
+require('./todo-list.scss');
+
 var React = require('react/addons');
 
 var TodoItem = require('../todo-item/todo-item.jsx');
