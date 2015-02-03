@@ -1,0 +1,21 @@
+@import 'common';
+
+.todoItem {
+  width: 100%;
+  flex-direction: column;
+  .todo-name {
+    width: 100%;
+  }
+  .buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+  }
+  &.completed .todo-name {
+    color: $strikethrough-text;
+    text-decoration: line-through;
+  }
+}

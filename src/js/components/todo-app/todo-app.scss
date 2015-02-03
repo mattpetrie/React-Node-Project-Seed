@@ -1,9 +1,0 @@
-@mixin layout {
-  .main {
-    padding: 2%;
-  }
-}
-
-.todoApp {
-  @include layout;
-}

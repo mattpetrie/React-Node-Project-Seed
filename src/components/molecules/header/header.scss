@@ -1,0 +1,13 @@
+@import 'common';
+
+.header {
+  width: 100%;
+  padding: 2% 4%;
+  h1{
+    line-height: 1em;
+    font-weight: normal;
+  }
+  box-shadow: $drop-shadow;
+  background-color: $primary;
+  color: $icon-text;
+}

@@ -31,14 +31,7 @@ A production-ready, minified build can be created in the `./build` directory by 
 
 # Tech & Rationale
 
-## Components For The Win!
-The architecture of this app is centered around components - specifically, React components. Each component under the `./src/js/components` directory includes the **stylesheets and tests for the component along with the JavasScript/JSX in the same directory**.
 
-This separation of concerns centered around functionality rather than type allows components to be added, modified, or removed with out impacting other aspects of the app. Removing a component should, for example, not leave you with a bunch of broken tests that are still expecting the component to exist. A component directory should in theory be able to be copied into a completely separate and still retain its functionality and core styling.
-
-This also provides a very clear heuristic for finding source code, styles, and tests related to any component without having to bounce between directories or mentally map how, for example, a group of stylesheet partials relate to a specific component in a view.
-
-The `./src/stylesheets` and `./src/test` directories should be used sparingly, and primarily for application-wide code that does not target a specific component, such as a base stylesheet, or integration tests.
 
 ## Build Tools
 ### Webpack
@@ -59,30 +52,14 @@ For many if not most client-side single-page applications, what's needed most fr
 Mongo's document-based storage and flexible schemas offer a fast route to persisting data without the need for much configuration, while offering the potential of scalability. This makes is a great complement to Node and Express for building simple backends to facilitate rapid prototyping of client-side apps. This could easily swapped out for a relational database like Postgres if preferred.
 
 ## Client-Side SPA
-### React
+
+### Atomic React
 [React](http://facebook.github.io/react/index.html) allows us to ditch the age-old MVC architecture for a more component-based approached. Component-based development allows for a front end that is highly reusable and extendable, with both data flows and interaction flows that are easy to follow and reason about. React offers the best tool for building view-layer components currently available. It uses JavaScript constructs that will already be familiar to most developers, and its virtual DOM-based rendering is super fast. It also opens up the possibility of server-side rendering of view as well.
+
+The architecture of this app applies the principles of [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/) to React components. Components are organized into atoms, molecules, organisms, templates, and pages. The **stylesheets and tests for the component along with the JavasScript/JSX in the same directory**. Stylesheets adhere to the same rules as they would under a normal Atomic CSS layout. However, with the exception of a few global styles, **every style and stylesheet must belong to a component**. This pattern is very handy for organizing complex groups of components, and makes mentally mappign the location of code, tests, or styles related to a particular component or structure within the app very intuitive.
 
 ### Flux
 [Flux](http://facebook.github.io/flux/) is Facebook's recommended approach to managing the flow of data in a React component-based application. I found Flux's unidirectional data flow to be very intuitive, making reasoning about state and the flow of data relatively straightforward. While Flux is more of design pattern than a formal framework, the implementation here is based fairly directly on the implementation described in the official Flux docs. By managing application state in stores and keeping most business logic out of view components, most aspects of the application are able to remain highly decoupled.
-
-### CSS
-This project uses [Sass](http://sass-lang.com/) for stylesheets. In order to keep the styles methodology aligned with the component-based approach, the organization CSS stylesheets had to be seriously rethought. This is the largest departure from convention in this project, but one that I believe still facilitates intuitive and rapid development.
-
-#### Key Goals:
-* Component CSS files are contained in the same directory as the component's source code.
-* All styles affecting a component should be declared within the component's stylesheet. No global styles should affect a component directly. It should be clear from reading the components stylesheet what all of its styles are and what sources they are drawn from.
-* A component's stylesheet should have as few dependencies as possible, and it should be easy to remove any dependencies to better facilitate reuse of components in other projects without causing Sass compilation errors or unexpected UI changes.
-* CSS code should not be unnecessarily or accidentally duplicated during the build process (e.g., from multiple `imports`s of the same file).
-
-#### The Solution:
-* Each component SCSS file imports just one dependency, `common.scss`, which exposes shared mixins and variables to the component. Every component stylesheet should import this file.
-* Each component SCSS file contains two local Sass mixins, `layout` and `presentation`, which exist entirely for organization:
-  * Styles in the layout mixin should never depend on any external variables or mixins. They should relate entirely size and positioning of the the component and its child elements.
-  * Presentation styles might include colors, borders, fonts, and other styles that pertain to the appearance of the app rather than being intrinsic to the component. External dependencies may be required here, since similar appearance styles are often shared among element in an application. When reusing a component in a new application, a developer should expect to be able to delete the contents the presentation mixin without affecting the usability of the component.
-* All external styles must be included in the form of a Sass mixin or variable - there should be no plain CSS in `common.scss` or any of its imports. This is to prevent code duplication. Sass will insert a file's CSS each time it is imported by another file, but will inject mixins and variables only when they are actually used.
-* An example component stylesheet file with comments can be viewed [here](./src/js/components/todo-item/todo-item.scss).
-
-For shared CSS styles, files containing mixins and variables can be imported into `common.scss`. Mixins are organized in their own directory into whatever categories make the most sense. A `main.scss` file provides basic overarching styles for the entire app.
 
 ## Testing
 Tests can be run with `$ gulp test`. All files ending in `-spec.js` or `-spec.jsx` in the `./src` directory will be detected, bundled, and run automatically by the test runner.

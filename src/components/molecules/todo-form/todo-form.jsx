@@ -1,7 +1,10 @@
 require('./todo-form.scss');
 
 var React = require('react/addons');
-var AppActions = require('../../actions/app-actions');
+var AppActions = require('../../../js/actions/app-actions');
+
+var InputText = require('../../atoms/input-text/input-text.jsx');
+var InputSubmit = require('../../atoms/input-submit/input-submit.jsx');
 
 var TodoForm = React.createClass({
   getInitialState: function() {
@@ -30,9 +33,9 @@ var TodoForm = React.createClass({
       <div className="todoForm">
         <h3>Add a new todo:</h3>
         <form action="" onSubmit={this.handleSubmit}>
-          <input type="text" name="name" value={this.state.name}
+          <InputText name="name" value={this.state.name}
             placeholder="Enter todo name here" onChange={this._onChange} />
-          <input type="submit" value="+" />
+          <InputSubmit value="+" />
         </form>
       </div>
     );

@@ -1,7 +1,10 @@
+require('./todo-list.scss');
+
 var React = require('react/addons');
 
-var TodoItem = require('../todo-item/todo-item.jsx');
-var TodoForm = require('../todo-form/todo-form.jsx');
+var Card = require('../../molecules/card/card.jsx');
+var TodoItem = require('../../molecules/todo-item/todo-item.jsx');
+var TodoForm = require('../../molecules/todo-form/todo-form.jsx');
 
 var TodoList = React.createClass({
 
@@ -19,13 +22,17 @@ var TodoList = React.createClass({
     var todos = Object.keys(this.props.todos).map(function(todo_id) {
       var todo = this.props.todos[todo_id];
       return (
-        <TodoItem key={todo._id} todo={todo} />
+        <Card key={todo._id}>
+          <TodoItem todo={todo} />
+        </Card>
       );
     }.bind(this));
     return (
       <div className="todoList">
         {todos}
-        <TodoForm />
+        <Card>
+          <TodoForm />
+        </Card>
       </div>
     );
   }

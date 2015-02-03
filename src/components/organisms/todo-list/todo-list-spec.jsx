@@ -9,6 +9,7 @@ describe('TodoList', function() {
   var todoList;
 
   rewireModule(TodoList, {
+    Card : mockComponent('card'),
     TodoItem: mockComponent('todo-item'),
 
     TodoForm: mockComponent('todo-form'),

@@ -1,8 +1,0 @@
-/* IMPORTANT: Mixin files should not contain any CSS that is not wrapped in a
-a Sass mixin in order to prevent duplicate CSS code from polluting the app. */
-@import './mixins/inputs/buttons';
-@import './mixins/inputs/submit';
-@import './mixins/inputs/text';
-@import './mixins/card';
-@import './mixins/drop-shadow';
-@import './mixins/clearfix';

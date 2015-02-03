@@ -10,7 +10,9 @@ function mockComponent(componentClass) {
     },
     render: function() {
       return (
-        <div className={componentClass} />
+        <div className={componentClass}>
+          {this.props.children}
+        </div>
       );
     }
   });

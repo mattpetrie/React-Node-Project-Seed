@@ -1,7 +1,9 @@
 require('./todo-item.scss');
 
 var React = require('react/addons');
-var AppActions = require('../../actions/app-actions');
+var AppActions = require('../../../js/actions/app-actions');
+
+var Button = require('../../atoms/button/button.jsx');
 
 var TodoItem = React.createClass({
 
@@ -32,14 +34,10 @@ var TodoItem = React.createClass({
     return (
       <div className={componentClasses}>
         <div className='buttons'>
-          <button className={completedButtonClasses} onClick={this.handleCompleted}>
-            &#10003;
-          </button>
-          <button className='delete-button' onClick={this.handleDelete}>
-            &times;
-          </button>
+          <Button className='delete-button' action={this.handleDelete} text='&times;' />
+          <Button className={completedButtonClasses} action={this.handleCompleted} text='&#10003;' />
         </div>
-        <h2>{todo.name}</h2>
+        <h2 className='todo-name'>{todo.name}</h2>
       </div>
     );
   }

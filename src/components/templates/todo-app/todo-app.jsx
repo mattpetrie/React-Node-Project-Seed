@@ -2,11 +2,11 @@ require('./todo-app.scss');
 
 var React = require('react/addons');
 
-var AppActions = require('../../actions/app-actions');
-var TodoStore = require('../../stores/todo-store');
+var AppActions = require('../../../js/actions/app-actions');
+var TodoStore = require('../../../js/stores/todo-store');
 
-var Header = require('../header/header.jsx');
-var TodoList = require('../todo-list/todo-list.jsx');
+var Header = require('../../molecules/header/header.jsx');
+var TodoList = require('../../organisms/todo-list/todo-list.jsx');
 
 var TodoApp = React.createClass({
   getInitialState: function() {
