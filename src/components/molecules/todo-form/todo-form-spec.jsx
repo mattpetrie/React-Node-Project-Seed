@@ -1,33 +1,34 @@
-var React = require('react/addons');
-var TestUtils = React.addons.TestUtils;
-var rewire = require('rewire');
-var rewireModule = require('../../../../test/helpers/rewire-module');
+import React from 'react/addons';
+import rewire from 'rewire';
+import rewireModule from '../../../../test/helpers/rewire-module.js';
 
-describe('TodoForm', function() {
-  var TodoForm = rewire('./todo-form.jsx');
-  var todoForm;
-  var addTodoSpy = sinon.spy();
+const TestUtils = React.addons.TestUtils;
+
+describe('TodoForm', () => {
+  const TodoForm = rewire('./todo-form.jsx');
+  let todoForm;
+  let addTodoSpy = sinon.spy();
 
   rewireModule(TodoForm, {
     'AppActions.addTodo': addTodoSpy,
   });
 
-  beforeEach(function() {
+  beforeEach( () => {
     todoForm = TestUtils.renderIntoDocument(
       <TodoForm />
     );
   });
 
-  it('renders', function() {
-    var component = TestUtils.findRenderedDOMComponentWithClass(
+  it('renders', () => {
+    let component = TestUtils.findRenderedDOMComponentWithClass(
       todoForm, 'todoForm'
     );
 
     expect(component).to.exist();
   });
 
-  it('updates the name field when changed', function() {
-    var field = TestUtils.scryRenderedDOMComponentsWithTag(
+  it('updates the name field when changed', () => {
+    let field = TestUtils.scryRenderedDOMComponentsWithTag(
        todoForm, 'input'
     )[0];
 
@@ -36,11 +37,11 @@ describe('TodoForm', function() {
     expect(field.getDOMNode().value).to.equal('foo');
   });
 
-  describe('submitting a new todo', function() {
-    var form;
+  describe('submitting a new todo', () => {
+    let form;
 
-    beforeEach(function() {
-      var form = TestUtils.findRenderedDOMComponentWithTag(
+    beforeEach( () => {
+      form = TestUtils.findRenderedDOMComponentWithTag(
         todoForm, 'form'
       );
 
@@ -49,13 +50,13 @@ describe('TodoForm', function() {
       TestUtils.Simulate.submit(form);
     });
 
-    it('calls the update todo action on submit', function() {
+    it('calls the update todo action on submit', () => {
 
       expect(addTodoSpy).to.have.been.calledWith({ name: 'bar', completed: false });
     });
 
-    it('resets the name field to empty on submit', function() {
-      var field = TestUtils.scryRenderedDOMComponentsWithTag(
+    it('resets the name field to empty on submit', () => {
+      let field = TestUtils.scryRenderedDOMComponentsWithTag(
          todoForm, 'input'
       )[0];
 

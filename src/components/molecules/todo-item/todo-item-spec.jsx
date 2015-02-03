@@ -1,36 +1,37 @@
-var React = require('react/addons');
-var TestUtils = React.addons.TestUtils;
-var rewire = require('rewire');
-var rewireModule = require('../../../../test/helpers/rewire-module');
-var mockComponent = require('../../../../test/helpers/mock-component.jsx');
+import React from 'react/addons';
+import rewire from 'rewire';
+import rewireModule from '../../../../test/helpers/rewire-module.js';
+import mockComponent from '../../../../test/helpers/mock-component.jsx';
+
+const TestUtils = React.addons.TestUtils;
 
 describe('TodoItem', function() {
-  var TodoItem = rewire('./todo-item.jsx');
-  var todoItem, mockTodo;
-  var removeTodoSpy = sinon.spy();
-  var updateTodoSpy = sinon.spy();
+  const TodoItem = rewire('./todo-item.jsx');
+  let todoItem, mockTodo;
+  let removeTodoSpy = sinon.spy();
+  let updateTodoSpy = sinon.spy();
 
   rewireModule(TodoItem, {
     'AppActions.removeTodo': removeTodoSpy,
     'AppActions.updateTodo': updateTodoSpy,
   });
 
-  beforeEach(function() {
+  beforeEach( () => {
     mockTodo = { _id: 1, name: 'mockTodo', completed: false };
     todoItem = TestUtils.renderIntoDocument(
       <TodoItem todo={mockTodo} />
     );
   });
 
-  it('renders', function() {
-    var component = TestUtils.findRenderedDOMComponentWithClass(
+  it('renders', () => {
+    let component = TestUtils.findRenderedDOMComponentWithClass(
       todoItem, 'todoItem'
     );
 
     expect(component).to.exist();
   });
 
-  describe('handleCompleted', function() {
+  describe('handleCompleted', () => {
     it('calls the updateTodo action with the updated completed state', function() {
       todoItem.handleCompleted();
 
@@ -38,9 +39,9 @@ describe('TodoItem', function() {
     });
   });
 
-  describe('#handleDelete', function() {
+  describe('#handleDelete', () => {
 
-    it('calls the removeTodo action', function() {
+    it('calls the removeTodo action', () => {
       todoItem.handleDelete();
 
       expect(removeTodoSpy).to.have.been.called;

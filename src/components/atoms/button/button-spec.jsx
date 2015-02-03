@@ -1,11 +1,11 @@
-var React = require('react/addons');
-var TestUtils = React.addons.TestUtils;
+import React from 'react/addons';
+const TestUtils = React.addons.TestUtils;
+import Button from './button.jsx';
 
-describe('Button', function() {
-  var Button = require('./button.jsx');
-  var button, mockFn, component;
+describe('Button', () => {
+  let button, mockFn, component;
 
-  beforeEach(function() {
+  beforeEach( () => {
     mockFn = sinon.spy();
 
     button = TestUtils.renderIntoDocument(
@@ -17,12 +17,12 @@ describe('Button', function() {
     );
   });
 
-  it('renders', function() {
+  it('renders', () => {
 
     expect(component).to.exist();
   });
 
-  it('calls the function in the action prop when clicked', function() {
+  it('calls the function in the action prop when clicked', () => {
     TestUtils.Simulate.click(component);
 
     expect(mockFn).to.have.been.called;
