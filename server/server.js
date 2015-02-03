@@ -1,18 +1,13 @@
-// server.js
+import express from 'express';
+import mongoose from 'mongoose';
+import bodyParser from 'body-parser';
+import path from 'path';
 
-'use strict';
-
-// call the packages we need
-var express = require('express'); // call express
-var app = express(); // define our app using express
-var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
-var path = require('path');
-
+const app = express();
 
 // establish connection with MongoDB
 mongoose.connect('localhost', 'test');
-var db = mongoose.connection;
+const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
   console.log('db connection established');
@@ -31,7 +26,7 @@ app.use(function(req, res, next) {
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-var port = process.env.PORT || 8080; // set our port
+const port = process.env.PORT || 8080; // set our port
 
 // REGISTER OUR ROUTES
 // public-facing application route

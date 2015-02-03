@@ -1,8 +1,8 @@
-require('../stylesheets/main.scss');
+import '../stylesheets/main.scss';
 
-var React = require('react/addons');
+import React from 'react/addons';
 
-var TodoApp = require('../components/templates/todo-app/todo-app.jsx');
+import TodoApp from '../components/templates/todo-app/todo-app.jsx';
 
 // render the top level controller-view component
 React.render(
