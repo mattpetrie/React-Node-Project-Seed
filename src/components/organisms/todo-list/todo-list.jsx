@@ -22,8 +22,8 @@ var TodoList = React.createClass({
     var todos = Object.keys(this.props.todos).map(function(todo_id) {
       var todo = this.props.todos[todo_id];
       return (
-        <Card>
-          <TodoItem key={todo._id} todo={todo} />
+        <Card key={todo._id}>
+          <TodoItem todo={todo} />
         </Card>
       );
     }.bind(this));
