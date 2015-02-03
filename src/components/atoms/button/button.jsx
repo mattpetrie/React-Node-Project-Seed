@@ -1,8 +1,8 @@
-require('./button.scss');
+import './button.scss';
 
-var React = require('react/addons');
+import React from 'react/addons';
 
-var Button = React.createClass({
+const Button = React.createClass({
 
   propTypes: {
     className: React.PropTypes.string,
@@ -19,4 +19,4 @@ var Button = React.createClass({
   }
 });
 
-module.exports = Button;
+export default Button;

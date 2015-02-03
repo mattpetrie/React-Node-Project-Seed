@@ -1,6 +1,6 @@
-require('./card.scss');
+import './card.scss';
 
-var React = require('react/addons');
+import React from 'react/addons';
 
 var Card = React.createClass({
 
@@ -13,4 +13,4 @@ var Card = React.createClass({
   }
 });
 
-module.exports = Card;
+export default Card;

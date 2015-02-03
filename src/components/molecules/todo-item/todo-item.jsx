@@ -1,18 +1,18 @@
-require('./todo-item.scss');
+import './todo-item.scss';
 
-var React = require('react/addons');
-var AppActions = require('../../../js/actions/app-actions');
+import React from 'react/addons';
+import AppActions from '../../../js/actions/app-actions';
 
-var Button = require('../../atoms/button/button.jsx');
+import Button from '../../atoms/button/button.jsx';
 
-var TodoItem = React.createClass({
+const TodoItem = React.createClass({
 
   propTypes: {
     todo: React.PropTypes.object,
   },
 
   handleCompleted: function() {
-    var todo = this.props.todo;
+    let todo = this.props.todo;
     AppActions.updateTodo(todo._id, { completed: !todo.completed });
   },
 
@@ -21,13 +21,13 @@ var TodoItem = React.createClass({
   },
 
   render: function() {
-    var todo = this.props.todo;
-    var cx = React.addons.classSet;
-    var componentClasses = cx({
+    let todo = this.props.todo;
+    let cx = React.addons.classSet;
+    let componentClasses = cx({
       'todoItem': true,
       'completed': todo.completed,
     });
-    var completedButtonClasses = cx({
+    let completedButtonClasses = cx({
       'completed-button': true,
       'complted': todo.completed,
       });
@@ -43,4 +43,4 @@ var TodoItem = React.createClass({
   }
 });
 
-module.exports = TodoItem;
+export default TodoItem;

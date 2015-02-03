@@ -1,8 +1,8 @@
-require('./input-submit.scss');
+import './input-submit.scss';
 
-var React = require('react/addons');
+import React from 'react/addons';
 
-var InputSubmit = React.createClass({
+const InputSubmit = React.createClass({
 
   propTypes: {
     value: React.PropTypes.string,
@@ -15,4 +15,4 @@ var InputSubmit = React.createClass({
   }
 });
 
-module.exports = InputSubmit;
+export default InputSubmit;

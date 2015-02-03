@@ -1,8 +1,8 @@
-require('./input-text.scss');
+import './input-text.scss';
 
-var React = require('react/addons');
+import React from 'react/addons';
 
-var InputText = React.createClass({
+const InputText = React.createClass({
 
   propTypes: {
     name: React.PropTypes.string,
@@ -19,4 +19,4 @@ var InputText = React.createClass({
   }
 });
 
-module.exports = InputText;
+export default InputText;

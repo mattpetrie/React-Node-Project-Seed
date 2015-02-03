@@ -1,6 +1,6 @@
-require('./header.scss');
+import './header.scss';
 
-var React = require('react/addons');
+import React from 'react/addons';
 
 var Header = React.createClass({
 
@@ -13,4 +13,4 @@ var Header = React.createClass({
   }
 });
 
-module.exports = Header;
+export default Header;
