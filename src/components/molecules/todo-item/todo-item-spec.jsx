@@ -2,6 +2,7 @@ var React = require('react/addons');
 var TestUtils = React.addons.TestUtils;
 var rewire = require('rewire');
 var rewireModule = require('../../../../test/helpers/rewire-module');
+var mockComponent = require('../../../../test/helpers/mock-component.jsx');
 
 describe('TodoItem', function() {
   var TodoItem = rewire('./todo-item.jsx');
@@ -29,37 +30,20 @@ describe('TodoItem', function() {
     expect(component).to.exist();
   });
 
-  describe('deleting a todo', function() {
+  describe('handleCompleted', function() {
+    it('calls the updateTodo action with the updated completed state', function() {
+      todoItem.handleCompleted();
 
-    beforeEach(function() {
-
-      var deleteButton = TestUtils.findRenderedDOMComponentWithClass(
-        todoItem, 'delete-button'
-      );
-
-      TestUtils.Simulate.click(deleteButton);
+      expect(updateTodoSpy).to.have.been.calledWith(mockTodo._id, { completed: true });
     });
-
-    it('calls the remove todo action with the todo id', function() {
-
-      expect(removeTodoSpy).to.have.been.calledWith(mockTodo._id);
-    })
   });
 
-  describe('marking a todo completed', function() {
+  describe('#handleDelete', function() {
 
-    beforeEach(function() {
-      var completedButton = TestUtils.findRenderedDOMComponentWithClass(
-        todoItem, 'completed-button'
-      );
+    it('calls the removeTodo action', function() {
+      todoItem.handleDelete();
 
-      TestUtils.Simulate.click(completedButton);
+      expect(removeTodoSpy).to.have.been.called;
     });
-
-    it('calls the update todo action and updates the completed state', function() {
-      expect(updateTodoSpy).to.have.been.calledWith(
-        mockTodo._id, { completed: !mockTodo.completed }
-       );
-    })
   });
 });

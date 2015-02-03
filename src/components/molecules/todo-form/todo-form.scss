@@ -1,8 +1,9 @@
 @import 'common';
 
-@mixin layout {
+.todoForm {
   min-height: 100px;
   position: relative;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   h3 {
@@ -11,23 +12,12 @@
   form {
     width: 100%;
   }
-  input[type=submit] {
+  .input-submit {
     position: absolute;
     left: 80%;
     bottom: 12%;
   }
-  input[type=text] {
+  .input-text {
     width: 75%;
   }
-}
-
-@mixin presentation {
-  @include card;
-  @include input-text;
-  @include input-submit;
-}
-
-.todoForm {
-  @include layout;
-  @include presentation;
 }

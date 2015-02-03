@@ -41,7 +41,8 @@ gulp.task('webpack:dev-server', function(callback) {
       main: ['webpack/hot/dev-server'].concat(webpackConfig.entry.main)
     },
     plugins: [
-      new webpack.HotModuleReplacementPlugin()
+      new webpack.HotModuleReplacementPlugin(),
+      new webpack.NoErrorsPlugin()
     ],
   });
 

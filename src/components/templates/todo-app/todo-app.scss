@@ -1,10 +1,6 @@
-@mixin layout {
+.todoApp {
   .main {
     padding: 2%;
     display: flex;
   }
-}
-
-.todoApp {
-  @include layout;
 }

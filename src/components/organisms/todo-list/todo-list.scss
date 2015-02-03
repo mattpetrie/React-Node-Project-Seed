@@ -1,10 +1,6 @@
-@mixin layout {
+.todoList {
   display: flex;
   flex-direction: column;
   flex: 1;
   align-items: center;
-}
-
-.todoList {
-  @include layout;
 }
