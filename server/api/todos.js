@@ -1,7 +1,8 @@
-var Todo = require('./models/todo.js');
-var express = require('express');
-var morgan = require('morgan');
-var router = express.Router();
+import Todo from './models/todo';
+import express from 'express';
+import morgan from 'morgan';
+
+const router = express.Router();
 
 // log all requests to the console
 router.use(morgan('dev'));
@@ -82,4 +83,4 @@ router.route('/todos/:todo_id')
     });
   });
 
-module.exports = router;
+export default router;

@@ -1,12 +1,13 @@
-require('./todo-form.scss');
+import './todo-form.scss';
 
-var React = require('react/addons');
-var AppActions = require('../../../js/actions/app-actions');
+import React from 'react/addons';
 
-var InputText = require('../../atoms/input-text/input-text.jsx');
-var InputSubmit = require('../../atoms/input-submit/input-submit.jsx');
+import AppActions from '../../../js/actions/app-actions';
 
-var TodoForm = React.createClass({
+import InputText from '../../atoms/input-text/input-text.jsx';
+import InputSubmit from '../../atoms/input-submit/input-submit.jsx';
+
+const TodoForm = React.createClass({
   getInitialState: function() {
     return {
       name: this.props.name || '',
@@ -42,4 +43,4 @@ var TodoForm = React.createClass({
   }
 });
 
-module.exports = TodoForm;
+export default TodoForm;

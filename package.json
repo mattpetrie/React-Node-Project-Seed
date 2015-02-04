@@ -23,6 +23,8 @@
     "assumestrict": "true"
   },
   "devDependencies": {
+    "6to5-core": "^3.3.4",
+    "6to5-loader": "^3.0.0",
     "autoprefixer-loader": "^1.1.0",
     "chai": "^1.10.0",
     "css-loader": "^0.9.1",
@@ -58,6 +60,7 @@
     "webpack-dev-server": "^1.7.0"
   },
   "dependencies": {
+    "6to5": "^3.3.4",
     "body-parser": "^1.10.1",
     "es6-promise": "^2.0.1",
     "express": "^4.10.7",

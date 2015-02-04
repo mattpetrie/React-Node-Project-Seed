@@ -1,18 +1,19 @@
-var React = require('react/addons');
-var TestUtils = React.addons.TestUtils;
+import React from 'react/addons';
+const TestUtils = React.addons.TestUtils;
 
-describe('Header', function() {
-  var Header = require('./header.jsx');
-  var header;
+import Header from './header.jsx';
 
-  beforeEach(function() {
+describe('Header', () => {
+  let header;
+
+  beforeEach( () => {
     header = TestUtils.renderIntoDocument(
       <Header />
     );
   });
 
-  it('renders', function() {
-    var component = TestUtils.findRenderedDOMComponentWithClass(
+  it('renders', () => {
+    let component = TestUtils.findRenderedDOMComponentWithClass(
       header, 'header'
     );
 

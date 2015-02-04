@@ -7,7 +7,7 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.jsx$/, loaders: ['react-hot', 'jsx-loader?harmony?insertPragma=React.DOM'] },
+      { test: /\.jsx?$/, exclude: /node_modules/, loaders: ['react-hot', '6to5-loader'] },
       { test: /\.css$/, loader: 'style-loader!css-loader!autoprefixer-loader?last 2 version' },
       { test: /\.scss$/, loader: 'style-loader!css-loader!sass-loader?includePaths[]=' +
           path.resolve(__dirname, './src/stylesheets') +

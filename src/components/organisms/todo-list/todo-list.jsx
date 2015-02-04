@@ -1,12 +1,12 @@
-require('./todo-list.scss');
+import './todo-list.scss';
 
-var React = require('react/addons');
+import React from 'react/addons';
 
-var Card = require('../../molecules/card/card.jsx');
-var TodoItem = require('../../molecules/todo-item/todo-item.jsx');
-var TodoForm = require('../../molecules/todo-form/todo-form.jsx');
+import Card from '../../molecules/card/card.jsx';
+import TodoItem from '../../molecules/todo-item/todo-item.jsx';
+import TodoForm from '../../molecules/todo-form/todo-form.jsx';
 
-var TodoList = React.createClass({
+const TodoList = React.createClass({
 
   propTypes: {
     todos: React.PropTypes.object,
@@ -19,14 +19,14 @@ var TodoList = React.createClass({
   },
 
   render: function() {
-    var todos = Object.keys(this.props.todos).map(function(todo_id) {
-      var todo = this.props.todos[todo_id];
+    let todos = Object.keys(this.props.todos).map(todo_id => {
+      let todo = this.props.todos[todo_id];
       return (
         <Card key={todo._id}>
           <TodoItem todo={todo} />
         </Card>
       );
-    }.bind(this));
+    });
     return (
       <div className="todoList">
         {todos}
@@ -38,4 +38,4 @@ var TodoList = React.createClass({
   }
 });
 
-module.exports = TodoList;
+export default TodoList;

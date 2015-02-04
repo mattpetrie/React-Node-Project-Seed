@@ -1,20 +1,20 @@
-var AppConstants = require('../constants/app-constants.js');
-var AppDispatcher = require('../dispatcher/app-dispatcher.js');
-var TodoApi = require('../apis/todo-api.js');
+import AppConstants from '../constants/app-constants';
+import AppDispatcher from '../dispatcher/app-dispatcher';
+import TodoApi from '../apis/todo-api';
 
-var AppActions = {
+const AppActions = {
   addTodo: function(todo) {
     AppDispatcher.handleViewAction({
       actionType: AppConstants.ADD_TODO,
       todo: todo
     });
 
-    TodoApi.create(todo, function(todo) {
+    TodoApi.create(todo, (todo) => {
       AppDispatcher.handleServerAction({
         actionType: AppConstants.ADD_TODO_SUCCESS,
         todo: todo
       });
-    }, function(error) {
+    }, (error) => {
       AppDispatcher.handleServerAction({
         actionType: AppConstants.ADD_TODO_FAIL,
         error: error
@@ -28,12 +28,12 @@ var AppActions = {
       id: id
     });
 
-    TodoApi.get(id, function(todo) {
+    TodoApi.get(id, (todo) => {
       AppDispatcher.handleServerAction({
         actionType: AppConstants.GET_TODO_SUCESS,
         todo: todo
       });
-    }, function(error) {
+    }, (error) => {
       AppDispatcher.handleServerAction({
         actionType: AppConstants.GET_TODO_FAIL,
         error: error
@@ -46,12 +46,12 @@ var AppActions = {
       actionType: AppConstants.GET_TODOS
     });
 
-    TodoApi.getAll(function(todos) {
+    TodoApi.getAll( (todos) => {
       AppDispatcher.handleServerAction({
         actionType: AppConstants.GET_TODOS_SUCCESS,
         todos: todos
       });
-    }, function(error) {
+    }, (error) => {
       AppDispatcher.handleServerAction({
         actionType: AppConstants.GET_TODOS_FAIL,
         error: error
@@ -65,12 +65,12 @@ var AppActions = {
       id: id
     });
 
-    TodoApi.destroy(id, function() {
+    TodoApi.destroy(id, () => {
       AppDispatcher.handleServerAction({
         actionType: AppConstants.REMOVE_TODO_SUCCESS,
         id: id
       });
-    }, function(error) {
+    }, (error) => {
       AppDispatcher.handleServerAction({
         actionType: AppConstants.REMOVE_TODO_FAIL,
         error: error
@@ -85,13 +85,13 @@ var AppActions = {
       props: props
     });
 
-    TodoApi.update(id, props, function(todo) {
+    TodoApi.update(id, props, (todo) => {
       AppDispatcher.handleServerAction({
         actionType: AppConstants.UPDATE_TODO_SUCCESS,
         id: todo._id,
         props: todo
       });
-    }, function(error) {
+    }, (error) => {
       AppDispatcher.handleServerAction({
         actionType: AppConstants.UPDATE_TODO_FAIL,
         error: error
@@ -100,4 +100,4 @@ var AppActions = {
   }
 };
 
-module.exports = AppActions;
+export default AppActions;

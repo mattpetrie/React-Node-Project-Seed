@@ -1,6 +1,6 @@
 # React + Node Boilerplate
 
-A React and Node demo project that serves as a showcase for a great toolchain for building single page applications backed by a JSON API. It is meant to showcase a set of technologies that can not only result in robust web applications, but also facilitate rapid development and ease of developer onboarding. It can also serve as seed for starting new projects.
+A React and Node with ES6 demo project that serves as a showcase for a great toolchain for building single page applications backed by a JSON API. It is meant to showcase a set of technologies that can not only result in robust web applications, but also facilitate rapid development and ease of developer onboarding. It can also serve as seed for starting new projects.
 
 ## Installation Guide
 
@@ -29,9 +29,7 @@ For viewing in the browser, you can navigate to `http://localhost:3000/webpack-d
 #### Deployment:
 A production-ready, minified build can be created in the `./build` directory by running `$ gulp build:production`. The task will only run the build if all tests are passing.
 
-# Tech & Rationale
-
-
+# Tech
 
 ## Build Tools
 ### Webpack
@@ -82,5 +80,4 @@ Since we don't have the benefit of Jest's automocking with this setup, we'll hav
 ## Todo
 * Server-side rendering of React components
 * Tests for Server API
-* ES6 support using 6to5
 * Yeoman generator for new projects with boilerplate

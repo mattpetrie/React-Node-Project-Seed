@@ -1,14 +1,14 @@
-require('./todo-app.scss');
+import './todo-app.scss';
 
-var React = require('react/addons');
+import React from 'react/addons';
 
-var AppActions = require('../../../js/actions/app-actions');
-var TodoStore = require('../../../js/stores/todo-store');
+import AppActions from '../../../js/actions/app-actions';
+import TodoStore from '../../../js/stores/todo-store';
 
-var Header = require('../../molecules/header/header.jsx');
-var TodoList = require('../../organisms/todo-list/todo-list.jsx');
+import Header from '../../molecules/header/header.jsx';
+import TodoList from '../../organisms/todo-list/todo-list.jsx';
 
-var TodoApp = React.createClass({
+const TodoApp = React.createClass({
   getInitialState: function() {
     return ({ todos: TodoStore.getAll() });
   },
@@ -18,6 +18,10 @@ var TodoApp = React.createClass({
 
     // fetch the initial list of todos from the server
     AppActions.getTodos();
+  },
+
+  componentWillUnmount: function() {
+    TodoStore.removeChangeListener(this._onChange);
   },
 
   _onChange: function() {
@@ -36,4 +40,4 @@ var TodoApp = React.createClass({
   }
 });
 
-module.exports = TodoApp;
+export default TodoApp;

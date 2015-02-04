@@ -1,8 +1,8 @@
-var $ = require('jquery');
+import $ from 'jquery';
 
-var BASE_URL = '/api/todos/';
+const BASE_URL = '/api/todos/';
 
-var TodoApi = {
+const TodoApi = {
   create: function(todo, success, failure) {
     $.ajax({
       url: BASE_URL,
@@ -74,4 +74,4 @@ var TodoApi = {
   },
 };
 
-module.exports = TodoApi;
+export default TodoApi;

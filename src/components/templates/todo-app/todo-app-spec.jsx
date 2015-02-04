@@ -1,14 +1,15 @@
-var React = require('react/addons');
-var TestUtils = React.addons.TestUtils;
-var rewire = require('rewire');
-var rewireModule = require('../../../../test/helpers/rewire-module.js');
+import React from 'react/addons';
+import rewire from 'rewire';
+import rewireModule from '../../../../test/helpers/rewire-module.js';
 
-describe('Todo-App', function() {
-  var TodoApp = rewire('./todo-app.jsx');
-  var todoApp;
+const TestUtils = React.addons.TestUtils;
 
-  var getTodosSpy = sinon.spy();
-  var addChangeListenerSpy = sinon.spy();
+describe('Todo-App', () => {
+  const TodoApp = rewire('./todo-app.jsx');
+  let todoApp;
+
+  let getTodosSpy = sinon.spy();
+  let addChangeListenerSpy = sinon.spy();
 
   rewireModule(TodoApp, {
     TodoList: React.createClass({
@@ -23,33 +24,33 @@ describe('Todo-App', function() {
     'AppActions.getTodos': getTodosSpy,
   });
 
-  beforeEach(function() {
+  beforeEach( () => {
     todoApp = TestUtils.renderIntoDocument(
       <TodoApp />
     );
   });
 
-  it('renders', function() {
-    var component = TestUtils.findRenderedDOMComponentWithClass(
+  it('renders',  () => {
+    let component = TestUtils.findRenderedDOMComponentWithClass(
       todoApp, 'todoApp'
     );
 
     expect(component).to.exist();
   });
 
-  it('registers a change listener with the TodoStore', function() {
+  it('registers a change listener with the TodoStore', () => {
     expect(addChangeListenerSpy).to.have.been.called;
   });
 
-  it('Calls the getTodos action on mount', function() {
+  it('Calls the getTodos action on mount', () => {
     expect(getTodosSpy).to.have.been.called;
   });
 
-  it('renders the todo TodoList', function() {
-    var todoList = TestUtils.findRenderedDOMComponentWithClass(
+  it('renders the todo TodoList', () => {
+    let todoList = TestUtils.findRenderedDOMComponentWithClass(
       todoApp, 'todo-list'
     );
 
     expect(todoList).to.exist();
   });
-})
+});
