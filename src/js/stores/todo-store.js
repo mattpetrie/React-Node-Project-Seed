@@ -1,11 +1,12 @@
-var AppDispatcher = require('../dispatcher/app-dispatcher.js');
-var AppConstants = require('../constants/app-constants.js');
-var assign = require('object-assign');
-var EventEmitter = require('events').EventEmitter;
+import AppDispatcher from '../dispatcher/app-dispatcher';
+import AppConstants from '../constants/app-constants';
+import {EventEmitter} from 'events';
+// polyfill since 6to5 does not currently support Object.assign
+import assign from 'object-assign';
 
-var CHANGE_EVENT = 'change';
+const CHANGE_EVENT = 'change';
 
-var _todos = {};
+let _todos = {};
 
 function create (todo) {
   todo.synced = true;
@@ -14,7 +15,7 @@ function create (todo) {
 
 function createAll (todos) {
   _todos = {};
-  todos.forEach(function(todo) {
+  todos.forEach( (todo) => {
     todo.synced = true;
     _todos[todo._id] = todo;
   });
@@ -25,12 +26,12 @@ function destroy (id) {
 }
 
 function update (id, props, synced) {
-  var todo = _todos[id];
+  let todo = _todos[id];
   assign(todo, props, synced);
   _todos[id] = assign(todo, props, { synced: synced });
 }
 
-var TodoStore = assign({}, EventEmitter.prototype, {
+const TodoStore = assign({}, EventEmitter.prototype, {
   emitChange: function () {
     console.log('TodoStore Change Event Emitted');
     this.emit(CHANGE_EVENT);
@@ -49,8 +50,8 @@ var TodoStore = assign({}, EventEmitter.prototype, {
   },
 });
 
-AppDispatcher.register(function(payload) {
-  var action = payload.action;
+AppDispatcher.register( (payload) => {
+  let action = payload.action;
 
   switch(action.actionType) {
     case AppConstants.UPDATE_TODO:
@@ -83,4 +84,4 @@ AppDispatcher.register(function(payload) {
   }
 });
 
-module.exports = TodoStore;
+export default TodoStore;

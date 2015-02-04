@@ -11,10 +11,12 @@
 * A singleton that operates as the central hub for application updates.
 */
 
-var Dispatcher = require('flux').Dispatcher;
-var assign = require('object-assign');
+import {Dispatcher} from 'flux';
 
-var AppDispatcher = assign(new Dispatcher(), {
+// polyfill since 6to5 does not currently support Object.assign
+import assign from 'object-assign';
+
+const AppDispatcher = assign(new Dispatcher(), {
   handleViewAction: function(action) {
     console.log('view action', action);
     this.dispatch({
@@ -32,4 +34,4 @@ var AppDispatcher = assign(new Dispatcher(), {
   }
 });
 
-module.exports = AppDispatcher;
+export default AppDispatcher;

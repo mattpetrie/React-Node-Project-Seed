@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   ADD_TODO: 'ADD_TODO',
   ADD_TODO_SUCCESS: 'ADD_TODO_SUCCESS',
   ADD_TODO_FAIL: 'ADD_TODO_FAIL',
