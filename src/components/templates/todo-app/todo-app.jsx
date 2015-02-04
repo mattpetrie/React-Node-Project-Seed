@@ -20,6 +20,10 @@ const TodoApp = React.createClass({
     AppActions.getTodos();
   },
 
+  componentWillUnmount: function() {
+    TodoStore.removeChangeListener(this._onChange);
+  },
+
   _onChange: function() {
     this.setState({ todos: TodoStore.getAll() });
   },
