@@ -17,7 +17,7 @@ gulp.task('webpack:build', function(callback) {
 });
 
 gulp.task('webpack:production', ['test', 'clean'], function(callback){
-  productionConfig = assign(webpackConfig, {
+  productionConfig = assign({}, webpackConfig, {
     plugins: [
       new webpack.optimize.UglifyJsPlugin(),
       new webpack.optimize.DedupePlugin()
@@ -35,7 +35,7 @@ gulp.task('webpack:production', ['test', 'clean'], function(callback){
 });
 
 gulp.task('webpack:dev-server', function(callback) {
-  devServerConfig = assign(webpackConfig, {
+  devServerConfig = assign({}, webpackConfig, {
     debug: true,
     entry: {
       main: ['webpack/hot/dev-server'].concat(webpackConfig.entry.main)
