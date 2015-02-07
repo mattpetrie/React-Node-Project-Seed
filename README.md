@@ -5,7 +5,7 @@ A React and Node with ES6 demo project that serves as a showcase for a great too
 ## Installation Guide
 
 #### Requirements:
-  * [Node](http://nodejs.org/) 0.10.35
+  * [Node](http://nodejs.org/) 0.10.36
   * [MongoDB](www.mongodb.org/)
   * [Gulp](http://gulpjs.com/) installed globally: `$ npm install -g gulp`
 
@@ -24,7 +24,7 @@ Run the default `$ gulp` task to:
   * start the webpack development server to server client-side assets
   * Watch for changes. All changes will to JS/JSX will re-run the tests. Changes to source JS/CSS/Markup will trigger a re-build.
 
-For viewing in the browser, you can navigate to `http://localhost:3000/webpack-dev-server/` to view the app in live-reload mode, or `http://localhost:8080/` for standard (refresh to see changes) mode.
+For viewing in the browser, you can navigate to `http://localhost:3000/webpack-dev-server/#/` to view the app in live-reload mode, or `http://localhost:8080/` for standard (refresh to see changes) mode.
 
 #### Deployment:
 A production-ready, minified build can be created in the `./build` directory by running `$ gulp build:production`. The task will only run the build if all tests are passing.
@@ -56,6 +56,8 @@ Mongo's document-based storage and flexible schemas offer a fast route to persis
 
 The architecture of this app applies the principles of [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/) to React components. Components are organized into atoms, molecules, organisms, templates, and pages. The **stylesheets and tests for the component along with the JavasScript/JSX in the same directory**. Stylesheets adhere to the same rules as they would under a normal Atomic CSS layout. However, with the exception of a few global styles, **every style and stylesheet must belong to a component**. This pattern is very handy for organizing complex groups of components, and makes mentally mappign the location of code, tests, or styles related to a particular component or structure within the app very intuitive.
 
+### React Router
+Routing is performed via [React Router](https://github.com/rackt/react-router).
 ### Flux
 [Flux](http://facebook.github.io/flux/) is Facebook's recommended approach to managing the flow of data in a React component-based application. I found Flux's unidirectional data flow to be very intuitive, making reasoning about state and the flow of data relatively straightforward. While Flux is more of design pattern than a formal framework, the implementation here is based fairly directly on the implementation described in the official Flux docs. By managing application state in stores and keeping most business logic out of view components, most aspects of the application are able to remain highly decoupled.
 

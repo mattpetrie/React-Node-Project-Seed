@@ -3,7 +3,7 @@ var webpack = require('webpack');
 
 module.exports = {
   entry: {
-    main: ['./src/js/app.jsx'],
+    main: ['./src/js/main.jsx'],
   },
   module: {
     loaders: [
