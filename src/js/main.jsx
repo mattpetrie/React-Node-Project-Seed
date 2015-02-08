@@ -6,6 +6,6 @@ React.initializeTouchEvents(true);
 
 document.addEventListener('DOMContentLoaded', (event) => {
   Router.run(routes, (Handler, state) => {
-    React.render(<Handler />, document.querySelector('#content'));
+    React.render(<Handler />, document.getElementById('content'));
   });
 });

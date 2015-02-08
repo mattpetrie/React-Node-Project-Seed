@@ -1,0 +1,25 @@
+@import 'common';
+
+.about {
+  .main {
+    display: flex;
+    justify-content: center;
+    padding: 2%;
+    .card {
+      flex-direction: column;
+      width: 80%;
+      h2 {
+        line-height: 1em;
+        margin: .5em 0;
+      }
+      hr {
+        border-top: 2px solid $divider;
+        width: 100%;
+        margin: 0;
+      }
+      a {
+        text-decoration: none;
+      }
+    }
+  }
+}
