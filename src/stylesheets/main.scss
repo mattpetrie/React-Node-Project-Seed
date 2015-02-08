@@ -6,4 +6,15 @@ body {
   font-family: 'Roboto', sans-serif;
   color: $primary-text;
   z-index: 1;
+  * {
+    box-sizing: border-box;
+  }
+}
+
+h1 {
+  font-size: 1.5em;
+}
+
+h2 {
+  font-size: 1.25em;
 }
