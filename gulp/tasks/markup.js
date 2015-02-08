@@ -8,7 +8,7 @@ gulp.task('markup', function() {
     .pipe(gulp.dest(config.dest));
 });
 
-gulp.task('markup:production', ['test', 'clean'], function() {
+gulp.task('markup:production', ['clean'], function() {
   gulp.src(config.src)
     .pipe(preprocess({ context: { NODE_ENV: 'production' }}))
     .pipe(gulp.dest(config.dest));

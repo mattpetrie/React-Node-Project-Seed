@@ -2,12 +2,18 @@
   "name": "react-node-boilerplate",
   "version": "0.1.0",
   "description": "React + Node, with Flux, Express, and MongoDB",
+  "engines": {
+    "node": "0.10.x",
+    "npm": "2.1.x"
+  },
   "readme": "README.md",
   "repository": {
     "type": "git",
     "url": "http://github.com/mattpetrie/react-node-boilerplate.git"
   },
   "scripts": {
+    "postinstall": "gulp build:production",
+    "start": "node server/main.js",
     "test": "./node_modules/karma/bin/karma start karma.conf.js"
   },
   "keywords": [
@@ -42,7 +48,6 @@
     "rewire-webpack": "^1.0.0",
     "sinon": "^1.12.2",
     "sinon-chai": "^2.6.0",
-    "vinyl-source-stream": "^1.0.0",
     "webpack-dev-server": "^1.7.0"
   },
   "dependencies": {

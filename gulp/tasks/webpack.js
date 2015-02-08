@@ -16,7 +16,7 @@ gulp.task('webpack:build', function(callback) {
   callback();
 });
 
-gulp.task('webpack:production', ['test', 'clean'], function(callback){
+gulp.task('webpack:production', ['clean'], function(callback){
   productionConfig = assign({}, webpackConfig, {
     plugins: [
       new webpack.optimize.UglifyJsPlugin(),
