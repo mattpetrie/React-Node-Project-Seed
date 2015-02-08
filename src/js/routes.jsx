@@ -11,8 +11,9 @@ var Redirect = Router.Redirect;
 
 var routes = (
   <Route name='app' path='/' handler={App}>
-    <Route name='about' handler={About} />
     <DefaultRoute name='todo-app' handler={TodoApp} />
+    <Route name='about' path='/about' handler={About} />
+    <NotFoundRoute handler={TodoApp} />
   </Route>
 );
 
