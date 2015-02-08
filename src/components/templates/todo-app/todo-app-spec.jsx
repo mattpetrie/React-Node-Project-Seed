@@ -1,6 +1,7 @@
 import React from 'react/addons';
 import rewire from 'rewire';
 import rewireModule from '../../../../test/helpers/rewire-module.js';
+import mockComponent from '../../../../test/helpers/mock-component.jsx'
 
 const TestUtils = React.addons.TestUtils;
 
@@ -12,13 +13,8 @@ describe('Todo-App', () => {
   let addChangeListenerSpy = sinon.spy();
 
   rewireModule(TodoApp, {
-    TodoList: React.createClass({
-      render: function() {
-        return (
-          <div className='todo-list' />
-        );
-      }
-    }),
+    TodoList: mockComponent('todo-list'),
+    Header: mockComponent('header'),
     'TodoStore.getAll': sinon.stub().returns(['todo']),
     'TodoStore.addChangeListener': addChangeListenerSpy,
     'AppActions.getTodos': getTodosSpy,

@@ -1,13 +1,36 @@
 @import 'common';
 
 .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
   min-width: 320px;
   padding: 2% 4%;
   h1{
+    flex: 1 1 auto;
     line-height: 1em;
     margin: .25em 0;
     font-weight: normal;
+  }
+  ul {
+    display: flex;
+    flex: 1 1 auto;
+    justify-content: flex-end;
+    padding-left: 0;
+    list-style: none;
+    li + li {
+      padding-left: 1em;
+    }
+  }
+  a {
+    color: $icon-text;
+    font-size: .75em;
+    text-decoration: none;
+    padding-bottom: .25em;
+    &.active {
+      border-bottom: 2px solid $icon-text;
+    }
   }
   box-shadow: $drop-shadow;
   background-color: $primary;
