@@ -5,10 +5,11 @@ import Header from './header.jsx';
 
 describe('Header', () => {
   let header;
+  let headerText = 'foo';
 
   beforeEach( () => {
     header = TestUtils.renderIntoDocument(
-      <Header />
+      <Header headerText={headerText} />
     );
   });
 
@@ -18,5 +19,10 @@ describe('Header', () => {
     );
 
     expect(component).to.exist();
+  });
+
+  it('displays the header text', () => {
+
+    expect(header.getDOMNode().innerText).to.contain(headerText);
   });
 });

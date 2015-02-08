@@ -4,10 +4,14 @@ import React from 'react/addons';
 
 var Header = React.createClass({
 
+  propTypes: {
+    headerText: React.PropTypes.string
+  },
+
   render: function() {
     return (
       <div className="header">
-        <h1>React + Flux Todos</h1>
+        <h1>{this.props.headerText}</h1>
       </div>
     );
   }

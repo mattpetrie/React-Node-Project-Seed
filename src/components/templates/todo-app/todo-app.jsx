@@ -31,7 +31,7 @@ const TodoApp = React.createClass({
   render: function() {
     return (
       <div className="todoApp">
-        <Header />
+        <Header headerText='React + Flux Todos' />
         <div className="main">
           <TodoList todos={this.state.todos} />
         </div>
