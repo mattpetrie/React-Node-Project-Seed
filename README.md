@@ -67,7 +67,7 @@ Routing is performed via [React Router](https://github.com/rackt/react-router).
 [Flux](http://facebook.github.io/flux/) is Facebook's recommended approach to managing the flow of data in a React component-based application. I found Flux's unidirectional data flow to be very intuitive, making reasoning about state and the flow of data relatively straightforward. While Flux is more of design pattern than a formal framework, the implementation here is based fairly directly on the implementation described in the official Flux docs. By managing application state in stores and keeping most business logic out of view components, most aspects of the application are able to remain highly decoupled.
 
 ### Less
-Stylesheets are written with [Less](http://lesscss.org/). If you prefer Sass, the the project can be converted by swapping the webpack less-loader for [sass-loader](https://github.com/jtangelder/sass-loader). However, node-sass currently has [issues supporting Node v0.12 and io.js] which require it to be rebuilt from the latest source rather than installed via npm. Sass support can also be achieved by using Node v0.10.* instead.
+Stylesheets are written with [Less](http://lesscss.org/). If you prefer Sass, the the project can be converted by swapping the webpack less-loader for [sass-loader](https://github.com/jtangelder/sass-loader). However, node-sass currently has [issues supporting Node v0.12 and io.js](https://github.com/sass/node-sass/issues/655) which require it to be rebuilt from the latest source rather than installed via npm. Sass support can also be achieved by using Node v0.10.* instead.
 
 ## Testing
 Tests can be run with `$ gulp test`. All files ending in `-spec.js` or `-spec.jsx` in the `./src` directory will be detected, bundled, and run automatically by the test runner.
@@ -76,11 +76,9 @@ The unit testing strategy for React components in this project borrows heavily f
 [this blog post](http://substantial.com/blog/2014/11/11/test-driven-react-how-to-manually-mock-components/).
 
 ### Why not Jest?
-Facebook is strongly promoting the use of their [Jest](http://facebook.github.io/jest/) testing framework for React apps. Jest's automatic mocking of dependencies is a great idea for easy JavaScript unit testing, however after experimenting with the framework with this project I've
-reached the conclusion that Jest is not yet ready for primetime. My chief complaint with Jest at this point is speed - even a very basic set of unit tests took several seconds to run. It outputs extremely cryptic error messages that make debugging test code difficult. It also requires a separate preprocessor for converting JSX files, which adds additional time to running the tests.
+Facebook is strongly promoting the use of their [Jest](http://facebook.github.io/jest/) testing framework for React apps. Jest's automatic mocking of dependencies is a great idea for easy JavaScript unit testing, however after experimenting with the framework with this project I've reached the conclusion that Jest is not yet ready for primetime. My chief complaint with Jest at this point is speed - even a very basic set of unit tests took several seconds to run. It outputs extremely cryptic error messages that make debugging test code difficult. It also requires a separate preprocessor for converting JSX files, which adds additional time to running the tests.
 
-Jest still looks like a very promising addition to JavaScript testing tools, and I look forward to seeing how it develops in the future. If the complaints above can be addressed I would strongly consider making the switch back to Jest as the
-primary tool for unit testing.
+Jest still looks like a very promising addition to JavaScript testing tools, and I look forward to seeing how it develops in the future. If the complaints above can be addressed I would strongly consider making the switch back to Jest as the primary tool for unit testing.
 
 #### Karma + Mocha + Chai + Sinon + Rewire
 Given the current shortcomings of Jest, it's my opinion that this recipe represents the best option for testing React apps. The Karma test runner is blazing fast, allows for running tests in both a headless environment via PhantomJS and in the browser, and couples well with the webpack module bundler for bundling test code and converting JSX. I prefer Mocha and Chai, but Jasmine could easily be substituted as well.
