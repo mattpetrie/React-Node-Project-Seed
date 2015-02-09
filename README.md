@@ -27,7 +27,11 @@ Run the default `$ gulp` task to:
 For viewing in the browser, you can navigate to `http://localhost:3000/webpack-dev-server/#/` to view the app in live-reload mode, or `http://localhost:8080/` for standard (refresh to see changes) mode.
 
 #### Deployment:
-A production-ready, minified build can be created in the `./build` directory by running `$ gulp build:production`. The task will only run the build if all tests are passing.
+A production-ready, minified build can be created in the `./build` directory by running `$ gulp build:production`.
+
+When to ploying to a hosting service (such as Heroku), make sure to set `NODE_ENV=production` and `MONGOLAB_URI` to your MongoDB instance URI in your environment variables.
+
+A Heroku deployment of this example app can be viewed [here](https://react-node-project-seed.herokuapp.com/#/).
 
 # Tech
 
@@ -82,4 +86,5 @@ Since we don't have the benefit of Jest's automocking with this setup, we'll hav
 ## Todo
 * Server-side rendering of React components
 * Tests for Server API
-* Yeoman generator for new projects with boilerplate
+* Convert components to ES6 classes once React 0.13 is available
+* Upgrade to [iojs](https://iojs.org/) once it is fully supported by node-sass

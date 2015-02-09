@@ -11,11 +11,11 @@ const app = express();
 // config for MongoLab instance on Heroku, you can swap this with your own
 // production MongoDB configuration
 if (process.env.NODE_ENV === 'production'){
-  let mongoLabUri = process.env.MONGOLAB_URI;
+  let mongoUri = process.env.MONGO_URI;
   let options = { server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } },
                 replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 } } }
 
-  let mongooseUri = uriUtil.formatMongoose(mongoLabUri);
+  let mongooseUri = uriUtil.formatMongoose(mongoUri);
   mongoose.connect(mongooseUri, options);
 
 } else {
