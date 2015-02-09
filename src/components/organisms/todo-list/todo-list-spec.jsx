@@ -16,7 +16,7 @@ describe('TodoList', function() {
   });
 
   beforeEach(function() {
-    var mockTodos = {1: {_id: 'todo1'}, 2: {_id: 'todo2'}};
+    var mockTodos = {1: {id: 'todo1'}, 2: {id: 'todo2'}};
     todoList = TestUtils.renderIntoDocument(
       <TodoList todos={mockTodos}/>
     );

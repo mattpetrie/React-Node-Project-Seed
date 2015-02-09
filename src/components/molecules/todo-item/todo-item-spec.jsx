@@ -17,7 +17,7 @@ describe('TodoItem', function() {
   });
 
   beforeEach( () => {
-    mockTodo = { _id: 1, name: 'mockTodo', completed: false };
+    mockTodo = { id: 1, name: 'mockTodo', completed: false };
     todoItem = TestUtils.renderIntoDocument(
       <TodoItem todo={mockTodo} />
     );
@@ -35,7 +35,7 @@ describe('TodoItem', function() {
     it('calls the updateTodo action with the updated completed state', function() {
       todoItem.handleCompleted();
 
-      expect(updateTodoSpy).to.have.been.calledWith(mockTodo._id, { completed: true });
+      expect(updateTodoSpy).to.have.been.calledWith(mockTodo, { completed: true });
     });
   });
 

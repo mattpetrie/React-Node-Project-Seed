@@ -17,6 +17,8 @@ describe('TodoForm', () => {
     todoForm = TestUtils.renderIntoDocument(
       <TodoForm />
     );
+
+    todoForm.generateUUID = function() { return 1; };
   });
 
   it('renders', () => {
@@ -52,7 +54,7 @@ describe('TodoForm', () => {
 
     it('calls the update todo action on submit', () => {
 
-      expect(addTodoSpy).to.have.been.calledWith({ name: 'bar', completed: false });
+      expect(addTodoSpy).to.have.been.calledWith({ id: 1, name: 'bar', completed: false });
     });
 
     it('resets the name field to empty on submit', () => {
