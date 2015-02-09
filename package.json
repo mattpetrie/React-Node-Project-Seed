@@ -30,7 +30,6 @@
   },
   "devDependencies": {
     "chai": "^1.10.0",
-    "del": "^1.1.1",
     "gulp-nodemon": "^1.0.5",
     "karma": "^0.12.31",
     "karma-chrome-launcher": "^0.1.7",
@@ -57,6 +56,7 @@
     "autoprefixer-loader": "^1.1.0",
     "body-parser": "^1.10.1",
     "css-loader": "^0.9.1",
+    "del": "^1.1.1",
     "es6-promise": "^2.0.1",
     "express": "^4.10.7",
     "flux": "^2.0.1",
