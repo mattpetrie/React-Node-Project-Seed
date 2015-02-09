@@ -5,7 +5,7 @@ A React and Node with ES6 demo project that serves as a showcase for a great too
 ## Installation Guide
 
 #### Requirements:
-  * [Node](http://nodejs.org/) 0.10.36
+  * [Node](http://nodejs.org/) v0.12.0 or [io.js](https://iojs.org/) v1.1.0
   * [MongoDB](www.mongodb.org/)
   * [Gulp](http://gulpjs.com/) installed globally: `$ npm install -g gulp`
 
@@ -58,12 +58,16 @@ Mongo's document-based storage and flexible schemas offer a fast route to persis
 ### Atomic React
 [React](http://facebook.github.io/react/index.html) allows us to ditch the age-old MVC architecture for a more component-based approached. Component-based development allows for a front end that is highly reusable and extendable, with both data flows and interaction flows that are easy to follow and reason about. React offers the best tool for building view-layer components currently available. It uses JavaScript constructs that will already be familiar to most developers, and its virtual DOM-based rendering is super fast. It also opens up the possibility of server-side rendering of view as well.
 
-The architecture of this app applies the principles of [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/) to React components. Components are organized into atoms, molecules, organisms, templates, and pages. The **stylesheets and tests for the component along with the JavasScript/JSX in the same directory**. Stylesheets adhere to the same rules as they would under a normal Atomic CSS layout. However, with the exception of a few global styles, **every style and stylesheet must belong to a component**. This pattern is very handy for organizing complex groups of components, and makes mentally mappign the location of code, tests, or styles related to a particular component or structure within the app very intuitive.
+The architecture of this app applies the principles of [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/) to React components. Components are organized into atoms, molecules, organisms, templates, and pages. The **stylesheets and tests for the component along with the JavasScript/JSX in the same directory**. Stylesheets adhere to the same rules as they would under a normal Atomic CSS layout. However, with the exception of a few global styles, **every style and stylesheet must belong to a component**. Global style rules can be passed to a component by importing `common.less` into the component's local stylesheet. This pattern is very handy for organizing complex groups of components, and makes mentally mapping the location of code, tests, or styles related to a particular component or structure within the app very intuitive.
 
 ### React Router
 Routing is performed via [React Router](https://github.com/rackt/react-router).
+
 ### Flux
 [Flux](http://facebook.github.io/flux/) is Facebook's recommended approach to managing the flow of data in a React component-based application. I found Flux's unidirectional data flow to be very intuitive, making reasoning about state and the flow of data relatively straightforward. While Flux is more of design pattern than a formal framework, the implementation here is based fairly directly on the implementation described in the official Flux docs. By managing application state in stores and keeping most business logic out of view components, most aspects of the application are able to remain highly decoupled.
+
+### Less
+Stylesheets are written with [Less](http://lesscss.org/). If you prefer Sass, the the project can be converted by swapping the webpack less-loader for [sass-loader](https://github.com/jtangelder/sass-loader). 
 
 ## Testing
 Tests can be run with `$ gulp test`. All files ending in `-spec.js` or `-spec.jsx` in the `./src` directory will be detected, bundled, and run automatically by the test runner.
