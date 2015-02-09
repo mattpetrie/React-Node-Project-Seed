@@ -1,4 +1,4 @@
-# React + Node Boilerplate
+# React + Node Project Seed
 
 A React and Node with ES6 demo project that serves as a showcase for a great toolchain for building single page applications backed by a JSON API. It is meant to showcase a set of technologies that can not only result in robust web applications, but also facilitate rapid development and ease of developer onboarding. It can also serve as seed for starting new projects.
 
@@ -14,7 +14,7 @@ A React and Node with ES6 demo project that serves as a showcase for a great too
 2. `$ npm install`
 3. Source files for the front end are located in the ./src directory.
 4. Run the `$ gulp build` task to build the client-side app into the ./build
-   directory.
+   directory. * If you get an error `Cannot find module ...v8flags/cache/4.1.0.12.flags.json`, try force fetching updated v8 flags for Gulp by running `$ node node_modules/gulp/node_modules/v8flags/fetch.js`.
 
 #### Runtime:
 Run the default `$ gulp` task to:
@@ -29,7 +29,7 @@ For viewing in the browser, you can navigate to `http://localhost:3000/webpack-d
 #### Deployment:
 A production-ready, minified build can be created in the `./build` directory by running `$ gulp build:production`.
 
-When to ploying to a hosting service (such as Heroku), make sure to set `NODE_ENV=production` and `MONGOLAB_URI` to your MongoDB instance URI in your environment variables.
+When to ploying to a hosting service (such as Heroku), make sure to set `NODE_ENV=production` and `MONGO_URI` to your MongoDB instance URI in your environment variables.
 
 A Heroku deployment of this example app can be viewed [here](http://react-node-project-seed.herokuapp.com/#/).
 
@@ -67,7 +67,7 @@ Routing is performed via [React Router](https://github.com/rackt/react-router).
 [Flux](http://facebook.github.io/flux/) is Facebook's recommended approach to managing the flow of data in a React component-based application. I found Flux's unidirectional data flow to be very intuitive, making reasoning about state and the flow of data relatively straightforward. While Flux is more of design pattern than a formal framework, the implementation here is based fairly directly on the implementation described in the official Flux docs. By managing application state in stores and keeping most business logic out of view components, most aspects of the application are able to remain highly decoupled.
 
 ### Less
-Stylesheets are written with [Less](http://lesscss.org/). If you prefer Sass, the the project can be converted by swapping the webpack less-loader for [sass-loader](https://github.com/jtangelder/sass-loader). 
+Stylesheets are written with [Less](http://lesscss.org/). If you prefer Sass, the the project can be converted by swapping the webpack less-loader for [sass-loader](https://github.com/jtangelder/sass-loader). However, node-sass currently has [issues supporting Node v0.12 and io.js] which require it to be rebuilt from the latest source rather than installed via npm. Sass support can also be achieved by using Node v0.10.* instead.
 
 ## Testing
 Tests can be run with `$ gulp test`. All files ending in `-spec.js` or `-spec.jsx` in the `./src` directory will be detected, bundled, and run automatically by the test runner.
@@ -91,4 +91,3 @@ Since we don't have the benefit of Jest's automocking with this setup, we'll hav
 * Server-side rendering of React components
 * Tests for Server API
 * Convert components to ES6 classes once React 0.13 is available
-* Upgrade to [iojs](https://iojs.org/) once it is fully supported by node-sass
