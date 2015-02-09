@@ -1,4 +1,4 @@
-import './about.scss';
+import './about.less';
 
 import React from 'react/addons';
 import Header from '../../molecules/header/header';

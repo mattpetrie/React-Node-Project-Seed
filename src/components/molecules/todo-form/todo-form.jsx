@@ -1,4 +1,4 @@
-import './todo-form.scss';
+import './todo-form.less';
 
 import React from 'react/addons';
 

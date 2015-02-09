@@ -31,7 +31,7 @@ A production-ready, minified build can be created in the `./build` directory by 
 
 When to ploying to a hosting service (such as Heroku), make sure to set `NODE_ENV=production` and `MONGOLAB_URI` to your MongoDB instance URI in your environment variables.
 
-A Heroku deployment of this example app can be viewed [here](https://react-node-project-seed.herokuapp.com/#/).
+A Heroku deployment of this example app can be viewed [here](http://react-node-project-seed.herokuapp.com/#/).
 
 # Tech
 

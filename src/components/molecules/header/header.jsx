@@ -1,4 +1,4 @@
-import './header.scss';
+import './header.less';
 
 import React from 'react/addons';
 import {Link} from 'react-router';

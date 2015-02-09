@@ -1,8 +1,8 @@
-@import 'common';
+@import '../../../stylesheets/common';
 
 .input-submit {
-  background-color: $accent;
-  color: $icon-text;
+  background-color: @accent;
+  color: @icon-text;
   text-align: center;
   font-size: 25px;
   border-radius: 100%;
@@ -11,7 +11,7 @@
   z-index: 200;
   border: none;
   border-radius: 100%;
-  box-shadow: 0 3px 10px $primary-shadow, 0 3px 10px $secondary-shadow;
+  box-shadow: 0 3px 10px @primary-shadow, 0 3px 10px @secondary-shadow;
   transition: all 0.3s ease-in;
   &:hover {
     transition: all 0.3s ease-in;
@@ -21,7 +21,7 @@
     transform: rotate(90deg);
   }
   &:active {
-    background-color: darken($accent, 10%);
+    background-color: darken(@accent, 10%);
     transition: all 0.1s ease-in;
     height: 50px;
     width: 50px;

@@ -1,4 +1,4 @@
-@import 'common';
+@import '../../../stylesheets/common';
 
 .header {
   display: flex;
@@ -24,15 +24,15 @@
     }
   }
   a {
-    color: $icon-text;
+    color: @icon-text;
     font-size: .75em;
     text-decoration: none;
     padding-bottom: .25em;
     &.active {
-      border-bottom: 2px solid $icon-text;
+      border-bottom: 2px solid @icon-text;
     }
   }
-  box-shadow: $drop-shadow;
-  background-color: $primary;
-  color: $icon-text;
+  box-shadow: @drop-shadow;
+  background-color: @primary;
+  color: @icon-text;
 }

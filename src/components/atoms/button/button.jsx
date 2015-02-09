@@ -1,4 +1,4 @@
-import './button.scss';
+import './button.less';
 
 import React from 'react/addons';
 
