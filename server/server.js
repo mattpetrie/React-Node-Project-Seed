@@ -19,7 +19,7 @@ if (process.env.NODE_ENV === 'production'){
   mongoose.connect(mongooseUri, options);
 
 } else {
-  mongoose.connect('localhost', 'test');
+  mongoose.connect('localhost', 'react-node-project-seed-development');
 }
 
 const db = mongoose.connection;
