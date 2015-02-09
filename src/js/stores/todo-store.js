@@ -9,15 +9,15 @@ const CHANGE_EVENT = 'change';
 let _todos = {};
 
 function create (todo) {
-  todo.synced = true;
-  _todos[todo._id] = todo;
+  todo.synced = false;
+  _todos[todo.id] = todo;
 }
 
 function createAll (todos) {
   _todos = {};
   todos.forEach( (todo) => {
     todo.synced = true;
-    _todos[todo._id] = todo;
+    _todos[todo.id] = todo;
   });
 }
 
@@ -55,12 +55,12 @@ AppDispatcher.register( (payload) => {
 
   switch(action.actionType) {
     case AppConstants.UPDATE_TODO:
-      update(action.id, action.props, false);
+      update(action.todo.id, action.props, false);
       TodoStore.emitChange();
       break;
 
     case AppConstants.UPDATE_TODO_SUCCESS:
-      update(action.id, action.props, true);
+      update(action.todo.id, action.props, true);
       TodoStore.emitChange();
       break;
 
@@ -69,13 +69,17 @@ AppDispatcher.register( (payload) => {
       TodoStore.emitChange();
       break;
 
-    case AppConstants.ADD_TODO_SUCCESS:
+    case AppConstants.ADD_TODO:
       create(action.todo);
+      TodoStore.emitChange();
+
+    case AppConstants.ADD_TODO_SUCCESS:
+      update(action.todo.id, action.todo, true);
       TodoStore.emitChange();
       break;
 
     case AppConstants.REMOVE_TODO:
-      destroy(action.id);
+      destroy(action.todo.id);
       TodoStore.emitChange();
       break;
 

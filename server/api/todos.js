@@ -13,6 +13,7 @@ router.route('/todos')
   .post(function(req, res) {
 
     var todo = new Todo();
+    todo.id = req.body.id;
     todo.name = req.body.name;
     todo.completed = req.body.completed;
 
@@ -41,7 +42,7 @@ router.route('/todos/:todo_id')
 
   // get the Todo with that id (accessed at GET http://localhost:8080/api/todos/:todo_id)
   .get(function(req, res) {
-    Todo.findById(req.params.todo_id, function(err, todo) {
+    Todo.findOne({id: req.params.todo_id}, function(err, todo) {
       if (err) {
         res.status(500).send(err);
       }
@@ -52,7 +53,7 @@ router.route('/todos/:todo_id')
 
   // update the todo with this id (accessed at PUT http://localhost:8080/api/todos/:todo_id)
   .put(function(req, res) {
-    Todo.findById(req.params.todo_id, function(err, todo) {
+    Todo.findOne({id: req.params.todo_id}, function(err, todo) {
       if (err) {
         res.status(500).send(err);
       }
@@ -73,7 +74,7 @@ router.route('/todos/:todo_id')
   // delete the todo with this id (accessed at DELETE http://localhost:8080/api/todos/:todo_id)
   .delete(function(req, res) {
     Todo.remove({
-      _id: req.params.todo_id
+      id: req.params.todo_id
     }, function(err, todo) {
       if (err) {
         res.status(500).send(err);

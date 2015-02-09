@@ -22,7 +22,7 @@ const TodoList = React.createClass({
     let todos = Object.keys(this.props.todos).map(todo_id => {
       let todo = this.props.todos[todo_id];
       return (
-        <Card key={todo._id}>
+        <Card key={todo.id}>
           <TodoItem todo={todo} />
         </Card>
       );

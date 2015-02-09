@@ -13,11 +13,11 @@ const TodoItem = React.createClass({
 
   handleCompleted: function() {
     let todo = this.props.todo;
-    AppActions.updateTodo(todo._id, { completed: !todo.completed });
+    AppActions.updateTodo(todo, { completed: !todo.completed });
   },
 
   handleDelete: function() {
-    AppActions.removeTodo(this.props.todo._id);
+    AppActions.removeTodo(this.props.todo);
   },
 
   render: function() {

@@ -59,16 +59,16 @@ const AppActions = {
     });
   },
 
-  removeTodo: function(id) {
+  removeTodo: function(todo) {
     AppDispatcher.handleViewAction({
       actionType: AppConstants.REMOVE_TODO,
-      id: id
+      todo: todo
     });
 
-    TodoApi.destroy(id, () => {
+    TodoApi.destroy(todo, () => {
       AppDispatcher.handleServerAction({
         actionType: AppConstants.REMOVE_TODO_SUCCESS,
-        id: id
+        todo: todo
       });
     }, (error) => {
       AppDispatcher.handleServerAction({
@@ -78,18 +78,18 @@ const AppActions = {
     });
   },
 
-  updateTodo: function(id, props) {
+  updateTodo: function(todo, props) {
     AppDispatcher.handleViewAction({
       actionType: AppConstants.UPDATE_TODO,
-      id: id,
+      todo: todo,
       props: props
     });
 
-    TodoApi.update(id, props, (todo) => {
+    TodoApi.update(todo, props, (respTodo) => {
       AppDispatcher.handleServerAction({
         actionType: AppConstants.UPDATE_TODO_SUCCESS,
-        id: todo._id,
-        props: todo
+        todo: todo,
+        props: respTodo
       });
     }, (error) => {
       AppDispatcher.handleServerAction({

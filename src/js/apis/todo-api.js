@@ -18,9 +18,9 @@ const TodoApi = {
     });
   },
 
-  destroy: function(_id, success, failure) {
+  destroy: function(todo, success, failure) {
     $.ajax({
-      url: BASE_URL + _id,
+      url: BASE_URL + todo.id,
       type: 'DELETE',
       dataType: 'json',
       success: function(data) {
@@ -45,9 +45,9 @@ const TodoApi = {
     });
   },
 
-  get: function(_id, success, failure) {
+  get: function(id, success, failure) {
     $.ajax({
-      url: BASE_URL + _id,
+      url: BASE_URL + id,
       dataType: 'json',
       success: function(data) {
         success(data);
@@ -58,9 +58,9 @@ const TodoApi = {
     });
   },
 
-  update: function(_id, props, success, failure) {
+  update: function(todo, props, success, failure) {
     $.ajax({
-      url: BASE_URL + _id,
+      url: BASE_URL + todo.id,
       type: 'PUT',
       dataType: 'json',
       data: props,

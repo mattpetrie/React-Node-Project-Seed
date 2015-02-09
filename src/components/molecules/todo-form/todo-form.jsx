@@ -17,6 +17,7 @@ const TodoForm = React.createClass({
   handleSubmit: function(event) {
     event.preventDefault();
     AppActions.addTodo({
+      id: this.generateUUID(),
       name: this.state.name,
       completed: false,
     });
@@ -27,6 +28,16 @@ const TodoForm = React.createClass({
     this.setState({
       name: event.target.value
     });
+  },
+
+  generateUUID: function() {
+    var d = new Date().getTime();
+    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = (d + Math.random()*16)%16 | 0;
+        d = Math.floor(d/16);
+        return (c=='x' ? r : (r&0x3|0x8)).toString(16);
+    });
+    return uuid;
   },
 
   render: function() {
