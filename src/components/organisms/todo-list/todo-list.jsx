@@ -6,6 +6,8 @@ import Card from '../../molecules/card/card.jsx';
 import TodoItem from '../../molecules/todo-item/todo-item.jsx';
 import TodoForm from '../../molecules/todo-form/todo-form.jsx';
 
+var CSSTransitionGroup = React.addons.CSSTransitionGroup;
+
 const TodoList = React.createClass({
 
   propTypes: {
@@ -28,12 +30,12 @@ const TodoList = React.createClass({
       );
     });
     return (
-      <div className="todoList">
+      <CSSTransitionGroup transitionName="card" className="todoList" component="div">
         {todos}
         <Card>
           <TodoForm />
         </Card>
-      </div>
+      </CSSTransitionGroup>
     );
   }
 });
