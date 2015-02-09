@@ -1,4 +1,4 @@
-import './input-submit.scss';
+import './input-submit.less';
 
 import React from 'react/addons';
 

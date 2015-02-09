@@ -1,4 +1,4 @@
-import './input-text.scss';
+import './input-text.less';
 
 import React from 'react/addons';
 

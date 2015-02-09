@@ -1,4 +1,4 @@
-import './card.scss';
+import './card.less';
 
 import React from 'react/addons';
 

@@ -1,4 +1,4 @@
-@import 'common';
+@import '../../../stylesheets/common';
 
 .todoItem {
   width: 100%;
@@ -15,7 +15,7 @@
     width: 100%;
   }
   &.completed .todo-name {
-    color: $strikethrough-text;
+    color: @strikethrough-text;
     text-decoration: line-through;
   }
 }

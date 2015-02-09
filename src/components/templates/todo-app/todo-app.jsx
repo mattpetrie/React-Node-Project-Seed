@@ -1,4 +1,4 @@
-import './todo-app.scss';
+import './todo-app.less';
 
 import React from 'react/addons';
 

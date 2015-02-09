@@ -1,4 +1,4 @@
-import '../stylesheets/main.scss';
+import '../stylesheets/main.less';
 
 import React from 'react/addons';
 import Router from 'react-router';
