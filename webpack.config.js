@@ -12,9 +12,7 @@ module.exports = {
     loaders: [
       { test: /\.jsx?$/, exclude: /node_modules/, loaders: jsxLoaders },
       { test: /\.css$/, loader: 'style-loader!css-loader!autoprefixer-loader?last 2 version' },
-      { test: /\.scss$/, loader: 'style-loader!css-loader!sass-loader?includePaths[]=' +
-          path.resolve(__dirname, './src/stylesheets') +
-          '!autoprefixer-loader?browsers=last 2 version' },
+      { test: /\.less$/, loader: 'style-loader!css-loader!autoprefixer?browsers=last 2 version!less-loader' }
     ],
   },
   noInfo: true,
@@ -25,7 +23,7 @@ module.exports = {
     chunkFilename: '[chunkhash].js',
   },
   resolve: {
-    extensions: ['', '.js', '.jsx', '.json', '.css', '.scss'],
+    extensions: ['', '.js', '.jsx', '.json', '.css', '.less'],
   },
   target: 'web',
 };
