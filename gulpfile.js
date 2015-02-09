@@ -17,8 +17,6 @@ if (process.env.NODE_ENV !== 'production') {
   requireDir('./gulp/tasks', { recurse: true });
 } else {
   // If in production only require tasks necessary for producion build
-  require('./gulp/tasks/build');
-  require('./gulp/tasks/clean');
-  require('./gulp/tasks/markup');
-  require('./gulp/tasks/webpack');
+  require('./gulp/tasks/config.js');
+  requireDir('./gulp/tasks/production', { recurse: true });
 }
