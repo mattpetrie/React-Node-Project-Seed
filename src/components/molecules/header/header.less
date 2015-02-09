@@ -28,6 +28,9 @@
     font-size: .75em;
     text-decoration: none;
     padding-bottom: .25em;
+    @media (max-width:768px), (min-device-pixel-ratio:2) {
+      font-size: 1em;
+    }
     &.active {
       border-bottom: 2px solid @icon-text;
     }
