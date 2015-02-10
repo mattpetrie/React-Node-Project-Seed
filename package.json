@@ -1,15 +1,15 @@
 {
-  "name": "react-node-boilerplate",
+  "name": "react-node-project-seed",
   "version": "0.1.0",
   "description": "React + Node, with Flux, Express, and MongoDB",
   "engines": {
-    "node": "0.10.x",
+    "iojs": "1.1.0",
     "npm": "2.1.x"
   },
   "readme": "README.md",
   "repository": {
     "type": "git",
-    "url": "http://github.com/mattpetrie/react-node-boilerplate.git"
+    "url": "http://github.com/mattpetrie/react-node-project-seed.git"
   },
   "scripts": {
     "postinstall": "gulp build:production",
