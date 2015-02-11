@@ -55,3 +55,5 @@ app.use('/api', require('./api/todos'));
 
 app.listen(port);
 console.log('Magic happens on port ' + port);
+
+export default app;
