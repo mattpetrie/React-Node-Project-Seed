@@ -54,4 +54,4 @@ app.use('/api', require('./api/todos'));
 // START THE SERVER
 
 app.listen(port);
-console.log('Magic happens on port ' + port);
+console.log('Node/io.js ' + process.version + ' server started on ' + port);
