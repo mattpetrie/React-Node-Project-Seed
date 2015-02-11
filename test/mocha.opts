@@ -1,0 +1,2 @@
+--compilers js:6to5/register
+./server/**/*-spec.js
