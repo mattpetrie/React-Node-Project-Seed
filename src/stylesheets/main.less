@@ -1,5 +1,6 @@
 @import 'normalize';
 @import '_colors';
+@import '_variables';
 
 body {
   background-color: @body-background;
@@ -13,11 +14,14 @@ body {
 
 h1 {
   font-size: 1.5em;
+  @media @phone {
+    font-size: 1.25em;
+  }
 }
 
 h2 {
   font-size: 1.25em;
-  @media (max-width: 768px) {
+  @media @tablet {
     font-size: 1.5em;
   }
 }
