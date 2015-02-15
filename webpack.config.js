@@ -1,8 +1,8 @@
 var path = require('path');
 var webpack = require('webpack');
 
-// Don't use react-hot loader in production
-var jsxLoaders = process.env.NODE_ENV === 'production' ? ['6to5-loader'] : ['react-hot', '6to5-loader'];
+// only user react-hot-loader in development
+var jsxLoaders = process.env.NODE_ENV !== 'development' ? ['6to5-loader'] : ['react-hot', '6to5-loader'];
 
 module.exports = {
   entry: {

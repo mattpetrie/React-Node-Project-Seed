@@ -1,10 +1,10 @@
 {
-  "name": "react-node-boilerplate",
+  "name": "react-node-project-seed",
   "version": "0.1.0",
   "description": "React + Node, with Flux, Express, and MongoDB",
   "engines": {
-    "node": "0.10.x",
-    "npm": "2.1.x"
+    "iojs": "1.2.x",
+    "npm": "2.5.x"
   },
   "readme": "README.md",
   "repository": {
