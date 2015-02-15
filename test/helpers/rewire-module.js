@@ -1,27 +1,18 @@
 var rewireModule = function rewireModule(rewiredModule, varValues) {
   var rewiredReverts = [];
 
-  function revertFn(key, oldValue) {
-    return function() {
-      rewiredModule.__set__(key, oldValue);
-    };
-  }
-
-  beforeEach(function() {
-    var key, oldValue, newValue, revert;
+  beforeEach(() => {
+    var key, revert;
     for (key in varValues) {
-      if (varValues.hasOwnProperty(key)) {
-        oldValue = rewiredModule[key];
-        newValue = varValues[key];
-        rewiredModule.__set__(key, newValue);
-        revert = revertFn(key, oldValue);
+      if(varValues.hasOwnProperty(key)) {
+        revert = rewiredModule.__set__(key, varValues[key]);
         rewiredReverts.push(revert);
       }
     }
   });
 
-  afterEach(function() {
-    rewiredReverts.forEach(function(revert) {
+  afterEach(() => {
+    rewiredReverts.forEach((revert) => {
       revert();
     });
   });

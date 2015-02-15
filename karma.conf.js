@@ -1,5 +1,5 @@
 var RewirePlugin = require('rewire-webpack');
-var webpackConfig = require('./webpack.config');
+var assign = require('object-assign');
 
 module.exports = function(config) {
     config.set({
@@ -37,7 +37,7 @@ module.exports = function(config) {
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
-          './**/*-spec.{js,jsx}': ['webpack'],
+          'src/**/*-spec.{js,jsx}': ['webpack'],
         },
 
         // karma.conf.js is in root directory, but all server related files are
@@ -74,9 +74,14 @@ module.exports = function(config) {
           plugins: [
             new RewirePlugin()
           ],
-          module: webpackConfig.module,
+          module: {
+            loaders: [
+              { test: /\.jsx?$/, exclude: /node_modules/, loader: '6to5-loader' },
+              { test: /\.css$/, loader: 'style-loader!css-loader!autoprefixer-loader?last 2 version' },
+              { test: /\.less$/, loader: 'style-loader!css-loader!autoprefixer?browsers=last 2 version!less-loader' }
+            ]
+          }
         },
-
         webpackMiddleware: {
           noInfo: true,
         },

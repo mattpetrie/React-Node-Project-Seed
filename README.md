@@ -5,7 +5,7 @@ A React and Node with ES6 demo project that serves as a showcase for a great too
 ## Installation Guide
 
 #### Requirements:
-  * [Node](http://nodejs.org/) v0.12.0 or [io.js](https://iojs.org/) v1.1.0
+  * [Node](http://nodejs.org/) v0.12.0 or [io.js](https://iojs.org/) v1.2.0
   * [MongoDB](www.mongodb.org/)
   * [Gulp](http://gulpjs.com/) installed globally: `$ npm install -g gulp`
 
@@ -13,13 +13,12 @@ A React and Node with ES6 demo project that serves as a showcase for a great too
 1. Clone the repo
 2. `$ npm install`
 3. Source files for the front end are located in the ./src directory.
-4. Run the `$ gulp build` task to build the client-side app into the ./build
-   directory. * If you get an error `Cannot find module ...v8flags/cache/4.1.0.12.flags.json`, try force fetching updated v8 flags for Gulp by running `$ node node_modules/gulp/node_modules/v8flags/fetch.js`.
+4. Run the `$ gulp build` task to build the client-side app into the `./build` directory. * If you get an error `Cannot find module ...v8flags/cache/4.1.0.12.flags.json`, try force fetching updated v8 flags for Gulp by running `$ node path/to/your/global/install/gulp/node_modules/v8flags/fetch.js`.
 
 #### Runtime:
 Run the default `$ gulp` task to:
   * Run the tests
-  * Build from `./src` into the `./build` via webpack
+  * Build from `./src` into `./build` via webpack
   * start the Node server
   * start the webpack development server to server client-side assets
   * Watch for changes. All changes will to JS/JSX will re-run the tests. Changes to source JS/CSS/Markup will trigger a re-build.
@@ -70,14 +69,10 @@ Routing is performed via [React Router](https://github.com/rackt/react-router).
 Stylesheets are written with [Less](http://lesscss.org/). If you prefer Sass, the the project can be converted by swapping the webpack less-loader for [sass-loader](https://github.com/jtangelder/sass-loader). However, node-sass currently has [issues supporting Node v0.12 and io.js](https://github.com/sass/node-sass/issues/655) which require it to be rebuilt from the latest source rather than installed via npm. Sass support can also be achieved by using Node v0.10.* instead.
 
 ## Testing
-Tests can be run with `$ gulp test`. All files ending in `-spec.js` or `-spec.jsx` in the `./src` directory will be detected, bundled, and run automatically by the test runner.
-
-The unit testing strategy for React components in this project borrows heavily from
-[this blog post](http://substantial.com/blog/2014/11/11/test-driven-react-how-to-manually-mock-components/).
+Server-side testing is done with [Mocha](http://mochajs.org/) and [Supertest](https://github.com/visionmedia/supertest). Client side testing is also done with Mocha via the [Karma](http://karma-runner.github.io/0.12/index.html) test runner. The full test suite can be run with `$ gulp test`. Client-side only tests can be run with `$ gulp test:client` and server-side only with `gulp test:server`. All files ending in `-spec.js` or `-spec.jsx` in the `./src` and `./server` directories will be detected, bundled, and run automatically by the test runners.
 
 ### Why not Jest?
-Facebook is strongly promoting the use of their [Jest](http://facebook.github.io/jest/) testing framework for React apps. Jest's automatic mocking of dependencies is a great idea for easy JavaScript unit testing, however after experimenting with the framework with this project I've reached the conclusion that Jest is not yet ready for primetime. My chief complaint with Jest at this point is speed - even a very basic set of unit tests took several seconds to run. It outputs extremely cryptic error messages that make debugging test code difficult. It also requires a separate preprocessor for converting JSX files, which adds additional time to running the tests.
-
+A good explanation can be found [here](http://substantial.com/blog/2014/11/11/test-driven-react-how-to-manually-mock-components/).
 Jest still looks like a very promising addition to JavaScript testing tools, and I look forward to seeing how it develops in the future. If the complaints above can be addressed I would strongly consider making the switch back to Jest as the primary tool for unit testing.
 
 #### Karma + Mocha + Chai + Sinon + Rewire
@@ -87,5 +82,4 @@ Since we don't have the benefit of Jest's automocking with this setup, we'll hav
 
 ## Todo
 * Server-side rendering of React components
-* Tests for Server API
 * Convert components to ES6 classes once React 0.13 is available
