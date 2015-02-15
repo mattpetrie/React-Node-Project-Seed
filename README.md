@@ -5,7 +5,7 @@ A React and Node with ES6 demo project that serves as a showcase for a great too
 ## Installation Guide
 
 #### Requirements:
-  * [Node](http://nodejs.org/) v0.12.0 or [io.js](https://iojs.org/) v1.1.0
+  * [Node](http://nodejs.org/) v0.12.0 or [io.js](https://iojs.org/) v1.2.0
   * [MongoDB](www.mongodb.org/)
   * [Gulp](http://gulpjs.com/) installed globally: `$ npm install -g gulp`
 
@@ -13,7 +13,7 @@ A React and Node with ES6 demo project that serves as a showcase for a great too
 1. Clone the repo
 2. `$ npm install`
 3. Source files for the front end are located in the ./src directory.
-4. Run the `$ gulp build` task to build the client-side app into the `./build` directory. * If you get an error `Cannot find module ...v8flags/cache/4.1.0.12.flags.json`, try force fetching updated v8 flags for Gulp by running `$ node node_modules/gulp/node_modules/v8flags/fetch.js`.
+4. Run the `$ gulp build` task to build the client-side app into the `./build` directory. * If you get an error `Cannot find module ...v8flags/cache/4.1.0.12.flags.json`, try force fetching updated v8 flags for Gulp by running `$ node path/to/your/global/install/gulp/node_modules/v8flags/fetch.js`.
 
 #### Runtime:
 Run the default `$ gulp` task to:
