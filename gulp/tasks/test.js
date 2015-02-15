@@ -22,10 +22,10 @@ gulp.task('test:client:watch', function(done) {
 
 gulp.task('test:server', shell.task([
   'echo Running Server Tests',
-  'mocha'
-]));
+  'NODE_ENV=test ./node_modules/.bin/mocha'
+], {ignoreErrors: true}));
 
 gulp.task('test:server:watch', shell.task([
   'echo Running Server Tests with Watch',
-  'mocha --watch'
-]));
+  'NODE_ENV=test ./node_modules/.bin/mocha --watch'
+], {ignoreErrors: true}));

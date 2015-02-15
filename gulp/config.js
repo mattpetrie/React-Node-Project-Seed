@@ -13,7 +13,7 @@ module.exports = {
   server: {
     script: 'server/main.js',
     ext: 'js html',
-    watch: 'server/**',
+    watch: 'server/**/*.*',
     nodeArgs: ['--debug'],
   },
 };
