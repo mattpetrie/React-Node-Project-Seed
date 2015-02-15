@@ -4,7 +4,7 @@ import clearDB from 'mocha-mongoose';
 import server from '../server';
 import db from '../config/db';
 import todos from './todos';
-import Todo from './models/todo';
+import Todo from '../models/todo';
 
 var testDBUri = 'mongodb://localhost/react-node-project-seed-test';
 clearDB(testDBUri);

@@ -1,4 +1,4 @@
-import Todo from './models/todo';
+import Todo from '../models/todo';
 import express from 'express';
 import morgan from 'morgan';
 
