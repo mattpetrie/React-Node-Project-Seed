@@ -28,7 +28,7 @@ For viewing in the browser, you can navigate to `http://localhost:3000/webpack-d
 #### Deployment:
 A production-ready, minified build can be created in the `./build` directory by running `$ gulp build:production`.
 
-When to ploying to a hosting service (such as Heroku), make sure to set `NODE_ENV=production` and `MONGO_URI` to your MongoDB instance URI in your environment variables.
+When deploying to a hosting service (such as Heroku), make sure to set `NODE_ENV=production` and `MONGO_URI` to your MongoDB instance URI in your environment variables.
 
 A Heroku deployment of this example app can be viewed [here](http://react-node-project-seed.herokuapp.com/#/).
 
@@ -71,9 +71,8 @@ Stylesheets are written with [Less](http://lesscss.org/). If you prefer Sass, th
 ## Testing
 Server-side testing is done with [Mocha](http://mochajs.org/) and [Supertest](https://github.com/visionmedia/supertest). Client side testing is also done with Mocha via the [Karma](http://karma-runner.github.io/0.12/index.html) test runner. The full test suite can be run with `$ gulp test`. Client-side only tests can be run with `$ gulp test:client` and server-side only with `gulp test:server`. All files ending in `-spec.js` or `-spec.jsx` in the `./src` and `./server` directories will be detected, bundled, and run automatically by the test runners.
 
-### Why not Jest?
+#### Why not Jest?
 A good explanation can be found [here](http://substantial.com/blog/2014/11/11/test-driven-react-how-to-manually-mock-components/).
-Jest still looks like a very promising addition to JavaScript testing tools, and I look forward to seeing how it develops in the future. If the complaints above can be addressed I would strongly consider making the switch back to Jest as the primary tool for unit testing.
 
 #### Karma + Mocha + Chai + Sinon + Rewire
 Given the current shortcomings of Jest, it's my opinion that this recipe represents the best option for testing React apps. The Karma test runner is blazing fast, allows for running tests in both a headless environment via PhantomJS and in the browser, and couples well with the webpack module bundler for bundling test code and converting JSX. I prefer Mocha and Chai, but Jasmine could easily be substituted as well.
