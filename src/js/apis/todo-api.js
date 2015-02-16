@@ -36,6 +36,7 @@ const TodoApi = {
   getAll: function(success, failure) {
     $.ajax({
       url: BASE_URL,
+      type: 'GET',
       dataType: 'json',
       success: function(data) {
         success(data);
@@ -49,6 +50,7 @@ const TodoApi = {
   get: function(id, success, failure) {
     $.ajax({
       url: BASE_URL + id,
+      type: 'GET',
       dataType: 'json',
       success: function(data) {
         success(data);
