@@ -1,3 +1,4 @@
+// The API layer which handles the actual syncing of Todos  with the server
 import $ from 'jquery';
 
 const BASE_URL = '/api/todos/';

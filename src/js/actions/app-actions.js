@@ -2,6 +2,8 @@ import AppConstants from '../constants/app-constants';
 import AppDispatcher from '../dispatcher/app-dispatcher';
 import TodoApi from '../apis/todo-api';
 
+/* Actions here perform two purposes: to send the appropriate action on to the
+dispatcher (which routes in on to the store), and to interface with the Api */
 const AppActions = {
   addTodo: function(todo) {
     AppDispatcher.handleViewAction({

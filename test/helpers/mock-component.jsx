@@ -1,5 +1,5 @@
-// Returns a React component consisting of an empty div
-// with the class name passed in
+/* Returns a React component for mocking consisting of an empty div
+with the class name passed in */
 
 var React = require('react/addons');
 

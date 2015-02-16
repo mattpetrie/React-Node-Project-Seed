@@ -8,6 +8,7 @@ const CHANGE_EVENT = 'change';
 
 let _todos = {};
 
+// Our client-side CRUD methods for Todos:
 function create (todo) {
   todo.synced = false;
   _todos[todo.id] = todo;
@@ -27,10 +28,16 @@ function destroy (id) {
 
 function update (id, props, synced) {
   let todo = _todos[id];
-  assign(todo, props, synced);
+  /* This is a simplistic way of tracking whether Todo's state is currently
+  synced with the server and should probably be replaced with a more
+  sophisticated method for production, but for our demo purposes it's fine */
   _todos[id] = assign(todo, props, { synced: synced });
 }
 
+/* The store only needs to allow components to register/unregister listeners,
+and emit change events. Since we have just one top-level component managing
+state for all components interested in Todos, the only other method necessary
+is one for getting all the Todos */
 const TodoStore = assign({}, EventEmitter.prototype, {
   emitChange: function () {
     console.log('TodoStore Change Event Emitted');
@@ -50,6 +57,8 @@ const TodoStore = assign({}, EventEmitter.prototype, {
   },
 });
 
+/* Register with the App Dispatcher, and declare how the store handles various
+actions. This should be the sole way in which a client side model gets updated */
 AppDispatcher.register( (payload) => {
   let action = payload.action;
 

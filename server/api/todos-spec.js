@@ -7,9 +7,11 @@ import todos from './todos';
 import Todo from '../models/todo';
 
 var testDBUri = 'mongodb://localhost/react-node-project-seed-test';
+// The mocha-mongoose module handles clearing the test DB between tests
 clearDB(testDBUri);
 var app;
 
+// fn for generating IDs, since our API requires UUIDs to be used
 function generateUUID() {
   var d = new Date().getTime();
   var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
@@ -22,6 +24,7 @@ function generateUUID() {
 
 describe('Todos API /api/todos', () => {
   beforeEach((done) => {
+    // listen on a different port from out app, so test watch mode doesn't conflict
     app = server.listen(9000);
 
     if (mongoose.connection.db) return done();
