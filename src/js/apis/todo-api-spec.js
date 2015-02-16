@@ -190,7 +190,7 @@ describe('Client-Side Todo API', () => {
     });
   });
 
-  describe ('#destroy', () => {
+  describe ('#update', () => {
 
     before(() => {
       server.respondWith("PUT", "/api/todos/1", (req) => {

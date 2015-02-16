@@ -1,6 +1,6 @@
 import React from 'react/addons';
 import Router from 'react-router';
-import App from './app.jsx';
+import App from '../components/app.jsx';
 import TodoApp from '../components/templates/todo-app/todo-app.jsx';
 import About from '../components/templates/about/about.jsx';
 
