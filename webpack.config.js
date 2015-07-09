@@ -1,8 +1,9 @@
 var path = require('path');
 var webpack = require('webpack');
+var autoprefixer = require('autoprefixer-core');
 
 // only user react-hot-loader in development
-var jsxLoaders = process.env.NODE_ENV !== 'development' ? ['6to5-loader'] : ['react-hot', '6to5-loader'];
+var jsxLoaders = process.env.NODE_ENV !== 'development' ? ['babel-loader?optional=runtime'] : ['react-hot', 'babel-loader?optional=runtime'];
 
 module.exports = {
   entry: {
@@ -11,8 +12,8 @@ module.exports = {
   module: {
     loaders: [
       { test: /\.jsx?$/, exclude: /node_modules/, loaders: jsxLoaders },
-      { test: /\.css$/, loader: 'style-loader!css-loader!autoprefixer-loader?last 2 version' },
-      { test: /\.less$/, loader: 'style-loader!css-loader!autoprefixer?browsers=last 2 version!less-loader' }
+      { test: /\.css$/, loader: 'style-loader!css-loader!postcss-loader' },
+      { test: /\.less$/, loader: 'style-loader!css-loader!postcss-loader!less-loader' }
     ],
   },
   noInfo: true,
@@ -22,6 +23,7 @@ module.exports = {
     filename: '[name].js',
     chunkFilename: '[chunkhash].js',
   },
+  postcss: [autoprefixer],
   resolve: {
     extensions: ['', '.js', '.jsx', '.json', '.css', '.less'],
   },

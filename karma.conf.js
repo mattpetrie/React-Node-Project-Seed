@@ -1,5 +1,6 @@
 var RewirePlugin = require('rewire-webpack');
 var assign = require('object-assign');
+var autoprefixer = require('autoprefixer-core');
 
 module.exports = function(config) {
     config.set({
@@ -74,11 +75,12 @@ module.exports = function(config) {
           plugins: [
             new RewirePlugin()
           ],
+          postcss: [autoprefixer],
           module: {
             loaders: [
-              { test: /\.jsx?$/, exclude: /node_modules/, loader: '6to5-loader' },
-              { test: /\.css$/, loader: 'style-loader!css-loader!autoprefixer-loader?last 2 version' },
-              { test: /\.less$/, loader: 'style-loader!css-loader!autoprefixer?browsers=last 2 version!less-loader' }
+              { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader?optional=runtime' },
+              { test: /\.css$/, loader: 'style-loader!css-loader!postcss-loader' },
+              { test: /\.less$/, loader: 'style-loader!css-loader!postcss-loader!less-loader' }
             ]
           }
         },
