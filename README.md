@@ -5,7 +5,7 @@ A React and Node with ES6 demo project that serves as a showcase for a great too
 ## Installation Guide
 
 #### Requirements:
-  * [Node](http://nodejs.org/) v0.12.0 or [io.js](https://iojs.org/) v1.2.0
+  * [Node](http://nodejs.org/) v0.12.0 or [io.js](https://iojs.org/) v2.3.3
   * [MongoDB](www.mongodb.org/)
   * [Gulp](http://gulpjs.com/) installed globally: `$ npm install -g gulp`
 
@@ -81,4 +81,3 @@ Since we don't have the benefit of Jest's automocking with this setup, we'll hav
 
 ## Todo
 * Server-side rendering of React components
-* Convert components to ES6 classes once React 0.13 is available
